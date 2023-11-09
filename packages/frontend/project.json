@@ -10,7 +10,7 @@
       "defaultConfiguration": "production",
       "options": {
         "outputPath": "dist/frontend",
-        "nextConfig": "packages/frontend/src/app/entrypoint/next.config.js"
+        "nextConfig": "packages/frontend/src/app/entrypoint/next.config.mjs"
       },
       "configurations": {
         "development": {
