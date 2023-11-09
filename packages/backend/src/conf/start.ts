@@ -11,5 +11,5 @@ export const startApplication = async (app: INestApplication) => {
     `🚀 Application is running on: ${env.server.url}/${env.server.prefix}`
   )
 
-  Logger.log(`Port: ${env.port}`)
+  Logger.log(`🚀 Port: ${env.port}`)
 }
