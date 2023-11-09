@@ -11,6 +11,7 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "incremental": true,
+    "strictNullChecks": true,
     "plugins": [
       {
         "name": "next"
@@ -19,7 +20,13 @@
     "types": [
       "jest",
       "node"
-    ]
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
     "**/*.ts",
@@ -29,7 +36,8 @@
     "../../packages/frontend/.next/types/**/*.ts",
     "../../dist/packages/frontend/.next/types/**/*.ts",
     "next-env.d.ts",
-    "../../dist/frontend/.next/types/**/*.ts"
+    "../../dist/frontend/.next/types/**/*.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules",

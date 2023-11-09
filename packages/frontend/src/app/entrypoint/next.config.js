@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+})
+
 const { composePlugins, withNx } = require('@nx/next')
 const nextConfig = {
   nx: {
@@ -5,6 +9,6 @@ const nextConfig = {
   }
 }
 
-const plugins = [withNx]
+const plugins = [withNx, withBundleAnalyzer]
 
 module.exports = composePlugins(...plugins)(nextConfig)
