@@ -1,0 +1,1 @@
+export { setupCors } from './cors'

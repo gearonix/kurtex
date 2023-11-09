@@ -3,6 +3,7 @@ tmp
 node_modules
 .idea
 *.env
+!.example.env
 .nx
 coverage
 .next

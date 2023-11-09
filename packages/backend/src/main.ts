@@ -1,17 +1,29 @@
-import { Logger }      from '@nestjs/common'
-import { NestFactory } from '@nestjs/core'
+import { ValidationPipe }      from '@nestjs/common'
+import { NestFactory }         from '@nestjs/core'
 
-import { AppModule }   from './app/app.module'
+import { AppModule }           from './app.module'
+import { EnvService }          from './env'
+import { setupCors }           from './conf'
+import { startApplication }    from './conf/start'
+import { HttpExceptionFilter } from './filters'
 
-async function bootstrap() {
+const bootstrap = async () => {
   const app = await NestFactory.create(AppModule)
-  const globalPrefix = 'api'
-  app.setGlobalPrefix(globalPrefix)
-  const port = process.env.PORT || 3000
-  await app.listen(port)
-  Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
-  )
+
+  setupCors(app)
+
+  const env = app.get(EnvService)
+
+  app.useGlobalFilters(new HttpExceptionFilter())
+  app.useGlobalPipes(new ValidationPipe())
+
+  app.setGlobalPrefix(env.server.prefix)
+  app.enableShutdownHooks()
+
+  startApplication(app)
 }
 
-bootstrap()
+void bootstrap()
+
+process.once('SIGUSR2', () => process.exit(0))
+process.on('SIGINT', () => process.exit(0))
