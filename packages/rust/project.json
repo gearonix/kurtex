@@ -1,0 +1,35 @@
+{
+  "name": "rust",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/rust/src",
+  "projectType": "application",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "yarn tauri dev",
+        "cwd": "packages/rust"
+      }
+    },
+    "build": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "yarn tauri build",
+          "rm -rf ../../dist/rust",
+          "mkdir -p ../../dist/rust",
+          "mv target/release/* ../../dist/rust"
+        ],
+        "cwd": "packages/rust"
+      }
+    },
+    "preview": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "./kurtex",
+        "cwd": "dist/rust"
+      }
+    }
+  },
+  "tags": []
+}
