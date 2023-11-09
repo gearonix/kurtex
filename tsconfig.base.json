@@ -1,0 +1,10 @@
+{
+  "extends": "cg-config/src/tsconfig/base.json",
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "baseUrl": ".",
+    "skipLibCheck": true
+  },
+  "exclude": ["node_modules", "tmp"]
+}

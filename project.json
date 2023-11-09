@@ -1,0 +1,19 @@
+{
+  "name": "root",
+  "$schema": "node_modules/nx/schemas/project-schema.json",
+  "targets": {
+    "serve": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx run-many -t serve --parallel=3 --exclude='*,!tag:runtime:*'"
+      }
+    },
+    "dep-graph": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx dep-graph"
+      }
+    }
+  },
+  "tags": ["root"]
+}
