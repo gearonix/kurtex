@@ -21,7 +21,16 @@
       },
       "configurations": {
         "development": {},
-        "production": {}
+        "production": {},
+        "repl": {
+          "main": "packages/backend/src/repl.ts"
+        }
+      }
+    },
+    "docs": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "yarn dlx @compodoc/compodoc  -p tsconfig.json -s"
       }
     },
     "serve": {
@@ -36,6 +45,9 @@
         },
         "production": {
           "buildTarget": "backend:build:production"
+        },
+        "repl": {
+          "buildTarget": "backend:build:repl"
         }
       }
     },

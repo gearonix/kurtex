@@ -1,11 +1,17 @@
-import { NestFactory }      from '@nestjs/core'
-import { AppModule }        from './app.module'
-import { EnvService }       from './env'
-import { setupCors }        from './conf'
-import { startApplication } from './conf/start'
+import { NestFactory }            from '@nestjs/core'
+import { AppModule }              from './app.module'
+import { EnvService }             from './env'
+import { setupCors }              from './conf'
+import { startApplication }       from './conf/start'
+import { FastifyAdapter }         from '@nestjs/platform-fastify'
+import { NestFastifyApplication } from '@nestjs/platform-fastify'
+import helmet                     from '@fastify/helmet'
 
 const bootstrap = async () => {
-  const app = await NestFactory.create(AppModule)
+  const app = await NestFactory.create<NestFastifyApplication>(
+    AppModule,
+    new FastifyAdapter({ logger: true })
+  )
 
   setupCors(app)
 
@@ -14,7 +20,9 @@ const bootstrap = async () => {
   app.setGlobalPrefix(env.server.prefix)
   app.enableShutdownHooks()
 
-  startApplication(app)
+  app.use(helmet)
+
+  await startApplication(app)
 }
 
 void bootstrap()
