@@ -7227,6 +7227,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"cache-manager-redis-store@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "cache-manager-redis-store@npm:3.0.1"
+  dependencies:
+    redis: ^4.3.1
+  checksum: 99a6afb818bb8064f377591ce7f3d4719565836ca8a75ba13e7d4cb4fd57f5616aa4e5f5bd4604b1836f0d03e21811750875d9c3dc238e616347af3e465d50b0
+  languageName: node
+  linkType: hard
+
 "cache-manager@npm:^5.2.4":
   version: 5.2.4
   resolution: "cache-manager@npm:5.2.4"
@@ -12816,6 +12825,7 @@ __metadata:
     axios: ^1.6.1
     babel-jest: ^29.4.1
     cache-manager: ^5.2.4
+    cache-manager-redis-store: ^3.0.1
     eslint: ^8.46.0
     eslint-config-next: 13.4.1
     eslint-plugin-import: 2.27.5
@@ -16057,7 +16067,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"redis@npm:^4.6.10":
+"redis@npm:^4.3.1, redis@npm:^4.6.10":
   version: 4.6.10
   resolution: "redis@npm:4.6.10"
   dependencies:

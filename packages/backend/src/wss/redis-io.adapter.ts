@@ -7,6 +7,7 @@ export class RedisIoAdapter extends IoAdapter {
   private adapterConstructor: ReturnType<typeof createAdapter>
 
   public async connectToRedis(): Promise<void> {
+    // TODO: refactor this
     const pubClient = createClient({ url: 'redis://localhost:6379' })
     const subClient = pubClient.duplicate()
 

@@ -1,1 +1,1 @@
-export { RegisterChannelsGateway } from './gateways/register-channels.gateway'
+export { ChannelsGateway } from './gateways/channels.gateway'

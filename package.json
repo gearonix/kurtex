@@ -66,6 +66,7 @@
     "@socket.io/redis-adapter": "^8.2.1",
     "axios": "^1.6.1",
     "cache-manager": "^5.2.4",
+    "cache-manager-redis-store": "^3.0.1",
     "nestjs-zod": "^3.0.0",
     "next": "13.4.1",
     "react": "18.2.0",

@@ -9,6 +9,7 @@ import { HttpExceptionFilter } from '@/filters'
 import { HealthModule }        from '@/healthz/health.module'
 import { CacheModule }         from '@nestjs/cache-manager'
 import { CoreModule }          from '@/core'
+import * as redisStore         from 'cache-manager-redis-store'
 
 @Module({
   imports: [
@@ -17,7 +18,11 @@ import { CoreModule }          from '@/core'
     LoggerModule,
     HealthModule,
     CacheModule.register({
-      isGlobal: true
+      isGlobal: true,
+      // TODO: refactor this
+      store: redisStore as any,
+      host: 'localhost',
+      port: 6379
     }),
     CoreModule
   ],

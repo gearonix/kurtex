@@ -1,7 +1,7 @@
 import { Module }                  from '@nestjs/common'
-import { RegisterChannelsGateway } from '@core/channels/presenation'
+import { ChannelsGateway } from '@core/channels/presenation'
 
 @Module({
-  providers: [RegisterChannelsGateway]
+  providers: [ChannelsGateway]
 })
 export class ChannelsModule {}

@@ -10,13 +10,18 @@ import { LoggerService }       from '@/logger'
 import { AnyObject }           from '@grnx-utils/types'
 
 @WsGateway()
-export abstract class WebsocketGatewayFactory
+export abstract class WebsocketGatewayFactory<
+    WebsocketMethods extends Record<string, string>
+  >
   implements OnGatewayConnection, OnGatewayDisconnect
 {
   @WebSocketServer()
   protected server: Server
 
-  constructor(protected readonly logger: LoggerService) {}
+  constructor(
+    protected readonly logger: LoggerService,
+    protected readonly methods: WebsocketMethods
+  ) {}
 
   private getClientQuery<T extends AnyObject>(client: Socket): T {
     return client.handshake.query as T
@@ -32,5 +37,23 @@ export abstract class WebsocketGatewayFactory
 
   public async handleDisconnect(client: Socket) {
     this.logger.info(`WssGateway: client disconnected: ${client.id}`)
+  }
+
+  public send<T>(
+    client: Socket,
+    dataToSend: {
+      method: Extract<keyof WebsocketMethods, string>
+      payload: T
+    }
+  ) {
+    const wsMethod = this.methods[dataToSend.method]
+
+    this.logger.info(`WssGateway: Sending the method ${wsMethod}`)
+
+    client.emit(wsMethod, {
+      payload: dataToSend.payload
+    })
+
+    return dataToSend
   }
 }
