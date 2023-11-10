@@ -1,6 +1,7 @@
-import { Module } from '@nestjs/common'
+import { Module }                  from '@nestjs/common'
+import { RegisterChannelsGateway } from '@core/channels/presenation'
 
 @Module({
-  providers: []
+  providers: [RegisterChannelsGateway]
 })
-export class MessengerModule {}
+export class ChannelsModule {}
