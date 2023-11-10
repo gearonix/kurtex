@@ -6,9 +6,10 @@ import { ZodValidationPipe }   from 'nestjs-zod'
 import { APP_FILTER }          from '@nestjs/core'
 import { APP_PIPE }            from '@nestjs/core'
 import { HttpExceptionFilter } from '@/filters'
+import { HealthModule }        from '@/healthz/health.module'
 
 @Module({
-  imports: [ScheduleModule.forRoot(), EnvModule, LoggerModule],
+  imports: [ScheduleModule.forRoot(), EnvModule, LoggerModule, HealthModule],
   providers: [
     {
       provide: APP_PIPE,
