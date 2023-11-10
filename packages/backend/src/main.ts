@@ -5,12 +5,12 @@ import { setupCors }              from './config'
 import { startApplication }       from './config'
 import { FastifyAdapter }         from '@nestjs/platform-fastify'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
-import helmet                     from '@fastify/helmet'
+import { RedisIoAdapter }         from '@/wss/redis-io.adapter'
 
 const bootstrap = async () => {
   const app = await NestFactory.create<NestFastifyApplication>(
     AppModule,
-    new FastifyAdapter({ logger: true })
+    new FastifyAdapter({ logger: false })
   )
 
   setupCors(app)
@@ -20,7 +20,10 @@ const bootstrap = async () => {
   app.setGlobalPrefix(env.server.prefix)
   app.enableShutdownHooks()
 
-  app.use(helmet)
+  const redisIoAdapter = new RedisIoAdapter(app)
+  await redisIoAdapter.connectToRedis()
+
+  app.useWebSocketAdapter(redisIoAdapter)
 
   await startApplication(app)
 }

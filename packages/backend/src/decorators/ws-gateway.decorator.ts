@@ -2,12 +2,16 @@ import { applyDecorators }   from '@nestjs/common'
 import { WebSocketGateway }  from '@nestjs/websockets'
 import { WebsocketGateways } from '@/config'
 
-export const WsGateway = (namespace: WebsocketGateways) => {
+export const WsGateway = (namespace?: WebsocketGateways) => {
+  const namespacePrefix = `${process.env.SERVER_PREFIX}/websocket`
+
   return applyDecorators(
-    WebSocketGateway(Number(process.env.SERVER_WEBSOCKET_PORT), {
-      namespace,
+    WebSocketGateway({
+      namespace: `${namespacePrefix}/${namespace}`,
       cors: true,
-      transports: ['websocket', 'polling']
+      transports: ['websocket', 'polling'],
+      pingInterval: 3000,
+      pintTimeout: 10000
     })
   )
 }
