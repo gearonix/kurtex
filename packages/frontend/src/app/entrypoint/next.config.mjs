@@ -2,9 +2,10 @@ import withBundleAnalyzer from '@next/bundle-analyzer'
 import withPWA from 'next-pwa'
 import { composePlugins, withNx } from '@nx/next'
 
-const isDev = process.env.NODE_ENV = 'development'
+const isDev = (process.env.NODE_ENV = 'development')
 
 const nextConfig = {
+  pageExtensions: ['page.tsx'],
   nx: {
     svgr: false
   }

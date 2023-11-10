@@ -2,24 +2,11 @@
 
 import { useEffect } from 'react'
 import { io }        from 'socket.io-client'
+import { useGate }   from 'effector-react'
+import { hubModel }  from '@/pages/hub/model'
 
 export const Test = () => {
-  useEffect(() => {
-    const socket = io('http://localhost:6868/api/websocket/channels')
-
-    socket.on('channels.channels-received', (data) => {
-      console.log(data)
-
-    })
-
-    socket.on('connect', () => {
-      console.log('connected')
-    })
-
-    socket.on('connect_error', (err) => {
-      console.log(err)
-    })
-  })
+  useGate(hubModel.socket.gate)
 
   return null
 }

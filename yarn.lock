@@ -8696,6 +8696,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"effector-react@npm:^22.5.4":
+  version: 22.5.4
+  resolution: "effector-react@npm:22.5.4"
+  dependencies:
+    use-sync-external-store: ^1.0.0
+  peerDependencies:
+    effector: ^22.0.2
+    react: ">=16.8.0 <19.0.0"
+  checksum: e1e5b187daa7c86bf9ac476f1a04a5ab773be5f3462c6e20674c145ce1e0f1d9e936d7aff32b5df60ac269cf93ac1996904ee074db80581ca58b67858eee2b96
+  languageName: node
+  linkType: hard
+
+"effector@npm:^22.8.7":
+  version: 22.8.7
+  resolution: "effector@npm:22.8.7"
+  checksum: 8a6f07091efd4b50143c1c95cc8d1e55b41e035a3efc19c04b13ab80c0a7aef465733c37fea090778868a5d1193c4667aea48fdc0914429bcb62e21da4bc5e27
+  languageName: node
+  linkType: hard
+
 "ejs@npm:^3.1.6, ejs@npm:^3.1.7":
   version: 3.1.9
   resolution: "ejs@npm:3.1.9"
@@ -12826,6 +12845,8 @@ __metadata:
     babel-jest: ^29.4.1
     cache-manager: ^5.2.4
     cache-manager-redis-store: ^3.0.1
+    effector: ^22.8.7
+    effector-react: ^22.5.4
     eslint: ^8.46.0
     eslint-config-next: 13.4.1
     eslint-plugin-import: 2.27.5
@@ -12842,6 +12863,7 @@ __metadata:
     next-seo: ^6.4.0
     nextjs-progressbar: ^0.0.16
     nx: 17.0.2
+    patronum: ^1.20.0
     prettier: ^3.0.0
     react: 18.2.0
     react-dom: 18.2.0
@@ -15017,6 +15039,15 @@ __metadata:
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
   checksum: 5b1e2daa247062061325b8fdbfd1fb56dde0a448fb1455453276ea18c60685bdad23a445dc148cf87bc216be1573357509b7d4060494a6fd768c7efad833ee45
+  languageName: node
+  linkType: hard
+
+"patronum@npm:^1.20.0":
+  version: 1.20.0
+  resolution: "patronum@npm:1.20.0"
+  peerDependencies:
+    effector: ^22.1.2
+  checksum: c6055932f8faae3287600f2d516d17318fd25ae3bd4c625ede13869ca92cf440a1bbfe0801a7dc8056dd1f868e2b7f96b287f46433376072d4eca5d82253bcfe
   languageName: node
   linkType: hard
 
@@ -18579,6 +18610,15 @@ __metadata:
     querystringify: ^2.1.1
     requires-port: ^1.0.0
   checksum: fbdba6b1d83336aca2216bbdc38ba658d9cfb8fc7f665eb8b17852de638ff7d1a162c198a8e4ed66001ddbf6c9888d41e4798912c62b4fd777a31657989f7bdf
+  languageName: node
+  linkType: hard
+
+"use-sync-external-store@npm:^1.0.0":
+  version: 1.2.0
+  resolution: "use-sync-external-store@npm:1.2.0"
+  peerDependencies:
+    react: ^16.8.0 || ^17.0.0 || ^18.0.0
+  checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
   languageName: node
   linkType: hard
 

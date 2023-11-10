@@ -1,1 +1,1 @@
-export * from './react'
+export type { Wrap } from './common'
