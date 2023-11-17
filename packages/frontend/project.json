@@ -9,8 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "outputPath": "dist/frontend",
-        "nextConfig": "packages/frontend/src/app/entrypoint/next.config.mjs"
+        "outputPath": "dist/frontend"
       },
       "configurations": {
         "development": {

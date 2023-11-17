@@ -1,19 +1,19 @@
-import withBundleAnalyzer from '@next/bundle-analyzer'
-import withPWA from 'next-pwa'
-import { composePlugins, withNx } from '@nx/next'
+const withBundleAnalyzer = require('@next/bundle-analyzer')
+const withPWA = require('next-pwa')
+const { withNx } = require('@nx/next')
+const composePlugins = require('next-compose-plugins')
 
 const isDev = (process.env.NODE_ENV = 'development')
 
 const nextConfig = {
-  pageExtensions: ['page.tsx'],
   nx: {
     svgr: false
   }
 }
 
 const plugins = [
-  withNx,
-  withBundleAnalyzer,
+  [withNx],
+  [withBundleAnalyzer],
   [
     withPWA,
     {
@@ -26,4 +26,4 @@ const plugins = [
   ]
 ]
 
-module.exports = composePlugins(...plugins)(nextConfig)
+module.exports = composePlugins(plugins, nextConfig)
