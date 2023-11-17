@@ -13,7 +13,7 @@ export const roomsListModel = atom(() => {
     logger: true
   })
 
-  const $rooms = socket.restore('channelsReceived', {
+  const $rooms = socket.restore<{ id: string }[]>('channelsReceived', {
     default: [],
     schema: roomsSchema
   })

@@ -2,13 +2,17 @@
 
 import { useGate }        from 'effector-react'
 import { roomsListModel } from '@/widgets/connected-rooms-list/model'
-import { useStore }       from 'effector-react'
+import { list }           from '@effector/reflect'
 
 export const ConnectedRoomsList = () => {
   useGate(roomsListModel.socket.Gate)
-  const rooms = useStore(roomsListModel.$rooms)
 
-  console.log(rooms)
-
-  return null
+  return <RoomsList />
 }
+
+const RoomsList = list({
+  source: roomsListModel.$rooms,
+  view: (item: any) => {
+    return <div>{item.id}</div>
+  }
+})
