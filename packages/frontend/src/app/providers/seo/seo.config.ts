@@ -1,5 +1,3 @@
-import { NextSeoProps } from 'next-seo'
-
 // TODO: add normal titles & descriptions
 export const seoConfig = {
   title: 'Kurtex',
@@ -17,6 +15,6 @@ export const seoConfig = {
       name: 'apple-mobile-web-app-capable',
       content: 'yes'
     }
-  ] satisfies NextSeoProps['additionalMetaTags'],
+  ],
   faviconPath: '/favicon.ico'
 } as const

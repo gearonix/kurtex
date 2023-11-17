@@ -1,0 +1,1 @@
+export { roomsListModel } from './model'

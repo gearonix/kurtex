@@ -1,0 +1,1 @@
+export { ConnectedRoomsList } from './view'
