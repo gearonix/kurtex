@@ -56,7 +56,7 @@
     "@effector/next": "^0.6.1",
     "@effector/reflect": "^8.3.3",
     "@fastify/helmet": "^11.1.1",
-    "@grnx/effector-socket.io": "^0.0.0-set-by-ci",
+    "@grnx/effector-socket.io": "0.0.0-set-by-ci",
     "@nestjs/axios": "^3.0.1",
     "@nestjs/cache-manager": "^2.1.1",
     "@nestjs/common": "^10.0.2",

@@ -1,8 +1,9 @@
+'use client'
+
 import { atom }                     from '@/shared/factory/atom'
 import { connect }                  from '@grnx/effector-socket.io'
 import { roomsSchema }              from '@/widgets/connected-rooms-list/model/schema'
 import { channelsWebsocketMethods } from '@/widgets/connected-rooms-list/model/ws/methods'
-import { createEvent }              from 'effector'
 
 export const roomsListModel = atom(() => {
   const socket = connect({
@@ -12,8 +13,6 @@ export const roomsListModel = atom(() => {
     logger: true
   })
 
-  const started = createEvent()
-
   const $rooms = socket.restore('channelsReceived', {
     default: [],
     schema: roomsSchema
@@ -21,7 +20,6 @@ export const roomsListModel = atom(() => {
 
   return {
     socket,
-    $rooms,
-    started
+    $rooms
   }
 })

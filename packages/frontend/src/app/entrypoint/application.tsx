@@ -7,13 +7,9 @@ export const Application = ({ children }: WithChildren) => {
   return (
     <html lang="en">
       <body>
-        <EffectorNext>
-          {/*<SeoProvider>*/}
-          {/*  <ProgressBar>*/}
-              {children}
-            {/*</ProgressBar>*/}
-          {/*</SeoProvider>*/}
-        </EffectorNext>
+        <SeoProvider>
+          <ProgressBar>{children}</ProgressBar>
+        </SeoProvider>
       </body>
     </html>
   )
