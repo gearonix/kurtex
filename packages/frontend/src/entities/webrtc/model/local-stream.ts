@@ -1,6 +1,6 @@
 import { restore }        from 'effector'
 import { getUserMediaFx } from '@/entities/webrtc/model/media-streams'
-import { moduleClosed }   from '@/entities/webrtc/model/core'
+import { moduleClosed }   from '@/entities/webrtc/model/entrypoint'
 
 export const $localStream = restore(getUserMediaFx.doneData, null)
 
