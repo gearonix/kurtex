@@ -17,6 +17,9 @@
         "name": "next"
       }
     ],
+    "lib": [
+      "DOM", "DOM.Iterable", "ESNext"
+    ],
     "types": [
       "jest",
       "node"

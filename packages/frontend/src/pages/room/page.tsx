@@ -1,5 +1,15 @@
-import { NextPage } from 'next'
+import { WithPageParams } from '@/shared/lib/interfaces'
+import { VideoPlayer }    from '@/widgets/video-player'
 
-export const RoomPage: NextPage = () => {
-  return <div>hub page</div>
+export interface RoomPageParams {
+  id: string
+}
+
+export const RoomPage = ({ params }: WithPageParams<RoomPageParams>) => {
+  return (
+    <div>
+      <VideoPlayer />
+      room page
+    </div>
+  )
 }

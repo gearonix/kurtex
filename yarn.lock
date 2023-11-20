@@ -5587,6 +5587,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/webrtc@npm:^0.0.40":
+  version: 0.0.40
+  resolution: "@types/webrtc@npm:0.0.40"
+  checksum: f3c6c2a31ae8b8195e1a4456540bc19f58c505fe372b1e87a77956e37f8ee82621e170d3af7a5bd037e5c4976a820421d27f5382b04ba95639b7ab4e4d3e4ac8
+  languageName: node
+  linkType: hard
+
 "@types/ws@npm:^8.5.5":
   version: 8.5.9
   resolution: "@types/ws@npm:8.5.9"
@@ -10457,6 +10464,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"freeice@npm:^2.2.2":
+  version: 2.2.2
+  resolution: "freeice@npm:2.2.2"
+  dependencies:
+    normalice: ^1.0.0
+  checksum: 4645cb6efcdc3a743600f015bfabd91657e04e065f4888be2ad7218341c982bd0537cbf87edeac691177073802d1562e3d48e7d2541b5078f97fd3e07fdaefdf
+  languageName: node
+  linkType: hard
+
 "fresh@npm:0.5.2":
   version: 0.5.2
   resolution: "fresh@npm:0.5.2"
@@ -12879,6 +12895,7 @@ __metadata:
     "@types/react": 18.2.33
     "@types/react-dom": 18.2.14
     "@types/uuid": ^9
+    "@types/webrtc": ^0.0.40
     axios: ^1.6.1
     babel-jest: ^29.4.1
     cache-manager: ^5.2.4
@@ -12892,6 +12909,7 @@ __metadata:
     eslint-plugin-react: 7.32.2
     eslint-plugin-react-hooks: 4.6.0
     fastify: ^4.24.3
+    freeice: ^2.2.2
     jest: ^29.4.1
     jest-environment-jsdom: ^29.4.1
     jest-environment-node: ^29.4.1
@@ -14180,6 +14198,13 @@ __metadata:
   bin:
     nopt: bin/nopt.js
   checksum: a9c0f57fb8cb9cc82ae47192ca2b7ef00e199b9480eed202482c962d61b59a7fbe7541920b2a5839a97b42ee39e288c0aed770e38057a608d7f579389dfde410
+  languageName: node
+  linkType: hard
+
+"normalice@npm:^1.0.0":
+  version: 1.0.1
+  resolution: "normalice@npm:1.0.1"
+  checksum: 1ce4699865e3a108180591c14940c60355eb963aaebb3baa836892f6c0c2f01d53811d130c699da92855a2b0083e0424c46a809b5fc184a6b70a887e6d0ab397
   languageName: node
   linkType: hard
 

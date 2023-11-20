@@ -1,4 +1,4 @@
-import { Module }                  from '@nestjs/common'
+import { Module }          from '@nestjs/common'
 import { ChannelsGateway } from '@core/channels/presenation'
 
 @Module({

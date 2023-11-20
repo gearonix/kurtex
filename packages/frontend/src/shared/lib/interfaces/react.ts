@@ -1,4 +1,4 @@
-import {ReactNode} from "react";
+import { ReactNode } from 'react'
 
 export type WithChildren<
   T = NonNullable<unknown>,
@@ -6,3 +6,10 @@ export type WithChildren<
 > = {
   children: Child
 } & T
+
+export type WithPageParams<
+  P extends object,
+  O = NonNullable<unknown>
+> = {
+  params: P
+} & O
