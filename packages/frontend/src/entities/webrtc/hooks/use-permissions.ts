@@ -1,4 +1,9 @@
+import { useUnit }        from 'effector-react'
+import { statusProvided } from '@/entities/webrtc/model/permissions'
+
 export const usePermissions = () => {
+  const provideStatus = useUnit(statusProvided)
+
   return () => {
     navigator.permissions.query({ name: 'camera' as PermissionName }).then((
       manager
@@ -6,13 +11,7 @@ export const usePermissions = () => {
       manager.addEventListener('change', (ctx) => {
         const status = (ctx.currentTarget as PermissionStatus).state
 
-        if (status === 'granted') {
-          return console.log('start-web-rtc')
-        }
-
-        if (status === 'denied') {
-
-        }
+        provideStatus(status)
       })
     })
   }

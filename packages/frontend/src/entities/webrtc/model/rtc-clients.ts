@@ -2,8 +2,8 @@ import { createEvent }      from 'effector'
 import { createStore }      from 'effector'
 import { sample }           from 'effector'
 import { localMediaStream } from './../lib/consts'
-import { getUserMediaFx }   from './media-streams'
 import { statusDenied }     from '@/entities/webrtc/model/permissions'
+import {getUserMediaFx} from "@/entities/webrtc/model/effects/get-user-media-fx";
 
 export const $rtcClients = createStore<string[]>([])
 

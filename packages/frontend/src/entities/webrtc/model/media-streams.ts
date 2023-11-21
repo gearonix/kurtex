@@ -3,7 +3,7 @@ import { createStore }           from 'effector'
 import { localMediaStream }      from '@/entities/webrtc/lib/consts'
 import { statusDenied }          from '@/entities/webrtc/model/permissions'
 import { Nullable }              from '@grnx-utils/types'
-import { peerConnectionCreated } from './wss/model'
+import { peerConnectionCreated } from './wss'
 
 const $clientMediaStreams = createStore<
   Record<string, Nullable<HTMLVideoElement>>
@@ -27,9 +27,4 @@ $clientMediaStreams.on(peerConnectionCreated, (
   return streams
 })
 
-export const getUserMediaFx = createEffect<void, MediaStream>(async () => {
-  return navigator.mediaDevices.getUserMedia({
-    audio: true,
-    video: true
-  })
-})
+

@@ -1,5 +1,5 @@
 import { attach }                   from 'effector/compat'
-import { relaySdp }                 from '../model'
+import { relaySdp }                 from '../wss'
 import { $localStream }             from '@/entities/webrtc/model/local-stream'
 import { $peerConnections }         from '@/entities/webrtc/model/peer-connections'
 import { AddPeerConnectionContext } from '@/entities/webrtc/model/lib/schema'

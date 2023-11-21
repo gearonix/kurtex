@@ -3,22 +3,22 @@ import { createEvent }               from 'effector'
 import { sample }                    from 'effector'
 import { scope }                     from '@grnx/effector-socket.io'
 import { roomsListModel }            from '@/widgets/connected-rooms-list/model'
-import * as schema                   from './../lib/schema'
-import { JoinRoomPayload }           from './interfaces'
-import { PeerConnectionCreated }     from './interfaces'
-import { RelayIceCandidateContext }  from './interfaces'
-import { RelaySdpContext }           from './interfaces'
+import * as schema                   from './lib/schema'
+import { JoinRoomPayload }           from './lib/interfaces'
+import { PeerConnectionCreated }     from './lib/interfaces'
+import { RelayIceCandidateContext }  from './lib/interfaces'
+import { RelaySdpContext }           from './lib/interfaces'
 import { $peerConnections }          from '@/entities/webrtc/model/peer-connections'
-import { getUserMediaFx }            from '@/entities/webrtc/model/media-streams'
 import { moduleClosed }              from '@/entities/webrtc/model/entrypoint'
 import { createRTCOfferFx }          from './effects'
+import { getUserMediaFx }            from './effects'
 import { createRTCPeerConnectionFx } from './effects'
 import { setupLocalTracksFx }        from './effects'
 import { paramsModel }               from '@/shared/model/params/model'
 
 export const $roomId = combine(
   paramsModel.$params,
-  (params) => params?.id ?? null
+  (params) => params?.id as string
 )
 
 export const socket = scope(roomsListModel.socket)
