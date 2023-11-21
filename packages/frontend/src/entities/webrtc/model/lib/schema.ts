@@ -14,3 +14,7 @@ export const iceCandidateReceived = z.object({
   peerId: z.string(),
   iceCandidate: z.object({})
 })
+
+export const userDisconnected = z.object({
+  peerId: z.string()
+})

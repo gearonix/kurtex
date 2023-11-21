@@ -33,13 +33,23 @@ export const wss = atom(() => {
     }
   )
 
+  const iceCandidateReceived = socket.event('iceCandidateReceived', {
+    schema: schema.iceCandidateReceived
+  })
+
+  const userDisconnected = socket.event('userDisconnected', {
+    schema: schema.userDisconnected
+  })
+
   return {
     joinRoom,
     leaveRoom,
     relayIceCandidate,
     relaySdpMetadata,
     sessionDescriptionReceived,
+    iceCandidateReceived,
     userConnected,
+    userDisconnected,
     Gate: socket.Gate
   }
 })
@@ -56,5 +66,10 @@ sample({
 
 forward({
   from: wss.sessionDescriptionReceived,
+  to: addSessionDescriptionFx
+})
+
+forward({
+  from: wss.iceCandidateReceived,
   to: addSessionDescriptionFx
 })

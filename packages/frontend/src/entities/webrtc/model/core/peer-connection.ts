@@ -83,7 +83,9 @@ export class PeerConnection extends RTCPeerConnection {
   }
 
   public async addCandidate(candidate: RTCIceCandidateInit) {
-    this.addIceCandidate(new RTCIceCandidate(candidate))
+    const iceCandidate = new RTCIceCandidate(candidate)
+
+    await this.addIceCandidate(iceCandidate)
   }
 
   private async createRemoteAnswer() {
