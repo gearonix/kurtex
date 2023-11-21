@@ -7,9 +7,8 @@ import { APP_FILTER }          from '@nestjs/core'
 import { APP_PIPE }            from '@nestjs/core'
 import { HttpExceptionFilter } from '@/filters'
 import { HealthModule }        from '@/healthz/health.module'
-import { CacheModule }         from '@nestjs/cache-manager'
+import { RedisModule }         from '@/redis'
 import { CoreModule }          from '@/core'
-import * as redisStore         from 'cache-manager-redis-store'
 
 @Module({
   imports: [
@@ -17,13 +16,7 @@ import * as redisStore         from 'cache-manager-redis-store'
     EnvModule,
     LoggerModule,
     HealthModule,
-    CacheModule.register({
-      isGlobal: true,
-      // TODO: refactor this
-      store: redisStore as any,
-      host: 'localhost',
-      port: 6379
-    }),
+    RedisModule,
     CoreModule
   ],
   providers: [

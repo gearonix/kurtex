@@ -1,3 +1,3 @@
 export enum WebsocketGateways {
-  CHANNELS = 'channels'
+  RTC = 'rtc'
 }

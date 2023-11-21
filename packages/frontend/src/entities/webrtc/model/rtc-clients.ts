@@ -16,10 +16,6 @@ export const removeStream = createEvent<{
 
 $rtcClients.on(addRtcClient, (s, v) => [...s, v])
 
-$rtcClients.on(statusDenied, (clients) => {
-  return clients.filter((c) => c !== LOCAL_MEDIA_STREAM)
-})
-
 $rtcClients.on([wss.userDisconnected, removeStream], (clients, { peerId }) => {
   return clients.filter((c) => c !== peerId)
 })

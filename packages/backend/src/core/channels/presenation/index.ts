@@ -1,1 +1,1 @@
-export { ChannelsGateway } from './gateways/channels.gateway'
+export { RtcGateway } from './gateways/rtc.gateway'

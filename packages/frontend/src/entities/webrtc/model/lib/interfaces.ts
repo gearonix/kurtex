@@ -28,6 +28,7 @@ export interface JoinRoom {
 }
 
 export type UserConnected = z.infer<typeof userConnected>
+
 export type SessionDescriptionReceived = z.infer<
   typeof sessionDescriptionReceived
 >

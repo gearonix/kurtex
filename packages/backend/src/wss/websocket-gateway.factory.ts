@@ -8,10 +8,11 @@ import { Socket }              from 'socket.io'
 import { WsGateway }           from '@/decorators'
 import { LoggerService }       from '@/logger'
 import { AnyObject }           from '@grnx-utils/types'
+import { FactorySendParams }   from '@/wss/wss.interfaces'
 
 @WsGateway()
 export abstract class WebsocketGatewayFactory<
-    WebsocketMethods extends Record<string, string>
+    Methods extends Record<string, string>
   >
   implements OnGatewayConnection, OnGatewayDisconnect
 {
@@ -20,15 +21,31 @@ export abstract class WebsocketGatewayFactory<
 
   constructor(
     protected readonly logger: LoggerService,
-    protected readonly methods: WebsocketMethods
+    protected readonly methods: Methods
   ) {}
 
+  public getServer() {
+    return this.server
+  }
+
   private getClientQuery<T extends AnyObject>(client: Socket): T {
-    return client.handshake.query as T
+    return client.handshake as unknown as T
   }
 
   public broadcastAll(event: string, message: AnyObject) {
     this.server.emit(event, message)
+  }
+
+  public getRoomMembers(roomId: string) {
+    const adapter = this.server.sockets.adapter
+
+    const members = adapter.rooms.get(roomId)
+
+    if (!members) return []
+    /**
+     *  socket.io members is Set() by default
+     * */
+    return Array.from(members)
   }
 
   public async handleConnection(client: Socket) {
@@ -39,21 +56,31 @@ export abstract class WebsocketGatewayFactory<
     this.logger.info(`WssGateway: client disconnected: ${client.id}`)
   }
 
-  public send<T>(
-    client: Socket,
-    dataToSend: {
-      method: Extract<keyof WebsocketMethods, string>
-      payload: T
+  public send<T>({
+    payload,
+    method,
+    receiver,
+    client
+  }: FactorySendParams<T, Methods>) {
+    const wsMethod = this.methods[method]
+
+    const dataToSend = {
+      payload,
+      timestamp: Date.now()
     }
-  ) {
-    const wsMethod = this.methods[dataToSend.method]
 
     this.logger.info(`WssGateway: Sending the method ${wsMethod}`)
 
-    client.emit(wsMethod, {
-      payload: dataToSend.payload
-    })
+    if (client) {
+      return client.emit(wsMethod, dataToSend)
+    }
 
-    return dataToSend
+    if (receiver) {
+      return this.server.to(receiver).emitWithAck(wsMethod, dataToSend)
+    }
+
+    this.logger.alert(
+      'WssGateway: receiver or client properties are not provided'
+    )
   }
 }
