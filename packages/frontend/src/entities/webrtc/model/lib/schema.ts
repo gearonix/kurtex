@@ -5,4 +5,4 @@ export const addPeerConnection = z.object({
   shouldCreateOffer: z.boolean()
 })
 
-export type AddPeerConnectionContext = z.infer<typeof addPeerConnection>
+export type AddPeerConnectionSchema = z.infer<typeof addPeerConnection>

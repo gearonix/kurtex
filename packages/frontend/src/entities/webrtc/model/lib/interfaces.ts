@@ -1,12 +1,14 @@
-export interface PeerConnectionCreated {
+export interface PeerConnectionCreatedPayload {
   remoteStream: MediaStream
   peerId: string
 }
-export interface RelaySdpContext {
+
+export interface RelaySdpParams {
   peerId: string
   sessionDescription: RTCSessionDescriptionInit
 }
-export interface RelayIceCandidateContext {
+
+export interface RelayIceCandidateParams {
   peerId: string
   iceCandidate: RTCIceCandidate
 }

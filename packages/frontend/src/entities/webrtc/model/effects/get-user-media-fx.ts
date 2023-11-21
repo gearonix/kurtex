@@ -1,7 +1,7 @@
 import { createEffect } from 'effector'
 import { sample }       from 'effector'
-import { $roomId }      from '@/entities/webrtc/model/wss'
-import { joinRoom }     from '@/entities/webrtc/model/wss'
+import { wss }          from '@/entities/webrtc/model/wss'
+import { $roomId }      from '@/entities/webrtc/model/entrypoint'
 
 export const getUserMediaFx = createEffect<void, MediaStream>(async () => {
   return navigator.mediaDevices.getUserMedia({
@@ -14,5 +14,5 @@ sample({
   clock: getUserMediaFx.doneData,
   source: $roomId,
   fn: (roomId) => ({ roomId }),
-  target: joinRoom
+  target: wss.joinRoom
 })

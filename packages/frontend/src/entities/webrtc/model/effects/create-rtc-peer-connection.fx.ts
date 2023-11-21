@@ -1,14 +1,14 @@
-import { createEffect }          from 'effector/compat'
-import freeice                   from 'freeice'
-import { addRtcClient }          from '@/entities/webrtc/model/rtc-clients'
-import { peerConnectionCreated } from '../wss'
-import { relayIceCandidate }     from '../wss'
-import { CreateRTCOfferProps }   from '@/entities/webrtc/model/lib/interfaces'
-import { sample }                from 'effector'
-import { setupLocalTracksFx }    from '@/entities/webrtc/model/effects/setup-local-tracks.fx'
+import { createEffect }             from 'effector/compat'
+import freeice                      from 'freeice'
+import { addRtcClient }             from '@/entities/webrtc/model/rtc-clients'
+import { peerConnectionCreated }    from '../wss'
+import { wss }                      from '../wss'
+import { sample }                   from 'effector'
+import { setupLocalTracksFx }       from '@/entities/webrtc/model/effects/setup-local-tracks.fx'
+import { AddPeerConnectionSchema } from '@/entities/webrtc/model/lib/schema'
 
 export const createRTCPeerConnectionFx = createEffect(async (
-  ctx: CreateRTCOfferProps
+  ctx: AddPeerConnectionSchema
 ) => {
   const peerConnection = new RTCPeerConnection({
     iceServers: freeice()
@@ -16,7 +16,7 @@ export const createRTCPeerConnectionFx = createEffect(async (
 
   peerConnection.addEventListener('icecandidate', ({ candidate }) => {
     if (candidate) {
-      relayIceCandidate({
+      wss.relayIceCandidate({
         peerId: ctx.peerId,
         iceCandidate: candidate
       })

@@ -1,1 +1,1 @@
-export const localMediaStream = 'USER_LOCAL_MEDIA_STREAM'
+export const LOCAL_MEDIA_STREAM = 'USER_LOCAL_MEDIA_STREAM'

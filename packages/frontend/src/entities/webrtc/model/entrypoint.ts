@@ -1,11 +1,18 @@
+import { combine }        from 'effector'
 import { createEvent }    from 'effector'
 import { merge }          from 'effector'
 import { sample }         from 'effector'
 import { statusDenied }   from './permissions'
 import { statusGranted }  from './permissions'
 import { createGate }     from 'effector-react'
-import { leaveRoom }      from './wss'
 import { getUserMediaFx } from './effects'
+import { paramsModel }    from '@/shared/model/params'
+import {wss} from "@/entities/webrtc/model/wss";
+
+export const $roomId = combine(
+  paramsModel.$params,
+  (params) => params?.id as string
+)
 
 export const startConnection = createEvent()
 export const closeConnection = createEvent()
@@ -22,7 +29,7 @@ sample({
 
 sample({
   clock: moduleClosed,
-  target: [closeConnection, leaveRoom]
+  target: [closeConnection, wss.leaveRoom]
 })
 
 sample({
