@@ -5,4 +5,12 @@ export const userConnected = z.object({
   shouldCreateOffer: z.boolean()
 })
 
-export type UserConnectedSchema = z.infer<typeof userConnected>
+export const sessionDescriptionReceived = z.object({
+  peerId: z.string(),
+  metadata: z.object({})
+})
+
+export const iceCandidateReceived = z.object({
+  peerId: z.string(),
+  iceCandidate: z.object({})
+})

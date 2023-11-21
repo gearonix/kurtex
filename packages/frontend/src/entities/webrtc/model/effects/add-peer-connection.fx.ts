@@ -1,18 +1,18 @@
-import { attach }                     from 'effector/compat'
-import { addRtcClient }               from '../rtc-clients'
-import { wss }                        from '../wss'
-import { UserConnectedSchema } from '@/entities/webrtc/model/lib/schema'
-import { createPeerConnection }       from '../entities'
-import { addRemoteStream }            from '@/entities/webrtc/model/media-streams'
-import { $localStream }               from '@/entities/webrtc/model/local-stream'
+import { attach }               from 'effector/compat'
+import { addRtcClient }         from '../rtc-clients'
+import { wss }                  from '../wss'
+import { createPeerConnection } from '../core'
+import { addRemoteStream }      from '@/entities/webrtc/model/media-streams'
+import { $localStream }         from '@/entities/webrtc/model/local-stream'
+import { addPeerConnection }    from '@/entities/webrtc/model/peer-connections'
+import {UserConnected} from "@/entities/webrtc/model/lib/interfaces";
 
 export const addRTCPeerConnectionFx = attach({
   source: $localStream,
-  effect: async (
-    localStream,
-    { peerId, shouldCreateOffer }: UserConnectedSchema
-  ) => {
-    const connection = createPeerConnection()
+  effect: async (localStream, { peerId, shouldCreateOffer }: UserConnected) => {
+    const connection = createPeerConnection({ peerId, localStream })
+
+    addPeerConnection(connection)
 
     connection.onIceCandidate((candidate) => {
       wss.relayIceCandidate({
@@ -26,14 +26,12 @@ export const addRTCPeerConnectionFx = attach({
       addRemoteStream({ peerId, remoteStream: stream })
     })
 
-    connection.addLocalTracks(localStream!)
-
     if (shouldCreateOffer) {
-      const sessionDescription = await connection.createSessionDescription()
+      const metadata = await connection.createLocalMetadata()
 
-      wss.relaySdp({
+      wss.relaySdpMetadata({
         peerId,
-        sessionDescription
+        metadata
       })
     }
   }

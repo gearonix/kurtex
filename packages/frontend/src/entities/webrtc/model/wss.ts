@@ -1,3 +1,4 @@
+import { forward }                 from 'effector'
 import { sample }                  from 'effector'
 import { scope }                   from '@grnx/effector-socket.io'
 import { roomsListModel }          from '@/widgets/connected-rooms-list'
@@ -8,6 +9,7 @@ import { RelaySdpParams }          from './lib/interfaces'
 import { $peerConnections }        from './peer-connections'
 import { addRTCPeerConnectionFx }  from './effects'
 import { atom }                    from '@/shared/factory/atom'
+import { addSessionDescriptionFx } from './effects'
 
 export const wss = atom(() => {
   const socket = scope(roomsListModel.socket)
@@ -18,17 +20,25 @@ export const wss = atom(() => {
 
   const relayIceCandidate =
     socket.publisher<RelayIceCandidateParams>('relayIceCandidate')
-  const relaySdp = socket.publisher<RelaySdpParams>('relaySdp')
+  const relaySdpMetadata = socket.publisher<RelaySdpParams>('relaySdp')
 
   const userConnected = socket.event('userConnected', {
     schema: schema.userConnected
   })
 
+  const sessionDescriptionReceived = socket.event(
+    'sessionDescriptionReceived',
+    {
+      schema: schema.sessionDescriptionReceived
+    }
+  )
+
   return {
     joinRoom,
     leaveRoom,
     relayIceCandidate,
-    relaySdp,
+    relaySdpMetadata,
+    sessionDescriptionReceived,
     userConnected,
     Gate: socket.Gate
   }
@@ -42,4 +52,9 @@ sample({
   filter: (connections, { peerId }) => !(peerId in connections),
   fn: (_, ctx) => ctx,
   target: addRTCPeerConnectionFx
+})
+
+forward({
+  from: wss.sessionDescriptionReceived,
+  to: addSessionDescriptionFx
 })
