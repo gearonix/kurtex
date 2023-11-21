@@ -1,7 +1,6 @@
 import { z }                          from 'zod'
 import { iceCandidateReceived }       from '@/entities/webrtc/model/lib/schema'
 import { sessionDescriptionReceived } from '@/entities/webrtc/model/lib/schema'
-import { userConnected }              from '@/entities/webrtc/model/lib/schema'
 
 export interface PeerConnectionCreated {
   remoteStream: MediaStream
@@ -26,8 +25,6 @@ export interface RelayIceCandidateParams {
 export interface JoinRoom {
   roomId: string
 }
-
-export type UserConnected = z.infer<typeof userConnected>
 
 export type SessionDescriptionReceived = z.infer<
   typeof sessionDescriptionReceived

@@ -1,10 +1,5 @@
 import { z } from 'zod'
 
-export const userConnected = z.object({
-  peerId: z.string(),
-  shouldCreateOffer: z.boolean()
-})
-
 export const sessionDescriptionReceived = z.object({
   peerId: z.string(),
   metadata: z.object({})

@@ -28,7 +28,8 @@
     "paths": {
       "@/*": [
         "src/*"
-      ]
+      ],
+      "@kurtex/contracts": ["../../libs/contracts/src/index.ts"]
     }
   },
   "include": [

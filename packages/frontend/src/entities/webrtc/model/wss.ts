@@ -11,6 +11,7 @@ import { addIceCandidateFx }       from './effects'
 import { addRTCPeerConnectionFx }  from './effects'
 import { atom }                    from '@/shared/factory/atom'
 import { addSessionDescriptionFx } from './effects'
+import { ConnectUserContract }     from '@kurtex/contracts'
 
 export const wss = atom(() => {
   const socket = scope(roomsListModel.socket)
@@ -24,7 +25,7 @@ export const wss = atom(() => {
   const relaySdpMetadata = socket.publisher<RelaySdpParams>('relaySdp')
 
   const userConnected = socket.event('userConnected', {
-    schema: schema.userConnected
+    schema: ConnectUserContract.schema
   })
 
   const sessionDescriptionReceived = socket.event(

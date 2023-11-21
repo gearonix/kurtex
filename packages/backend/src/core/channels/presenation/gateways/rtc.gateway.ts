@@ -10,6 +10,7 @@ import { MessageBody }             from '@nestjs/websockets'
 import { SubscribeMessage }        from '@nestjs/websockets'
 import { CommandBus }              from '@nestjs/cqrs'
 import { ConnectUserCommand }      from '@core/channels/application'
+import { ConnectUserContract }     from '@kurtex/contracts'
 
 @WsGateway(WebsocketGateways.RTC)
 export class RtcGateway extends WebsocketGatewayFactory<ChannelsMethodsKeys> {
@@ -43,7 +44,7 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelsMethodsKeys> {
     })
   }
 
-  @SubscribeMessage(ChannelGatewayMethods.joinRoom)
+  @SubscribeMessage(ConnectUserContract.topic)
   public async joinWebRTCRoom(
     @MessageBody() handshake: any,
     @ConnectedSocket() client: Socket

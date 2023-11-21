@@ -19,7 +19,8 @@
     "noFallthroughCasesInSwitch": false,
     "paths": {
       "@/*": ["src/*"],
-      "@core/*": ["src/core/*"]
+      "@core/*": ["src/core/*"],
+      "@kurtex/contracts": ["../../libs/contracts/src/index.ts"]
     }
   },
   "include": ["src/**/*.ts"]

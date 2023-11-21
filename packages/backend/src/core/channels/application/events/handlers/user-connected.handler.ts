@@ -1,7 +1,7 @@
 import { EventsHandler }      from '@nestjs/cqrs'
 import { IEventHandler }      from '@nestjs/cqrs'
-import { UserConnectedEvent } from '@core/channels/application/events/impl/user-connected.event'
-import { RtcGateway }    from '@core/channels/presenation'
+import { UserConnectedEvent } from '@core/channels/application'
+import { RtcGateway }         from '@core/channels/presenation'
 
 @EventsHandler(UserConnectedEvent)
 export class UserConnectedHandler implements IEventHandler<UserConnectedEvent> {
