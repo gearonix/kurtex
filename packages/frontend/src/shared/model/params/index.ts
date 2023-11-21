@@ -1,0 +1,1 @@
+export { paramsModel } from './model'

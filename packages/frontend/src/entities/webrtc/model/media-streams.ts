@@ -1,7 +1,7 @@
 import { createEffect }          from 'effector'
 import { createStore }           from 'effector'
-import { localMediaStream }      from '@/entities/webrtc/lib/consts'
-import { statusDenied }          from '@/entities/webrtc/model/permissions'
+import { localMediaStream }      from './lib/consts'
+import { statusDenied }          from './permissions'
 import { Nullable }              from '@grnx-utils/types'
 import { peerConnectionCreated } from './wss'
 
@@ -26,5 +26,3 @@ $clientMediaStreams.on(peerConnectionCreated, (
 
   return streams
 })
-
-

@@ -1,6 +1,6 @@
-import {restore} from 'effector'
-import {moduleClosed} from '@/entities/webrtc/model/entrypoint'
-import {getUserMediaFx} from "@/entities/webrtc/model/effects/get-user-media-fx";
+import { restore }        from 'effector'
+import { moduleClosed }   from './entrypoint'
+import { getUserMediaFx } from './effects'
 
 export const $localStream = restore(getUserMediaFx.doneData, null)
 

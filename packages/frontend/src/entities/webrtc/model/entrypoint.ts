@@ -1,10 +1,11 @@
 import { createEvent }    from 'effector'
 import { merge }          from 'effector'
 import { sample }         from 'effector'
-import { getUserMediaFx } from '@/entities/webrtc/model/media-streams'
-import { statusDenied }   from '@/entities/webrtc/model/permissions'
-import { statusGranted }  from '@/entities/webrtc/model/permissions'
+import { statusDenied }   from './permissions'
+import { statusGranted }  from './permissions'
 import { createGate }     from 'effector-react'
+import { leaveRoom }      from './wss'
+import { getUserMediaFx } from './effects'
 
 export const startConnection = createEvent()
 export const closeConnection = createEvent()
@@ -21,7 +22,7 @@ sample({
 
 sample({
   clock: moduleClosed,
-  target: closeConnection
+  target: [closeConnection, leaveRoom]
 })
 
 sample({
