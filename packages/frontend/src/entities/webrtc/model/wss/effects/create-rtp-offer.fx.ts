@@ -1,20 +1,26 @@
-import { createEffect }        from 'effector/compat'
-import { CreateRTCOfferProps } from './../interfaces'
-import { relaySdp }            from '../model'
+import { attach }                   from 'effector/compat'
+import { relaySdp }                 from '../model'
+import { $localStream }             from '@/entities/webrtc/model/local-stream'
+import { $peerConnections }         from '@/entities/webrtc/model/peer-connections'
+import { AddPeerConnectionContext } from '@/entities/webrtc/model/lib/schema'
 
-export const createRTCOfferFx = createEffect(async (
-  ctx: CreateRTCOfferProps
-) => {
-  const connection = ctx.peerConnections[ctx.peerId]
+export const createRTCOfferFx = attach({
+  source: {
+    localStream: $localStream,
+    peerConnections: $peerConnections
+  },
+  effect: async ({ peerConnections }, ctx: AddPeerConnectionContext) => {
+    const connection = peerConnections[ctx.peerId]
 
-  const offer = await connection.createOffer()
+    const offer = await connection.createOffer()
 
-  await connection.setLocalDescription(offer)
+    await connection.setLocalDescription(offer)
 
-  relaySdp({
-    peerId: ctx.peerId,
-    sessionDescription: offer
-  })
+    relaySdp({
+      peerId: ctx.peerId,
+      sessionDescription: offer
+    })
 
-  return ctx
+    return ctx
+  }
 })

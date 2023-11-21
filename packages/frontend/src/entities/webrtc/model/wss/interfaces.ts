@@ -1,5 +1,3 @@
-import { AddPeerConnectionContext } from '@/entities/webrtc/model/lib/schema'
-
 export interface PeerConnectionCreated {
   remoteStream: MediaStream
   peerId: string
@@ -15,9 +13,4 @@ export interface RelayIceCandidateContext {
 
 export interface JoinRoomPayload {
   roomId: string
-}
-
-export interface CreateRTCOfferProps extends AddPeerConnectionContext {
-  localStream: MediaStream
-  peerConnections: Record<string, RTCPeerConnection>
 }

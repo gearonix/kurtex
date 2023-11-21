@@ -1,25 +1,25 @@
-// TODO: REFACTOR THIS SCOPING!!
-
+import { combine }                   from 'effector'
 import { createEvent }               from 'effector'
 import { sample }                    from 'effector'
-import { createStore }               from 'effector'
 import { scope }                     from '@grnx/effector-socket.io'
 import { roomsListModel }            from '@/widgets/connected-rooms-list/model'
 import * as schema                   from './../lib/schema'
-import { RelaySdpContext }           from './interfaces'
-import { RelayIceCandidateContext }  from './interfaces'
-import { PeerConnectionCreated }     from './interfaces'
 import { JoinRoomPayload }           from './interfaces'
+import { PeerConnectionCreated }     from './interfaces'
+import { RelayIceCandidateContext }  from './interfaces'
+import { RelaySdpContext }           from './interfaces'
 import { $peerConnections }          from '@/entities/webrtc/model/peer-connections'
-import { $localStream }              from '@/entities/webrtc/model/local-stream'
 import { getUserMediaFx }            from '@/entities/webrtc/model/media-streams'
 import { moduleClosed }              from '@/entities/webrtc/model/entrypoint'
 import { createRTCOfferFx }          from './effects'
-import { CreateRTCOfferProps }       from './interfaces'
 import { createRTCPeerConnectionFx } from './effects'
 import { setupLocalTracksFx }        from './effects'
+import { paramsModel }               from '@/shared/model/params/model'
 
-export const $roomId = createStore('custom-room-id-temporary')
+export const $roomId = combine(
+  paramsModel.$params,
+  (params) => params?.id ?? null
+)
 
 export const socket = scope(roomsListModel.socket)
 
@@ -55,22 +55,12 @@ sample({
 
 sample({
   clock: createRTCPeerConnectionFx.doneData,
-  source: {
-    localStream: $localStream,
-    peerConnections: $peerConnections
-  },
-  fn: (src, payload) => ({ ...src, ...payload }) as CreateRTCOfferProps,
   target: setupLocalTracksFx
 })
 
 sample({
   clock: setupLocalTracksFx.doneData,
-  source: {
-    localStream: $localStream,
-    peerConnections: $peerConnections
-  },
-  fn: (src, payload) => ({ ...src, ...payload }) as CreateRTCOfferProps,
-  filter: (_, { shouldCreateOffer }) => shouldCreateOffer,
+  filter: (ctx) => ctx.shouldCreateOffer,
   target: createRTCOfferFx
 })
 

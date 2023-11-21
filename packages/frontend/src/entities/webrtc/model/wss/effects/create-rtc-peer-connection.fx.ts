@@ -1,12 +1,12 @@
-import { createEffect }             from 'effector/compat'
-import { AddPeerConnectionContext } from '@/entities/webrtc/model/lib/schema'
-import freeice                      from 'freeice'
-import { addRtcClient }             from '@/entities/webrtc/model/rtc-clients'
-import { peerConnectionCreated }    from '../model'
-import { relayIceCandidate }        from '../model'
+import { createEffect }          from 'effector/compat'
+import freeice                   from 'freeice'
+import { addRtcClient }          from '@/entities/webrtc/model/rtc-clients'
+import { peerConnectionCreated } from '../model'
+import { relayIceCandidate }     from '../model'
+import { CreateRTCOfferProps }   from '@/entities/webrtc/model/wss/interfaces'
 
 export const createRTCPeerConnectionFx = createEffect(async (
-  ctx: AddPeerConnectionContext
+  ctx: CreateRTCOfferProps
 ) => {
   const peerConnection = new RTCPeerConnection({
     iceServers: freeice()

@@ -1,14 +1,28 @@
-import { createEffect }        from 'effector/compat'
-import { CreateRTCOfferProps } from '../interfaces'
+import { attach }                   from 'effector'
+import { $localStream }             from '@/entities/webrtc/model/local-stream'
+import { $peerConnections }         from '@/entities/webrtc/model/peer-connections'
+import { AddPeerConnectionContext } from '@/entities/webrtc/model/lib/schema'
 
-export const setupLocalTracksFx = createEffect(async (
-  ctx: CreateRTCOfferProps
-) => {
-  const rtcTracks = ctx.localStream.getTracks()
+export const setupLocalTracksFx = attach({
+  source: {
+    localStream: $localStream,
+    peerConnections: $peerConnections
+  },
+  effect: async (
+    { localStream, peerConnections },
+    ctx: AddPeerConnectionContext
+  ) => {
+    if (!localStream) {
+      // TODO: refactor
+      throw new Error('error')
+    }
 
-  rtcTracks.forEach((track) => {
-    ctx.peerConnections[ctx.peerId].addTrack(track, ctx.localStream)
-  })
+    const rtcTracks = localStream.getTracks()
 
-  return ctx
+    rtcTracks.forEach((track) => {
+      peerConnections[ctx.peerId].addTrack(track, localStream)
+    })
+
+    return ctx
+  }
 })
