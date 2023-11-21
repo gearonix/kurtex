@@ -1,1 +1,3 @@
-export { useWebRTC } from './hooks'
+export { usePermissions } from './hooks'
+
+export * from './model'

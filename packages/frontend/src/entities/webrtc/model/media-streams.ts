@@ -1,14 +1,15 @@
-import { createEffect }          from 'effector'
 import { createEvent }           from 'effector'
 import { createStore }           from 'effector'
 import { LOCAL_MEDIA_STREAM }    from './lib/consts'
 import { statusDenied }          from './permissions'
 import { Nullable }              from '@grnx-utils/types'
 import { PeerConnectionCreated } from '@/entities/webrtc/model/lib/interfaces'
+import { ProvideMediaRef }       from '@/entities/webrtc/model/lib/interfaces'
 import { wss }                   from '@/entities/webrtc/model/wss'
 import { removeKey }             from '@/shared/lib/helpers'
 
 export const addRemoteStream = createEvent<PeerConnectionCreated>()
+export const provideMediaRef = createEvent<ProvideMediaRef>()
 
 const $clientMediaStreams = createStore<
   Record<string, Nullable<HTMLVideoElement>>
@@ -29,8 +30,13 @@ $clientMediaStreams.on(addRemoteStream, (streams, { peerId, remoteStream }) => {
   return streams
 })
 
-$clientMediaStreams.on(wss.userDisconnected, (state, { peerId }) => {
-  const [clone] = removeKey(state, peerId)
+$clientMediaStreams.on(provideMediaRef, (streams, { ref, peerId }) => ({
+  ...streams,
+  [peerId]: ref
+}))
+
+$clientMediaStreams.on(wss.userDisconnected, (streams, { peerId }) => {
+  const [clone] = removeKey(streams, peerId)
 
   return clone
 })

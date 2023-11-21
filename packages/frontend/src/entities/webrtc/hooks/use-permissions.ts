@@ -1,10 +1,11 @@
 import { useUnit }        from 'effector-react'
 import { statusProvided } from '@/entities/webrtc/model/permissions'
+import { useEffect }      from 'react'
 
 export const usePermissions = () => {
   const provideStatus = useUnit(statusProvided)
 
-  return () => {
+  useEffect(() => {
     navigator.permissions.query({ name: 'camera' as PermissionName }).then((
       manager
     ) => {
@@ -14,5 +15,5 @@ export const usePermissions = () => {
         provideStatus(status)
       })
     })
-  }
+  }, [])
 }

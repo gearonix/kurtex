@@ -7,6 +7,7 @@ import { JoinRoom }                from './lib/interfaces'
 import { RelayIceCandidateParams } from './lib/interfaces'
 import { RelaySdpParams }          from './lib/interfaces'
 import { $peerConnections }        from './peer-connections'
+import { addIceCandidateFx }       from './effects'
 import { addRTCPeerConnectionFx }  from './effects'
 import { atom }                    from '@/shared/factory/atom'
 import { addSessionDescriptionFx } from './effects'
@@ -71,5 +72,5 @@ forward({
 
 forward({
   from: wss.iceCandidateReceived,
-  to: addSessionDescriptionFx
+  to: addIceCandidateFx
 })

@@ -1,1 +1,1 @@
-export { useWebRTC } from './use-webrtc'
+export { usePermissions } from './use-permissions'
