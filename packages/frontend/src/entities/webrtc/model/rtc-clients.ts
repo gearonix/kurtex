@@ -1,9 +1,9 @@
-import { createEvent }      from 'effector'
-import { createStore }      from 'effector'
-import { sample }           from 'effector'
+import { createEvent }        from 'effector'
+import { createStore }        from 'effector'
+import { sample }             from 'effector'
 import { LOCAL_MEDIA_STREAM } from './lib/consts'
-import { statusDenied }     from './permissions'
-import { getUserMediaFx }   from './effects'
+import { statusDenied }       from './permissions'
+import { getUserMediaFx }     from './effects'
 
 export const $rtcClients = createStore<string[]>([])
 

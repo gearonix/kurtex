@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
-export const addPeerConnection = z.object({
+export const userConnected = z.object({
   peerId: z.string(),
   shouldCreateOffer: z.boolean()
 })
 
-export type AddPeerConnectionSchema = z.infer<typeof addPeerConnection>
+export type UserConnectedSchema = z.infer<typeof userConnected>

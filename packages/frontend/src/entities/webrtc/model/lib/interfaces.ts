@@ -1,4 +1,4 @@
-export interface PeerConnectionCreatedPayload {
+export interface PeerConnectionCreated {
   remoteStream: MediaStream
   peerId: string
 }
@@ -13,6 +13,6 @@ export interface RelayIceCandidateParams {
   iceCandidate: RTCIceCandidate
 }
 
-export interface JoinRoomPayload {
+export interface JoinRoom {
   roomId: string
 }
