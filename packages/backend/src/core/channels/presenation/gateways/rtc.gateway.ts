@@ -55,7 +55,7 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
 
   @WebsocketTopic(contracts.ConnectUserRequest.topic)
   public async joinWebRTCRoom(
-    @MessageBody() handshake: contracts.ConnectUserRequestDto,
+    @MessageBody() handshake: contracts.ConnectUserRequestSchema,
     @ConnectedSocket() client: Socket
   ) {
     return this.commandBus.execute(
@@ -65,7 +65,7 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
 
   @WebsocketTopic(contracts.RelaySdpMetadataRequest.topic)
   public async relaySdpMetadata(
-    @MessageBody() handshake: contracts.RelaySdpMetadataRequestDto,
+    @MessageBody() handshake: contracts.RelaySdpMetadataRequestSchema,
     @ConnectedSocketId() socketId: string
   ) {
     return this.commandBus.execute(
@@ -79,7 +79,7 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
 
   @WebsocketTopic(contracts.RelayIceCandidateRequest.topic)
   public async relayIceCandidate(
-    @MessageBody() handshake: contracts.RelayIceCandidateRequestDto,
+    @MessageBody() handshake: contracts.RelayIceCandidateRequestSchema,
     @ConnectedSocketId() socketId: string
   ) {
     return this.commandBus.execute(

@@ -1,9 +1,11 @@
-import { z }      from 'zod'
-import { ZodDto } from 'nestjs-zod'
-
 export abstract class Contract {
   public static readonly topic: string
 
   public static readonly schema: z.ZodSchema
-  public static dto?: () => new () => ZodDto
+  /**
+   * Basically dto type is ZodDto from nest-zod, but we don't want
+   * to force nx to include some backend dependencies like @nest/core
+   * and class-validator
+   */
+  public static dto?: () => new () => unknown
 }

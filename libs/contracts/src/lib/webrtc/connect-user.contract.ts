@@ -1,5 +1,4 @@
 import { z }                   from 'zod'
-import { createZodDto }        from 'nestjs-zod'
 import { Contract }            from '../../shared'
 import { ChannelsMethodsKeys } from './websocket.methods'
 
@@ -10,9 +9,6 @@ export class ConnectUserRequest implements Contract {
     roomId: z.string().uuid()
   })
 
-  public static get dto() {
-    return class extends createZodDto(this.schema) {}
-  }
 }
 
 export class ConnectUserResponse implements Contract {
@@ -24,7 +20,7 @@ export class ConnectUserResponse implements Contract {
   })
 }
 
-export type ConnectUserRequestDto = InstanceType<typeof ConnectUserRequest.dto>
+export type ConnectUserRequestSchema = z.infer<typeof ConnectUserRequest.schema>
 
 export type ConnectUserResponseSchema = z.infer<
   typeof ConnectUserResponse.schema

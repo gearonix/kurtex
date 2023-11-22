@@ -1,5 +1,4 @@
 import { z }                   from 'zod'
-import { createZodDto }        from 'nestjs-zod'
 import { Contract }            from '../../shared'
 import { ChannelsMethodsKeys } from './websocket.methods'
 
@@ -10,10 +9,6 @@ export abstract class RelayIceCandidateRequest implements Contract {
     peerId: z.string(),
     iceCandidate: z.object({})
   })
-
-  public static get dto() {
-    return class Dto extends createZodDto(this.schema) {}
-  }
 }
 
 export abstract class RelayIceCandidateResponse implements Contract {
@@ -25,8 +20,8 @@ export abstract class RelayIceCandidateResponse implements Contract {
   })
 }
 
-export type RelayIceCandidateRequestDto = InstanceType<
-  typeof RelayIceCandidateRequest.dto
+export type RelayIceCandidateRequestSchema = z.infer<
+  typeof RelayIceCandidateResponse.schema
 >
 
 export type RelayIceCandidateResponseSchema = z.infer<

@@ -8,23 +8,23 @@ import { addRTCPeerConnectionFx }      from './effects'
 import { addSessionDescriptionFx }     from './effects'
 import { atom }                        from '@/shared/factory/atom'
 import { ConnectUserResponse }         from '@kurtex/contracts'
-import { LeaveRoomRequestDto }         from '@kurtex/contracts'
+import { LeaveRoomRequestSchema }         from '@kurtex/contracts'
 import { LeaveRoomResponse }           from '@kurtex/contracts'
-import { RelayIceCandidateRequestDto } from '@kurtex/contracts'
+import { RelayIceCandidateRequestSchema } from '@kurtex/contracts'
 import { RelayIceCandidateResponse }   from '@kurtex/contracts'
 import { RelaySdpMetadataResponse }    from '@kurtex/contracts'
 
 export const wss = atom(() => {
   const socket = scope(roomsListModel.socket)
 
-  const joinRoom = socket.publisher<RelayIceCandidateRequestDto>('joinRoom')
+  const joinRoom = socket.publisher<RelayIceCandidateRequestSchema>('joinRoom')
 
-  const leaveRoom = socket.publisher<LeaveRoomRequestDto>('leaveRoom')
+  const leaveRoom = socket.publisher<LeaveRoomRequestSchema>('leaveRoom')
 
   const relayIceCandidate =
-    socket.publisher<RelayIceCandidateRequestDto>('relayIceCandidate')
+    socket.publisher<RelayIceCandidateRequestSchema>('relayIceCandidate')
   const relaySdpMetadata =
-    socket.publisher<RelayIceCandidateRequestDto>('relaySdp')
+    socket.publisher<RelayIceCandidateRequestSchema>('relaySdp')
 
   const userConnected = socket.event('userConnected', {
     schema: ConnectUserResponse.schema

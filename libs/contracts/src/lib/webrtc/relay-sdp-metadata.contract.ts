@@ -1,5 +1,4 @@
 import { z }                   from 'zod'
-import { createZodDto }        from 'nestjs-zod'
 import { Contract }            from '../../shared'
 import { ChannelsMethodsKeys } from './websocket.methods'
 
@@ -10,10 +9,6 @@ export class RelaySdpMetadataRequest implements Contract {
     peerId: z.string(),
     metadata: z.object({})
   })
-
-  public static get dto() {
-    return class Dto extends createZodDto(this.schema) {}
-  }
 }
 
 export class RelaySdpMetadataResponse implements Contract {
@@ -26,8 +21,8 @@ export class RelaySdpMetadataResponse implements Contract {
   })
 }
 
-export type RelaySdpMetadataRequestDto = InstanceType<
-  typeof RelaySdpMetadataRequest.dto
+export type RelaySdpMetadataRequestSchema = z.infer<
+  typeof RelaySdpMetadataRequest.schema
 >
 
 export type RelaySdpMetadataResponseSchema = z.infer<
