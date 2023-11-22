@@ -17,6 +17,6 @@ export class LeaveRoomResponse implements Contract {
   })
 }
 
-export type LeaveRoomRequestSchema = z.infer<typeof  LeaveRoomRequest.schema>
+export type LeaveRoom = z.infer<typeof LeaveRoomRequest.schema>
 
-export type LeaveRoomResponseSchema = z.infer<typeof LeaveRoomResponse.schema>
+export type UserDisconnected = z.infer<typeof LeaveRoomResponse.schema>

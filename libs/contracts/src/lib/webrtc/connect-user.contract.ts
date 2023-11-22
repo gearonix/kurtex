@@ -20,8 +20,8 @@ export class ConnectUserResponse implements Contract {
   })
 }
 
-export type ConnectUserRequestSchema = z.infer<typeof ConnectUserRequest.schema>
+export type JoinRoom = z.infer<typeof ConnectUserRequest.schema>
 
-export type ConnectUserResponseSchema = z.infer<
+export type UserConnected = z.infer<
   typeof ConnectUserResponse.schema
 >

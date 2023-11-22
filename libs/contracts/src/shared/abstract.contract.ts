@@ -1,3 +1,5 @@
+import { z } from 'zod'
+
 export abstract class Contract {
   public static readonly topic: string
 

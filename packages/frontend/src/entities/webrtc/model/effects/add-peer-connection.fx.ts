@@ -5,11 +5,11 @@ import { createPeerConnection } from '../core'
 import { addRemoteStream }      from '@/entities/webrtc/model/media-streams'
 import { $localStream }         from '@/entities/webrtc/model/local-stream'
 import { addPeerConnection }    from '@/entities/webrtc/model/peer-connections'
-import { ConnectUserResponseSchema }        from '@kurtex/contracts'
+import { UserConnected }        from '@kurtex/contracts'
 
 export const addRTCPeerConnectionFx = attach({
   source: $localStream,
-  effect: async (localStream, { peerId, shouldCreateOffer }: ConnectUserResponseSchema) => {
+  effect: async (localStream, { peerId, shouldCreateOffer }: UserConnected) => {
     const connection = createPeerConnection({
       peerId,
       localStream

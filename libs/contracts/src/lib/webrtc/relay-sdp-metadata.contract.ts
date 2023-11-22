@@ -12,8 +12,7 @@ export class RelaySdpMetadataRequest implements Contract {
 }
 
 export class RelaySdpMetadataResponse implements Contract {
-  public static readonly topic: ChannelsMethodsKeys =
-    'sessionDescriptionReceived'
+  public static readonly topic: ChannelsMethodsKeys = 'metadataReceived'
 
   public static readonly schema = z.object({
     peerId: z.string(),
@@ -21,10 +20,6 @@ export class RelaySdpMetadataResponse implements Contract {
   })
 }
 
-export type RelaySdpMetadataRequestSchema = z.infer<
-  typeof RelaySdpMetadataRequest.schema
->
+export type RelaySdp = z.infer<typeof RelaySdpMetadataRequest.schema>
 
-export type RelaySdpMetadataResponseSchema = z.infer<
-  typeof RelaySdpMetadataResponse.schema
->
+export type MetadataReceived = z.infer<typeof RelaySdpMetadataResponse.schema>

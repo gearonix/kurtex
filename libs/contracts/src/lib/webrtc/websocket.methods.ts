@@ -5,7 +5,7 @@ export const channelGatewayMethods = {
   relayIceCandidate: 'channels.rela-ice-candidate',
   relaySdp: 'channels.relay-sdp',
   userConnected: 'channels.user-connected',
-  sessionDescriptionReceived: 'channels.session-description-received',
+  metadataReceived: 'channels.metadata-received',
   iceCandidateReceived: 'channels.ice-candidate-received',
   userDisconnected: 'channels.user-disconnected'
 } as const

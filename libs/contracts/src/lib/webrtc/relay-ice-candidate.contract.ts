@@ -20,10 +20,8 @@ export abstract class RelayIceCandidateResponse implements Contract {
   })
 }
 
-export type RelayIceCandidateRequestSchema = z.infer<
-  typeof RelayIceCandidateResponse.schema
->
+export type RelayIceCandidate = z.infer<typeof RelayIceCandidateResponse.schema>
 
-export type RelayIceCandidateResponseSchema = z.infer<
+export type IceCandidateReceived = z.infer<
   typeof RelayIceCandidateResponse.schema
 >
