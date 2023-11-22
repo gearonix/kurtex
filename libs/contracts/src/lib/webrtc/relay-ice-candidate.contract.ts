@@ -1,9 +1,7 @@
 import { z }                   from 'zod'
 import { createZodDto }        from 'nestjs-zod'
-import { Contract }            from '@/shared'
-import { ChannelsMethodsKeys } from '@/lib/webrtc/websocket.methods'
-import { LeaveRoomRequest }    from '@/lib/webrtc/leave-room.contract'
-import { LeaveRoomResponse }   from '@/lib/webrtc/leave-room.contract'
+import { Contract }            from '../../shared'
+import { ChannelsMethodsKeys } from './websocket.methods'
 
 export abstract class RelayIceCandidateRequest implements Contract {
   public static readonly topic: ChannelsMethodsKeys = 'relayIceCandidate'

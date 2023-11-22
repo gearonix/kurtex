@@ -10,11 +10,7 @@
     "noFallthroughCasesInSwitch": true,
     "outDir": "../../dist/out-tsc",
     "declaration": true,
-    "types": ["node"],
-    "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    }
+    "types": ["node"]
   },
   "files": [],
   "references": [

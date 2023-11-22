@@ -1,8 +1,7 @@
-import { z }                         from 'zod'
-import { createZodDto }              from 'nestjs-zod'
-import { Contract }                  from '@/shared'
-import { ChannelsMethodsKeys }       from '@/lib/webrtc/websocket.methods'
-import { RelayIceCandidateResponse } from '@/lib/webrtc/relay-ice-candidate.contract'
+import { z }                   from 'zod'
+import { createZodDto }        from 'nestjs-zod'
+import { Contract }            from '../../shared'
+import { ChannelsMethodsKeys } from './websocket.methods'
 
 export class RelaySdpMetadataRequest implements Contract {
   public static readonly topic: ChannelsMethodsKeys = 'relaySdp'

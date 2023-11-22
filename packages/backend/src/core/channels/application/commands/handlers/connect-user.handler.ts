@@ -9,23 +9,23 @@ import { UserConnectedEvent } from '@core/channels/application'
 @CommandHandler(ConnectUserCommand)
 export class ConnectUserHandler implements ICommandHandler<ConnectUserCommand> {
   constructor(
-    private readonly gateway: RtcGateway,
-    private readonly eventBus: EventBus
+    // private readonly gateway: RtcGateway,
+    // private readonly eventBus: EventBus
   ) {}
 
   public async execute({ client, roomId }: ConnectUserCommand) {
-    if (client.rooms.has(roomId)) {
-      throw new WsException(
-        `User with ${client.id} already joined to room ${roomId}.`
-      )
-    }
-
-    client.join(roomId)
-
-    const roomMembers = this.gateway.getRoomMembers(roomId)
-
-    const userConnected = new UserConnectedEvent(client, roomId, roomMembers)
-
-    this.eventBus.publish(userConnected)
+    // if (client.rooms.has(roomId)) {
+    //   throw new WsException(
+    //     `User with ${client.id} already joined to room ${roomId}.`
+    //   )
+    // }
+    //
+    // client.join(roomId)
+    //
+    // const roomMembers = this.gateway.getRoomMembers(roomId)
+    //
+    // const userConnected = new UserConnectedEvent(client, roomId, roomMembers)
+    //
+    // this.eventBus.publish(userConnected)
   }
 }

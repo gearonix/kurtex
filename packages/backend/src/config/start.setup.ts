@@ -5,6 +5,8 @@ import { EnvService }       from '../env'
 export const startApplication = async (app: INestApplication) => {
   const env = app.get(EnvService)
 
+  await app.init()
+
   await app.listen(env.port)
 
   Logger.log(
