@@ -5,6 +5,6 @@ export class RelayIceCandidateCommand {
     /**
      * @type {RTCIceCandidate}
      */
-    public readonly iceCandidate: RTCIceCandidate
+    public readonly iceCandidate: unknown
   ) {}
 }

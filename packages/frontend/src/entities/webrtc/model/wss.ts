@@ -1,48 +1,48 @@
-import { forward }                   from 'effector'
-import { sample }                    from 'effector'
-import { scope }                     from '@grnx/effector-socket.io'
-import { roomsListModel }            from '@/widgets/connected-rooms-list'
-import { JoinRoom }                  from './lib/interfaces'
-import { RelayIceCandidateParams }   from './lib/interfaces'
-import { RelaySdpParams }            from './lib/interfaces'
-import { $peerConnections }          from './peer-connections'
-import { addIceCandidateFx }         from './effects'
-import { addRTCPeerConnectionFx }    from './effects'
-import { atom }                      from '@/shared/factory/atom'
-import { addSessionDescriptionFx }   from './effects'
-import { ConnectUserContract }       from '@kurtex/contracts'
-import { LeaveRoomContract }         from '@kurtex/contracts'
-import { RelayIceCandidateContract } from '@kurtex/contracts'
-import { RelaySdpMetadataContract }  from '@kurtex/contracts'
+import { forward }                     from 'effector'
+import { sample }                      from 'effector'
+import { scope }                       from '@grnx/effector-socket.io'
+import { roomsListModel }              from '@/widgets/connected-rooms-list'
+import { $peerConnections }            from './peer-connections'
+import { addIceCandidateFx }           from './effects'
+import { addRTCPeerConnectionFx }      from './effects'
+import { addSessionDescriptionFx }     from './effects'
+import { atom }                        from '@/shared/factory/atom'
+import { ConnectUserResponse }         from '@kurtex/contracts'
+import { LeaveRoomRequestDto }         from '@kurtex/contracts'
+import { LeaveRoomResponse }           from '@kurtex/contracts'
+import { RelayIceCandidateRequestDto } from '@kurtex/contracts'
+import { RelayIceCandidateResponse }   from '@kurtex/contracts'
+import { RelaySdpMetadataResponse }    from '@kurtex/contracts'
 
 export const wss = atom(() => {
   const socket = scope(roomsListModel.socket)
 
-  const joinRoom = socket.publisher<JoinRoom>('joinRoom')
+  const joinRoom = socket.publisher<RelayIceCandidateRequestDto>('joinRoom')
 
-  const leaveRoom = socket.publisher('leaveRoom')
+  const leaveRoom = socket.publisher<LeaveRoomRequestDto>('leaveRoom')
 
   const relayIceCandidate =
-    socket.publisher<RelayIceCandidateParams>('relayIceCandidate')
-  const relaySdpMetadata = socket.publisher<RelaySdpParams>('relaySdp')
+    socket.publisher<RelayIceCandidateRequestDto>('relayIceCandidate')
+  const relaySdpMetadata =
+    socket.publisher<RelayIceCandidateRequestDto>('relaySdp')
 
   const userConnected = socket.event('userConnected', {
-    schema: ConnectUserContract.schema
+    schema: ConnectUserResponse.schema
   })
 
   const sessionDescriptionReceived = socket.event(
     'sessionDescriptionReceived',
     {
-      schema: RelaySdpMetadataContract.schema
+      schema: RelaySdpMetadataResponse.schema
     }
   )
 
   const iceCandidateReceived = socket.event('iceCandidateReceived', {
-    schema: RelayIceCandidateContract.schema
+    schema: RelayIceCandidateResponse.schema
   })
 
   const userDisconnected = socket.event('userDisconnected', {
-    schema: LeaveRoomContract.schema
+    schema: LeaveRoomResponse.schema
   })
 
   return {

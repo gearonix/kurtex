@@ -1,14 +1,11 @@
-import { z }                   from 'zod'
-import { createZodDto }        from 'nestjs-zod'
-import { Contract }            from '@/shared'
-import { WebsocketTopic }      from '@/shared'
-import { ChannelsMethodsKeys } from '@/lib/webrtc/websocket.methods'
+import { z }                         from 'zod'
+import { createZodDto }              from 'nestjs-zod'
+import { Contract }                  from '@/shared'
+import { ChannelsMethodsKeys }       from '@/lib/webrtc/websocket.methods'
+import { RelayIceCandidateResponse } from '@/lib/webrtc/relay-ice-candidate.contract'
 
-export abstract class RelaySdpMetadataContract implements Contract {
-  public static readonly topic: WebsocketTopic<ChannelsMethodsKeys> = {
-    request: 'relaySdp',
-    response: 'sessionDescriptionReceived'
-  }
+export class RelaySdpMetadataRequest implements Contract {
+  public static readonly topic: ChannelsMethodsKeys = 'relaySdp'
 
   public static readonly schema = z.object({
     peerId: z.string(),
@@ -20,4 +17,20 @@ export abstract class RelaySdpMetadataContract implements Contract {
   }
 }
 
-export type RelaySdpMetadata = z.infer<typeof RelaySdpMetadataContract.schema>
+export class RelaySdpMetadataResponse implements Contract {
+  public static readonly topic: ChannelsMethodsKeys =
+    'sessionDescriptionReceived'
+
+  public static readonly schema = z.object({
+    peerId: z.string(),
+    metadata: z.object({})
+  })
+}
+
+export type RelaySdpMetadataRequestDto = InstanceType<
+  typeof RelaySdpMetadataRequest.dto
+>
+
+export type RelaySdpMetadataResponseSchema = z.infer<
+  typeof RelaySdpMetadataResponse.schema
+>

@@ -1,15 +1,11 @@
 import { z }                   from 'zod'
 import { createZodDto }        from 'nestjs-zod'
 import { Contract }            from '@/shared'
-import { WebsocketTopic }      from '@/shared'
 import { ChannelsMethodsKeys } from '@/lib/webrtc/websocket.methods'
+import { ConnectUserResponse } from '@/lib/webrtc/connect-user.contract'
 
-export abstract class LeaveRoomContract implements Contract {
-  public static readonly topic: WebsocketTopic<ChannelsMethodsKeys> = {
-    request: 'leaveRoom',
-    response: 'userDisconnected'
-  }
-
+export class LeaveRoomRequest implements Contract {
+  public static readonly topic: ChannelsMethodsKeys = 'leaveRoom'
   public static readonly schema = z.object({
     peerId: z.string()
   })
@@ -19,4 +15,14 @@ export abstract class LeaveRoomContract implements Contract {
   }
 }
 
-export type LeaveRoom = z.infer<typeof LeaveRoomContract.schema>
+export class LeaveRoomResponse implements Contract {
+  public static readonly topic: ChannelsMethodsKeys = 'userDisconnected'
+
+  public static readonly schema = z.object({
+    peerId: z.string()
+  })
+}
+
+export type LeaveRoomRequestDto = InstanceType<typeof LeaveRoomRequest.dto>
+
+export type LeaveRoomResponseSchema = z.infer<typeof LeaveRoomResponse.schema>

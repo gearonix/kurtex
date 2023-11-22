@@ -2,7 +2,7 @@ import { CommandHandler }           from '@nestjs/cqrs'
 import { ICommandHandler }          from '@nestjs/cqrs'
 import { RtcGateway }               from '@core/channels/presenation'
 import { RelaySdpMetadataCommand }  from '@core/channels/application'
-import { RelaySdpMetadataContract } from '@kurtex/contracts'
+import { RelaySdpMetadataResponse } from '@kurtex/contracts'
 
 @CommandHandler(RelaySdpMetadataCommand)
 export class RelaySdpMetadataHandler
@@ -20,7 +20,7 @@ export class RelaySdpMetadataHandler
         peerId: clientId,
         metadata
       },
-      method: RelaySdpMetadataContract.topic.response,
+      method: RelaySdpMetadataResponse.topic,
       receiver: peerId
     })
   }

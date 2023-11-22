@@ -1,23 +1,31 @@
 import { z }                   from 'zod'
 import { createZodDto }        from 'nestjs-zod'
 import { Contract }            from '@/shared'
-import { WebsocketTopic }      from '@/shared'
 import { ChannelsMethodsKeys } from '@/lib/webrtc/websocket.methods'
 
-export abstract class ConnectUserContract implements Contract {
-  public static readonly topic: WebsocketTopic<ChannelsMethodsKeys> = {
-    request: 'joinRoom',
-    response: 'userConnected'
+export class ConnectUserRequest implements Contract {
+  public static readonly topic: ChannelsMethodsKeys = 'joinRoom'
+
+  public static readonly schema = z.object({
+    roomId: z.string().uuid()
+  })
+
+  public static get dto() {
+    return class extends createZodDto(this.schema) {}
   }
+}
+
+export class ConnectUserResponse implements Contract {
+  public static readonly topic: ChannelsMethodsKeys = 'userConnected'
 
   public static readonly schema = z.object({
     peerId: z.string(),
     shouldCreateOffer: z.boolean()
   })
-
-  public static get dto() {
-    return class Dto extends createZodDto(this.schema) {}
-  }
 }
 
-export type UserConnected = z.infer<typeof ConnectUserContract.schema>
+export type ConnectUserRequestDto = InstanceType<typeof ConnectUserRequest.dto>
+
+export type ConnectUserResponseSchema = z.infer<
+  typeof ConnectUserResponse.schema
+>

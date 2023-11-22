@@ -2,7 +2,7 @@ import { CommandHandler }    from '@nestjs/cqrs'
 import { ICommandHandler }   from '@nestjs/cqrs'
 import { RtcGateway }        from '@core/channels/presenation'
 import { LeaveRoomCommand }  from '@core/channels/application'
-import { LeaveRoomContract } from '@kurtex/contracts'
+import { LeaveRoomResponse } from '@kurtex/contracts'
 
 @CommandHandler(LeaveRoomCommand)
 export class LeaveRoomHandler implements ICommandHandler<LeaveRoomCommand> {
@@ -18,7 +18,7 @@ export class LeaveRoomHandler implements ICommandHandler<LeaveRoomCommand> {
     clientRooms.forEach((roomId) => {
       this.gateway.reply({
         receiver: roomId,
-        method: LeaveRoomContract.topic.response,
+        method: LeaveRoomResponse.topic,
         payload: {
           peerId: client.id
         }

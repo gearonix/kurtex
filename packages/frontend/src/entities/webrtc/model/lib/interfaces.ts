@@ -13,11 +13,6 @@ export interface RelaySdpParams {
   metadata: RTCSessionDescriptionInit
 }
 
-export interface RelayIceCandidateParams {
-  peerId: string
-  iceCandidate: RTCIceCandidate
-}
-
 export interface JoinRoom {
   roomId: string
 }

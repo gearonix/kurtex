@@ -1,14 +1,12 @@
 import { z }                   from 'zod'
 import { createZodDto }        from 'nestjs-zod'
 import { Contract }            from '@/shared'
-import { WebsocketTopic }      from '@/shared'
 import { ChannelsMethodsKeys } from '@/lib/webrtc/websocket.methods'
+import { LeaveRoomRequest }    from '@/lib/webrtc/leave-room.contract'
+import { LeaveRoomResponse }   from '@/lib/webrtc/leave-room.contract'
 
-export abstract class RelayIceCandidateContract implements Contract {
-  public static readonly topic: WebsocketTopic<ChannelsMethodsKeys> = {
-    request: 'relayIceCandidate',
-    response: 'iceCandidateReceived'
-  }
+export abstract class RelayIceCandidateRequest implements Contract {
+  public static readonly topic: ChannelsMethodsKeys = 'relayIceCandidate'
 
   public static readonly schema = z.object({
     peerId: z.string(),
@@ -20,4 +18,19 @@ export abstract class RelayIceCandidateContract implements Contract {
   }
 }
 
-export type RelayIceCandidate = z.infer<typeof RelayIceCandidateContract.schema>
+export abstract class RelayIceCandidateResponse implements Contract {
+  public static readonly topic: ChannelsMethodsKeys = 'iceCandidateReceived'
+
+  public static readonly schema = z.object({
+    peerId: z.string(),
+    iceCandidate: z.object({})
+  })
+}
+
+export type RelayIceCandidateRequestDto = InstanceType<
+  typeof RelayIceCandidateRequest.dto
+>
+
+export type RelayIceCandidateResponseSchema = z.infer<
+  typeof RelayIceCandidateResponse.schema
+>

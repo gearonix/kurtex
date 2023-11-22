@@ -1,9 +1,8 @@
 import { CommandHandler }            from '@nestjs/cqrs'
-import { EventBus }                  from '@nestjs/cqrs'
 import { ICommandHandler }           from '@nestjs/cqrs'
 import { RtcGateway }                from '@core/channels/presenation'
 import { RelayIceCandidateCommand }  from '@core/channels/application'
-import { RelayIceCandidateContract } from '@kurtex/contracts'
+import { RelayIceCandidateResponse } from '@kurtex/contracts'
 
 @CommandHandler(RelayIceCandidateCommand)
 export class RelayIceCandidateHandler
@@ -21,7 +20,7 @@ export class RelayIceCandidateHandler
         peerId: clientId,
         iceCandidate
       },
-      method: RelayIceCandidateContract.topic.response,
+      method: RelayIceCandidateResponse.topic,
       receiver: peerId
     })
   }
