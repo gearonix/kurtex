@@ -1,3 +1,3 @@
-export { UserConnectedEvent } from './impl/user-connected.event'
+export * from './impl/user-connected.event'
 
-export { UserConnectedHandler } from './handlers/user-connected.handler'
+export * from './handlers/user-connected.handler'

@@ -9,6 +9,7 @@ import { WsGateway }           from '@/decorators'
 import { LoggerService }       from '@/logger'
 import { AnyObject }           from '@grnx-utils/types'
 import { FactorySendParams }   from '@/wss/wss.interfaces'
+import { validate }            from 'uuid'
 
 @WsGateway()
 export abstract class WebsocketGatewayFactory<
@@ -36,6 +37,10 @@ export abstract class WebsocketGatewayFactory<
     this.server.emit(event, message)
   }
 
+  public getValidClientRooms(client: Socket) {
+    return [...client.rooms].filter(validate)
+  }
+
   public getRoomMembers(roomId: string) {
     const adapter = this.server.sockets.adapter
 
@@ -56,7 +61,7 @@ export abstract class WebsocketGatewayFactory<
     this.logger.info(`WssGateway: client disconnected: ${client.id}`)
   }
 
-  public send<T>({
+  public reply<T>({
     payload,
     method,
     receiver,

@@ -1,15 +1,16 @@
-import { EventsHandler }      from '@nestjs/cqrs'
-import { IEventHandler }      from '@nestjs/cqrs'
-import { UserConnectedEvent } from '@core/channels/application'
-import { RtcGateway }         from '@core/channels/presenation'
+import { EventsHandler }       from '@nestjs/cqrs'
+import { IEventHandler }       from '@nestjs/cqrs'
+import { UserConnectedEvent }  from '@core/channels/application'
+import { RtcGateway }          from '@core/channels/presenation'
+import { ConnectUserContract } from '@kurtex/contracts'
 
 @EventsHandler(UserConnectedEvent)
 export class UserConnectedHandler implements IEventHandler<UserConnectedEvent> {
   constructor(private readonly gateway: RtcGateway) {}
 
   handle(event: UserConnectedEvent) {
-    this.gateway.send({
-      method: 'userConnected',
+    this.gateway.reply({
+      method: ConnectUserContract.topic.response,
       receiver: event.roomId,
       payload: {
         peerId: event.client.id,
@@ -17,8 +18,8 @@ export class UserConnectedHandler implements IEventHandler<UserConnectedEvent> {
       }
     })
 
-    this.gateway.send({
-      method: 'userConnected',
+    this.gateway.reply({
+      method: ConnectUserContract.topic.response,
       payload: {
         client: event.client,
         peerMembers: event.members,

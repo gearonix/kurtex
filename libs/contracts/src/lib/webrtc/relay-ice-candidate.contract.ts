@@ -4,15 +4,15 @@ import { Contract }            from '@/shared'
 import { WebsocketTopic }      from '@/shared'
 import { ChannelsMethodsKeys } from '@/lib/webrtc/websocket.methods'
 
-export abstract class ConnectUserContract implements Contract {
+export abstract class RelayIceCandidateContract implements Contract {
   public static readonly topic: WebsocketTopic<ChannelsMethodsKeys> = {
-    request: 'joinRoom',
-    response: 'userConnected'
+    request: 'relayIceCandidate',
+    response: 'iceCandidateReceived'
   }
 
   public static readonly schema = z.object({
     peerId: z.string(),
-    shouldCreateOffer: z.boolean()
+    iceCandidate: z.object({})
   })
 
   public static get dto() {
@@ -20,4 +20,4 @@ export abstract class ConnectUserContract implements Contract {
   }
 }
 
-export type UserConnected = z.infer<typeof ConnectUserContract.schema>
+export type RelayIceCandidate = z.infer<typeof RelayIceCandidateContract.schema>
