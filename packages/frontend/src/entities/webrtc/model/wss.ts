@@ -1,45 +1,40 @@
-import { forward }                   from 'effector'
-import { sample }                    from 'effector'
-import { scope }                     from '@grnx/effector-socket.io'
-import { roomsListModel }            from '@/widgets/connected-rooms-list'
-import { $peerConnections }          from './peer-connections'
-import { addIceCandidateFx }         from './effects'
-import { addRTCPeerConnectionFx }    from './effects'
-import { addSessionDescriptionFx }   from './effects'
-import { atom }                      from '@/shared/factory/atom'
-import { ConnectUserResponse }       from '@kurtex/contracts'
-import { LeaveRoom }                 from '@kurtex/contracts'
-import { LeaveRoomResponse }         from '@kurtex/contracts'
-import { RelayIceCandidate }         from '@kurtex/contracts'
-import { RelayIceCandidateResponse } from '@kurtex/contracts'
-import { RelaySdpMetadataResponse }  from '@kurtex/contracts'
+import { forward }                 from 'effector'
+import { sample }                  from 'effector'
+import { scope }                   from '@grnx/effector-socket.io'
+import { roomsListModel }          from '@/widgets/connected-rooms-list'
+import { $peerConnections }        from './peer-connections'
+import { addIceCandidateFx }       from './effects'
+import { addRTCPeerConnectionFx }  from './effects'
+import { addSessionDescriptionFx } from './effects'
+import { atom }                    from '@/shared/factory/atom'
+import { webrtc as rtc }           from '@kurtex/contracts'
 
 export const wss = atom(() => {
   const socket = scope(roomsListModel.socket)
 
-  const joinRoom = socket.publisher<RelayIceCandidate>('joinRoom')
+  const joinRoom = socket.publisher<rtc.RelayIceCandidate>('joinRoom')
 
-  const leaveRoom = socket.publisher<LeaveRoom>('leaveRoom')
+  const leaveRoom = socket.publisher<rtc.LeaveRoom>('leaveRoom')
 
   const relayIceCandidate =
-    socket.publisher<RelayIceCandidate>('relayIceCandidate')
+    socket.publisher<rtc.RelayIceCandidate>('relayIceCandidate')
 
-  const relaySdpMetadata = socket.publisher<RelayIceCandidate>('relaySdp')
+  const relaySdpMetadata = socket.publisher<rtc.RelayIceCandidate>('relaySdp')
 
   const userConnected = socket.event('userConnected', {
-    schema: ConnectUserResponse.schema
+    schema: rtc.ConnectUserResponse.schema
   })
 
   const metadataReceived = socket.event('metadataReceived', {
-    schema: RelaySdpMetadataResponse.schema
+    schema: rtc.RelaySdpMetadataResponse.schema
   })
 
   const iceCandidateReceived = socket.event('iceCandidateReceived', {
-    schema: RelayIceCandidateResponse.schema
+    schema: rtc.RelayIceCandidateResponse.schema
   })
 
   const userDisconnected = socket.event('userDisconnected', {
-    schema: LeaveRoomResponse.schema
+    schema: rtc.LeaveRoomResponse.schema
   })
 
   sample({
