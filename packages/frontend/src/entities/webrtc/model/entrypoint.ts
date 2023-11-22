@@ -7,7 +7,7 @@ import { statusGranted }  from './permissions'
 import { createGate }     from 'effector-react'
 import { getUserMediaFx } from './effects'
 import { paramsModel }    from '@/shared/model/params'
-import {wss} from "@/entities/webrtc/model/wss";
+import { wss }            from './wss'
 
 export const $roomId = combine(
   paramsModel.$params,

@@ -1,17 +1,19 @@
-import { forward }                 from 'effector'
-import { sample }                  from 'effector'
-import { scope }                   from '@grnx/effector-socket.io'
-import { roomsListModel }          from '@/widgets/connected-rooms-list'
-import * as schema                 from './lib/schema'
-import { JoinRoom }                from './lib/interfaces'
-import { RelayIceCandidateParams } from './lib/interfaces'
-import { RelaySdpParams }          from './lib/interfaces'
-import { $peerConnections }        from './peer-connections'
-import { addIceCandidateFx }       from './effects'
-import { addRTCPeerConnectionFx }  from './effects'
-import { atom }                    from '@/shared/factory/atom'
-import { addSessionDescriptionFx } from './effects'
-import { ConnectUserContract }     from '@kurtex/contracts'
+import { forward }                   from 'effector'
+import { sample }                    from 'effector'
+import { scope }                     from '@grnx/effector-socket.io'
+import { roomsListModel }            from '@/widgets/connected-rooms-list'
+import { JoinRoom }                  from './lib/interfaces'
+import { RelayIceCandidateParams }   from './lib/interfaces'
+import { RelaySdpParams }            from './lib/interfaces'
+import { $peerConnections }          from './peer-connections'
+import { addIceCandidateFx }         from './effects'
+import { addRTCPeerConnectionFx }    from './effects'
+import { atom }                      from '@/shared/factory/atom'
+import { addSessionDescriptionFx }   from './effects'
+import { ConnectUserContract }       from '@kurtex/contracts'
+import { LeaveRoomContract }         from '@kurtex/contracts'
+import { RelayIceCandidateContract } from '@kurtex/contracts'
+import { RelaySdpMetadataContract }  from '@kurtex/contracts'
 
 export const wss = atom(() => {
   const socket = scope(roomsListModel.socket)
@@ -31,16 +33,16 @@ export const wss = atom(() => {
   const sessionDescriptionReceived = socket.event(
     'sessionDescriptionReceived',
     {
-      schema: schema.sessionDescriptionReceived
+      schema: RelaySdpMetadataContract.schema
     }
   )
 
   const iceCandidateReceived = socket.event('iceCandidateReceived', {
-    schema: schema.iceCandidateReceived
+    schema: RelayIceCandidateContract.schema
   })
 
   const userDisconnected = socket.event('userDisconnected', {
-    schema: schema.userDisconnected
+    schema: LeaveRoomContract.schema
   })
 
   return {

@@ -1,13 +1,15 @@
 import freeice      from 'freeice'
 import { Nullable } from '@grnx-utils/types'
+import { Stream }   from '@/entities/webrtc/model/core/stream'
 
 export interface PeerConnectionProps {
   peerId: string
-  localStream: Nullable<MediaStream>
+  localStream: Nullable<Stream>
 }
 
 export class PeerConnection extends RTCPeerConnection {
   private readonly _peerId: string
+  private readonly localStream: MediaStream
 
   constructor(ctx: PeerConnectionProps) {
     /**
@@ -19,8 +21,9 @@ export class PeerConnection extends RTCPeerConnection {
     super({ iceServers })
 
     this._peerId = ctx.peerId
+    this.localStream = ctx.localStream!.stream
 
-    this.addLocalTracks(ctx.localStream)
+    this.addLocalTracks(this.localStream)
   }
 
   public onRemoteStream(callback: (stream: MediaStream) => void) {

@@ -10,7 +10,9 @@ export abstract class LeaveRoomContract implements Contract {
     response: 'userDisconnected'
   }
 
-  public static readonly schema = z.object({})
+  public static readonly schema = z.object({
+    peerId: z.string()
+  })
 
   public static get dto() {
     return class Dto extends createZodDto(this.schema) {}

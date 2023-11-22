@@ -10,7 +10,10 @@ import { UserConnected }        from '@kurtex/contracts'
 export const addRTCPeerConnectionFx = attach({
   source: $localStream,
   effect: async (localStream, { peerId, shouldCreateOffer }: UserConnected) => {
-    const connection = createPeerConnection({ peerId, localStream })
+    const connection = createPeerConnection({
+      peerId,
+      localStream
+    })
 
     addPeerConnection(connection)
 
