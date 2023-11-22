@@ -1,26 +1,17 @@
-import { Socket }                      from 'socket.io'
-import { LoggerService }               from '@/logger'
-import { ConnectedSocketId }           from '@/decorators'
-import { WsGateway }                   from '@/decorators'
-import { WebsocketGateways }           from '@/config'
-import { WebsocketGatewayFactory }     from '@/wss/websocket-gateway.factory'
-import { ConnectedSocket }             from '@nestjs/websockets'
-import { MessageBody }                 from '@nestjs/websockets'
-import { CommandBus }                  from '@nestjs/cqrs'
-import { ConnectUserCommand }          from '@core/channels/application'
-import { LeaveRoomCommand }            from '@core/channels/application'
-import { RelayIceCandidateCommand }    from '@core/channels/application'
-import { RelaySdpMetadataCommand }     from '@core/channels/application'
-import { channelGatewayMethods }       from '@kurtex/contracts'
-import { ChannelGatewayMethods }       from '@kurtex/contracts'
-import { ConnectUserRequest }          from '@kurtex/contracts'
-import { ConnectUserRequestDto }       from '@kurtex/contracts'
-import { LeaveRoomRequest }            from '@kurtex/contracts'
-import { RelayIceCandidateRequest }    from '@kurtex/contracts'
-import { RelayIceCandidateRequestDto } from '@kurtex/contracts'
-import { RelaySdpMetadataRequest }     from '@kurtex/contracts'
-import { RelaySdpMetadataRequestDto }  from '@kurtex/contracts'
-import { WebsocketTopic }              from '@core/channels/shared/decorators'
+import { Socket }                  from 'socket.io'
+import { LoggerService }           from '@/logger'
+import { ConnectedSocketId }       from '@/decorators'
+import { WsGateway }               from '@/decorators'
+import { WebsocketGateways }       from '@/config'
+import { WebsocketGatewayFactory } from '@/wss'
+import { ConnectedSocket }         from '@nestjs/websockets'
+import { MessageBody }             from '@nestjs/websockets'
+import { CommandBus }              from '@nestjs/cqrs'
+import { commands }                from '@core/channels/application'
+import { channelGatewayMethods }   from '@kurtex/contracts'
+import { ChannelGatewayMethods }   from '@kurtex/contracts'
+import { webrtc as contracts }     from '@kurtex/contracts'
+import { WebsocketTopic }          from '@core/channels/shared'
 
 @WsGateway(WebsocketGateways.RTC)
 export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
@@ -54,31 +45,31 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
   }
 
   override async handleDisconnect(client: Socket) {
-    return this.commandBus.execute(new LeaveRoomCommand(client))
+    return this.commandBus.execute(new commands.LeaveRoomCommand(client))
   }
 
-  @WebsocketTopic(LeaveRoomRequest.topic)
+  @WebsocketTopic(contracts.LeaveRoomRequest.topic)
   public async leaveRoom(@ConnectedSocket() client: Socket) {
     return this.handleDisconnect(client)
   }
 
-  @WebsocketTopic(ConnectUserRequest.topic)
+  @WebsocketTopic(contracts.ConnectUserRequest.topic)
   public async joinWebRTCRoom(
-    @MessageBody() handshake: ConnectUserRequestDto,
+    @MessageBody() handshake: contracts.ConnectUserRequestDto,
     @ConnectedSocket() client: Socket
   ) {
     return this.commandBus.execute(
-      new ConnectUserCommand(handshake.roomId, client)
+      new commands.ConnectUserCommand(handshake.roomId, client)
     )
   }
 
-  @WebsocketTopic(RelaySdpMetadataRequest.topic)
+  @WebsocketTopic(contracts.RelaySdpMetadataRequest.topic)
   public async relaySdpMetadata(
-    @MessageBody() handshake: RelaySdpMetadataRequestDto,
+    @MessageBody() handshake: contracts.RelaySdpMetadataRequestDto,
     @ConnectedSocketId() socketId: string
   ) {
     return this.commandBus.execute(
-      new RelaySdpMetadataCommand(
+      new commands.RelaySdpMetadataCommand(
         socketId,
         handshake.peerId,
         handshake.metadata
@@ -86,13 +77,13 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
     )
   }
 
-  @WebsocketTopic(RelayIceCandidateRequest.topic)
+  @WebsocketTopic(contracts.RelayIceCandidateRequest.topic)
   public async relayIceCandidate(
-    @MessageBody() handshake: RelayIceCandidateRequestDto,
+    @MessageBody() handshake: contracts.RelayIceCandidateRequestDto,
     @ConnectedSocketId() socketId: string
   ) {
     return this.commandBus.execute(
-      new RelayIceCandidateCommand(
+      new commands.RelayIceCandidateCommand(
         socketId,
         handshake.peerId,
         handshake.iceCandidate

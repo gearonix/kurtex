@@ -3,6 +3,8 @@ import { RelayIceCandidateHandler } from './commands'
 import { RelaySdpMetadataHandler }  from './commands'
 import { UserConnectedHandler }     from './events'
 
+export * as commands from './commands'
+
 export const CommandHandlers = [
   ConnectUserHandler,
   RelayIceCandidateHandler,
