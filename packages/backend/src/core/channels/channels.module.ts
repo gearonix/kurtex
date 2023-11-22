@@ -1,8 +1,8 @@
 import { Module }          from '@nestjs/common'
 import { RtcGateway }      from '@core/channels/presenation'
-import { CommandHandlers } from '@core/channels/application'
-import { EventHandlers }   from '@core/channels/application'
 import { CqrsModule }      from '@nestjs/cqrs'
+import { CommandHandlers } from '@core/channels/application/commands'
+import { EventHandlers }   from '@core/channels/application/events'
 
 @Module({
   imports: [CqrsModule],

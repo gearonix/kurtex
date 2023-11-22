@@ -7,11 +7,11 @@ import { WebsocketGatewayFactory } from '@/wss'
 import { ConnectedSocket }         from '@nestjs/websockets'
 import { MessageBody }             from '@nestjs/websockets'
 import { CommandBus }              from '@nestjs/cqrs'
-import { commands }                from '@core/channels/application'
 import { channelGatewayMethods }   from '@kurtex/contracts'
 import { ChannelGatewayMethods }   from '@kurtex/contracts'
 import { webrtc as contracts }     from '@kurtex/contracts'
 import { WebsocketTopic }          from '@core/channels/shared'
+import { commands }                from '@core/channels/application/commands/impl'
 
 @WsGateway(WebsocketGateways.RTC)
 export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {

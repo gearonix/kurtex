@@ -1,8 +1,8 @@
 import { CommandHandler }           from '@nestjs/cqrs'
 import { ICommandHandler }          from '@nestjs/cqrs'
 import { RtcGateway }               from '@core/channels/presenation'
-import { RelaySdpMetadataCommand }  from '@core/channels/application'
 import { RelaySdpMetadataResponse } from '@kurtex/contracts'
+import { RelaySdpMetadataCommand }  from '@core/channels/application/commands/impl'
 
 @CommandHandler(RelaySdpMetadataCommand)
 export class RelaySdpMetadataHandler

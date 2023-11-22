@@ -1,8 +1,8 @@
 import { CommandHandler }            from '@nestjs/cqrs'
 import { ICommandHandler }           from '@nestjs/cqrs'
 import { RtcGateway }                from '@core/channels/presenation'
-import { RelayIceCandidateCommand }  from '@core/channels/application'
 import { RelayIceCandidateResponse } from '@kurtex/contracts'
+import { RelayIceCandidateCommand }  from '@core/channels/application/commands/impl'
 
 @CommandHandler(RelayIceCandidateCommand)
 export class RelayIceCandidateHandler

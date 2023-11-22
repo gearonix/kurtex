@@ -10,7 +10,7 @@ export const startApplication = async (app: INestApplication) => {
   await app.listen(env.port)
 
   Logger.log(
-    `🚀 Application is running on: ${env.server.url}/${env.server.prefix}`
+    `🚀 Application is running on: ${env.server.url}`
   )
 
   Logger.log(`🚀 Port: ${env.port}`)
