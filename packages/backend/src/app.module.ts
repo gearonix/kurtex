@@ -9,6 +9,7 @@ import { HttpExceptionFilter } from '@/filters'
 import { HealthModule }        from '@/healthz/health.module'
 import { RedisModule }         from '@/redis'
 import { CoreModule }          from '@/core'
+import { DatabaseModule }      from '@/database'
 
 @Module({
   imports: [
@@ -17,7 +18,8 @@ import { CoreModule }          from '@/core'
     LoggerModule,
     HealthModule,
     RedisModule,
-    CoreModule
+    CoreModule,
+    DatabaseModule
   ],
   providers: [
     {

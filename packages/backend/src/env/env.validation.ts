@@ -1,40 +1,6 @@
 import { z }         from 'zod'
 import { AnyObject } from '@grnx-utils/types'
-
-const EnvSchema = z
-  .object({
-    NODE_ENV: z
-      .union([
-        z.literal('development'),
-        z.literal('production'),
-        z.literal('test')
-      ])
-      .default('development'),
-    SERVER_URL: z.string(),
-    SERVER_PORT: z.string().regex(/^\d+$/),
-    SERVER_PREFIX: z.string(),
-    CLIENT_URL: z.string(),
-    REDIS_HOST: z.string(),
-    REDIS_PORT: z.string().regex(/^\d+$/)
-  })
-  .transform((env) => ({
-    nodeEnv: env.NODE_ENV,
-    isDev: env.NODE_ENV === 'development',
-    isProd: env.NODE_ENV === 'production',
-    isTest: env.NODE_ENV === 'test',
-    server: {
-      url: env.SERVER_URL,
-      prefix: env.SERVER_PREFIX
-    },
-    client: {
-      url: env.CLIENT_URL
-    },
-    redis: {
-      host: env.REDIS_HOST,
-      port: env.REDIS_PORT
-    },
-    port: env.SERVER_PORT
-  }))
+import { EnvSchema } from '@/env/env.schema'
 
 export const createEnvValues = () => {
   return class EnvValues {} as {
