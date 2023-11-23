@@ -7,17 +7,22 @@ import { WebsocketGatewayFactory } from '@/wss'
 import { ConnectedSocket }         from '@nestjs/websockets'
 import { MessageBody }             from '@nestjs/websockets'
 import { CommandBus }              from '@nestjs/cqrs'
-import { rtcGatewayMethods }   from '@kurtex/contracts'
+import { rtcGatewayMethods }       from '@kurtex/contracts'
 import { ChannelGatewayMethods }   from '@kurtex/contracts'
 import { webrtc as contracts }     from '@kurtex/contracts'
 import { WebsocketTopic }          from '@core/channels/shared'
 import { commands }                from '@core/channels/application/commands/impl'
+import { Inject }                  from '@nestjs/common'
+import { RtcConnection }           from '@core/channels/domain/entities'
+import { Model }                   from 'mongoose'
 
 @WsGateway(WebsocketGateways.RTC)
 export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
   constructor(
     protected readonly logger: LoggerService,
-    private readonly commandBus: CommandBus
+    private readonly commandBus: CommandBus,
+    @Inject(RtcConnection.name)
+    private readonly rtcModel: Model<RtcConnection>
   ) {
     super(logger, rtcGatewayMethods)
   }
