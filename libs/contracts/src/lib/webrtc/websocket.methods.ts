@@ -1,4 +1,4 @@
-export const channelGatewayMethods = {
+export const rtcGatewayMethods = {
   channelsReceived: 'channels.channels-received',
   joinRoom: 'channels.join-webrtc-room',
   leaveRoom: 'channels.leave-webrtc-room',
@@ -10,6 +10,6 @@ export const channelGatewayMethods = {
   userDisconnected: 'channels.user-disconnected'
 } as const
 
-export type ChannelGatewayMethods = typeof channelGatewayMethods
+export type ChannelGatewayMethods = typeof rtcGatewayMethods
 
-export type ChannelsMethodsKeys = keyof typeof channelGatewayMethods
+export type ChannelsMethodsKeys = keyof typeof rtcGatewayMethods

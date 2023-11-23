@@ -1,6 +1,31 @@
 version: '3'
 services:
   redis:
-    image: "redis:latest"
+    image: redis:latest
+    container_name: redis
+    restart: always
+    networks:
+      - cgnet
     ports:
-      - "6379:6379"
+      - 6379:6379
+
+  mongo:
+    image: mongo:latest
+    container_name: mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: grnx
+      MONGO_INITDB_ROOT_PASSWORD: grnx
+    ports:
+      - 27017:27017
+    restart: always
+    depends_on:
+      - redis
+    networks:
+      - cgnet
+    volumes:
+      - ./data:/data/db
+
+
+networks:
+  cgnet:
+    driver: bridge

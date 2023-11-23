@@ -2,7 +2,7 @@ import { z }                   from 'zod'
 import { Contract }            from '../../shared'
 import { ChannelsMethodsKeys } from './websocket.methods'
 
-export class RelaySdpMetadataRequest implements Contract {
+export abstract class RelaySdpMetadataRequest implements Contract {
   public static readonly topic: ChannelsMethodsKeys = 'relaySdp'
 
   public static readonly schema = z.object({
@@ -11,7 +11,7 @@ export class RelaySdpMetadataRequest implements Contract {
   })
 }
 
-export class RelaySdpMetadataResponse implements Contract {
+export abstract class RelaySdpMetadataResponse implements Contract {
   public static readonly topic: ChannelsMethodsKeys = 'metadataReceived'
 
   public static readonly schema = z.object({
