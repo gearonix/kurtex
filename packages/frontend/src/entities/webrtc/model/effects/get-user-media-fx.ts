@@ -16,6 +16,6 @@ export const getUserMediaFx = createEffect<void, Stream>(async () => {
 sample({
   clock: getUserMediaFx.doneData,
   source: $roomId,
-  fn: (roomId) => ({ roomId }),
+  fn: (roomId, roomIdw) => ({ roomId }),
   target: wss.joinRoom
 })

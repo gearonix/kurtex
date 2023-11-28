@@ -12,7 +12,7 @@ import { webrtc as rtc }           from '@kurtex/contracts'
 export const wss = atom(() => {
   const socket = scope(roomsListModel.socket)
 
-  const joinRoom = socket.publisher<rtc.RelayIceCandidate>('joinRoom')
+  const joinRoom = socket.publisher<rtc.JoinRoom>('joinRoom')
 
   const leaveRoom = socket.publisher<rtc.LeaveRoom>('leaveRoom')
 

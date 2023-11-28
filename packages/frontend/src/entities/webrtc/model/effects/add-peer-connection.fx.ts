@@ -34,7 +34,7 @@ export const addRTCPeerConnectionFx = attach({
 
       wss.relaySdpMetadata({
         peerId,
-        metadata
+        iceCandidate: metadata
       })
     }
   }

@@ -5,7 +5,7 @@ import { ChannelsMethodsKeys } from './websocket.methods'
 export abstract class LeaveRoomRequest implements Contract {
   public static readonly topic: ChannelsMethodsKeys = 'leaveRoom'
   public static readonly schema = z.object({
-    peerId: z.string()
+    peerId: z.string().optional()
   })
 }
 

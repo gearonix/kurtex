@@ -8,7 +8,7 @@
   "packageManager": "yarn@3.6.3",
   "devDependencies": {
     "@compodoc/compodoc": "^1.1.22",
-    "@grnx-utils/eslint": "1.3.24",
+    "@grnx-utils/eslint": "3.0.2",
     "@grnx-utils/types": "^1.0.2",
     "@nestjs/cli": "^10.2.1",
     "@nestjs/config": "^3.1.1",
