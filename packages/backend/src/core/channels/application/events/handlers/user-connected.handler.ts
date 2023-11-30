@@ -1,6 +1,6 @@
 import { EventsHandler }       from '@nestjs/cqrs'
 import { IEventHandler }       from '@nestjs/cqrs'
-import { RtcGateway }          from '@core/channels/presenation'
+import { RtcGateway }          from '@core/channels/presenation/gateways'
 import { ConnectUserResponse } from '@kurtex/contracts'
 import { UserConnectedEvent }  from '@core/channels/application/events/impl'
 

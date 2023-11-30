@@ -1,7 +1,7 @@
 import { CommandHandler }     from '@nestjs/cqrs'
 import { EventBus }           from '@nestjs/cqrs'
 import { ICommandHandler }    from '@nestjs/cqrs'
-import { RtcGateway }         from '@core/channels/presenation'
+import { RtcGateway }         from '@core/channels/presenation/gateways'
 import { WsException }        from '@nestjs/websockets'
 import { UserConnectedEvent } from '@core/channels/application/events/impl'
 import { ConnectUserCommand } from '@core/channels/application/commands/impl'

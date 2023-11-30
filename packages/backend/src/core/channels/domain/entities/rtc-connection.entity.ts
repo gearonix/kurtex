@@ -8,10 +8,10 @@ export class RtcConnection {
   @Prop({
     type: [
       {
-        accountId: { type: mongoose.Schema.Types.ObjectId, required: false },
+        accountId: { required: false, type: mongoose.Schema.Types.ObjectId },
         peerConnectionId: {
-          type: mongoose.Schema.Types.ObjectId,
-          required: true
+          required: true,
+          type: mongoose.Schema.Types.ObjectId
         }
       }
     ]
@@ -22,5 +22,4 @@ export class RtcConnection {
   }
 }
 
-export const RtcConnectionSchema =
-  SchemaFactory.createForClass(RtcConnection)
+export const RtcConnectionSchema = SchemaFactory.createForClass(RtcConnection)

@@ -12,10 +12,9 @@ import { ChannelGatewayMethods }   from '@kurtex/contracts'
 import { webrtc as contracts }     from '@kurtex/contracts'
 import { WebsocketTopic }          from '@core/channels/shared'
 import { commands }                from '@core/channels/application/commands/impl'
-import { Inject }                  from '@nestjs/common'
 import { RtcConnection }           from '@core/channels/domain/entities'
 import { Model }                   from 'mongoose'
-import { InjectModel } from '@nestjs/mongoose'
+import { InjectModel }             from '@nestjs/mongoose'
 
 @WsGateway(WebsocketGateways.RTC)
 export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
@@ -45,8 +44,8 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
 
     this.reply({
       client,
-      payload: validChannels,
-      method: 'channelsReceived'
+      method: 'channelsReceived',
+      payload: validChannels
     })
   }
 
