@@ -6,7 +6,7 @@ export abstract class ConnectUserRequest implements Contract {
   public static readonly topic: ChannelsMethodsKeys = 'joinRoom'
 
   public static readonly schema = z.object({
-    roomId: z.string().uuid()
+    roomId: z.string().uuid().optional()
   })
 }
 

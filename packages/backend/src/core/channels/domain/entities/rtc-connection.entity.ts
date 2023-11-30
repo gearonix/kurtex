@@ -3,7 +3,7 @@ import { SchemaFactory } from '@nestjs/mongoose'
 import { Schema }        from '@nestjs/mongoose'
 import mongoose          from 'mongoose'
 
-@Schema()
+@Schema({ collection: 'rtc_connections' })
 export class RtcConnection {
   @Prop({
     type: [
@@ -16,10 +16,9 @@ export class RtcConnection {
       }
     ]
   })
-  participants: {
-    accountId?: string
-    peerConnectionId: string
-  }
+  participants: { accountId?: string; peerConnectionId: string }[]
 }
 
 export const RtcConnectionSchema = SchemaFactory.createForClass(RtcConnection)
+
+
