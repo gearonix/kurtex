@@ -9,8 +9,8 @@ export class MongooseConfigService implements MongooseOptionsFactory {
 
   createMongooseOptions(): MongooseModuleOptions {
     return {
-      uri: this.env.mongo.uri,
-      bufferCommands: false
+      bufferCommands: false,
+      uri: this.env.mongo.uri
     }
   }
 }

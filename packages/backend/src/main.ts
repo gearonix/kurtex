@@ -20,7 +20,8 @@ const bootstrap = async () => {
   app.setGlobalPrefix(env.server.prefix)
   app.enableShutdownHooks()
 
-  const redisIoAdapter = new RedisIoAdapter(app)
+  const redisIoAdapter = new RedisIoAdapter(app, env)
+
   await redisIoAdapter.connectToRedis()
 
   app.useWebSocketAdapter(redisIoAdapter)

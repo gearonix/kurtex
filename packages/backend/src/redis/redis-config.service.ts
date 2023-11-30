@@ -15,11 +15,11 @@ export class RedisConfigService implements CacheOptionsFactory {
 
   public createCacheOptions(): CacheModuleOptions {
     return {
-      ttl: 60,
-      isGlobal: true,
-      store: redisStore as unknown as CacheStore,
       host: this.configuration.host,
-      port: this.configuration.port
+      isGlobal: true,
+      port: this.configuration.port,
+      store: redisStore as unknown as CacheStore,
+      ttl: 60
     }
   }
 }

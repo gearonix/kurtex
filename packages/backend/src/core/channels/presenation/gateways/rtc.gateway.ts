@@ -15,13 +15,14 @@ import { commands }                from '@core/channels/application/commands/imp
 import { Inject }                  from '@nestjs/common'
 import { RtcConnection }           from '@core/channels/domain/entities'
 import { Model }                   from 'mongoose'
+import { InjectModel } from '@nestjs/mongoose'
 
 @WsGateway(WebsocketGateways.RTC)
 export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
   constructor(
     protected readonly logger: LoggerService,
     private readonly commandBus: CommandBus,
-    @Inject(RtcConnection.name)
+    @InjectModel(RtcConnection.name)
     private readonly rtcModel: Model<RtcConnection>
   ) {
     super(logger, rtcGatewayMethods)
