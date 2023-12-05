@@ -10,11 +10,13 @@ import { HealthModule }        from '@/healthz/health.module'
 import { RedisModule }         from '@/redis'
 import { CoreModule }          from '@/core'
 import { DatabaseModule }      from '@/database'
+import { GraphQLModule }       from '@/graphql'
 
 @Module({
   imports: [
     ScheduleModule.forRoot(),
     EnvModule,
+    GraphQLModule,
     LoggerModule,
     HealthModule,
     RedisModule,
