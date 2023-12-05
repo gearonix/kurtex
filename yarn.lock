@@ -381,6 +381,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@as-integrations/fastify@npm:^2.1.1":
+  version: 2.1.1
+  resolution: "@as-integrations/fastify@npm:2.1.1"
+  dependencies:
+    fastify-plugin: ^4.4.0
+  peerDependencies:
+    "@apollo/server": ^4.0.0
+    fastify: ^4.4.0
+  checksum: 281723e6b1886a34e5ec2e6dbad3d8280658cee05a3b5bcf541e5de3d7f85abc61a1983339e586e8c08457168a8ef4f2f07a1e4d05bb09df2d14c3a57fe457eb
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.10.4, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.16.7, @babel/code-frame@npm:^7.22.13":
   version: 7.22.13
   resolution: "@babel/code-frame@npm:7.22.13"
@@ -4037,31 +4049,6 @@ __metadata:
     class-validator:
       optional: true
   checksum: 1fb0dca3838d0dc23107233e95a711e251bfbef9017589d3764c955a1cf190c8372179cee70e3674807896f53a98ab2ba80cd769b4f072fadefb708be1cc911b
-  languageName: node
-  linkType: hard
-
-"@nestjs/mercurius@npm:^12.0.11":
-  version: 12.0.11
-  resolution: "@nestjs/mercurius@npm:12.0.11"
-  dependencies:
-    tslib: 2.6.2
-  peerDependencies:
-    "@apollo/subgraph": ^2.0.0
-    "@mercuriusjs/federation": ^1.0.0 || ^2.0.0
-    "@mercuriusjs/gateway": ^1.0.0
-    "@nestjs/common": ^9.3.8 || ^10.0.0
-    "@nestjs/graphql": ^12.0.0
-    fastify: ^4.12.0
-    graphql: ^16.0.0
-    mercurius: ^12.0.0 || ^13.0.0
-  peerDependenciesMeta:
-    "@apollo/subgraph":
-      optional: true
-    "@mercuriusjs/federation":
-      optional: true
-    "@mercuriusjs/gateway":
-      optional: true
-  checksum: fe56d9fd94b0a5fafc2cc1c0ec9fca358139cb79aaa8f5111e1f3da3f4aa826f7ac77dc83f8c3bf26202bc1aaf72f8d48b3695cd4f476f9f5b81c71ef692e97c
   languageName: node
   linkType: hard
 
@@ -11242,7 +11229,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fastify-plugin@npm:^4.0.0, fastify-plugin@npm:^4.2.0, fastify-plugin@npm:^4.2.1, fastify-plugin@npm:^4.3.0":
+"fastify-plugin@npm:^4.0.0, fastify-plugin@npm:^4.2.0, fastify-plugin@npm:^4.2.1, fastify-plugin@npm:^4.3.0, fastify-plugin@npm:^4.4.0":
   version: 4.5.1
   resolution: "fastify-plugin@npm:4.5.1"
   checksum: ddd1b2d470c3acd9397c2617b5842dcf71a6f9a32f05d02be1c12e8d37b8fc03af656900cec38e2afef5e9a3dfe5f994317810f4c5e9960b127b1ca179b56f73
@@ -14091,6 +14078,7 @@ __metadata:
   resolution: "kurtex@workspace:."
   dependencies:
     "@apollo/server": ^4.9.5
+    "@as-integrations/fastify": ^2.1.1
     "@compodoc/compodoc": ^1.1.22
     "@effector/next": ^0.6.1
     "@effector/reflect": ^8.3.3
@@ -14108,7 +14096,6 @@ __metadata:
     "@nestjs/core": ^10.0.2
     "@nestjs/cqrs": ^10.2.6
     "@nestjs/graphql": ^12.0.11
-    "@nestjs/mercurius": ^12.0.11
     "@nestjs/mongoose": ^10.0.2
     "@nestjs/platform-express": ^10.0.2
     "@nestjs/platform-fastify": ^10.2.8

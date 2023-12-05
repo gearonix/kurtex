@@ -12,7 +12,6 @@
     "@grnx-utils/types": "^1.0.2",
     "@nestjs/cli": "^10.2.1",
     "@nestjs/config": "^3.1.1",
-    "@nestjs/mercurius": "^12.0.11",
     "@nestjs/schedule": "^4.0.0",
     "@nestjs/schematics": "^10.0.1",
     "@nestjs/testing": "^10.0.2",
@@ -58,6 +57,7 @@
   },
   "dependencies": {
     "@apollo/server": "^4.9.5",
+    "@as-integrations/fastify": "^2.1.1",
     "@effector/next": "^0.6.1",
     "@effector/reflect": "^8.3.3",
     "@fastify/helmet": "^11.1.1",

@@ -6,6 +6,7 @@ module.exports = grnx({
     monorepo: true,
     enableImports: false,
     ext: {
-        'effector/no-forward': 'off'
+        'effector/no-forward': 'off',
+        '@typescript-eslint/no-unnecessary-condition': 'off'
     }
 })
