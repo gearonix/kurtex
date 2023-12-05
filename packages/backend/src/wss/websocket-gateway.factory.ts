@@ -8,6 +8,7 @@ import { Socket }              from 'socket.io'
 import { WsGateway }           from '@/decorators'
 import { LoggerService }       from '@/logger'
 import { AnyObject }           from '@grnx-utils/types'
+import { Nullable }            from '@grnx-utils/types'
 import { FactorySendParams }   from '@/wss/wss.interfaces'
 import { validate }            from 'uuid'
 
@@ -41,7 +42,9 @@ export abstract class WebsocketGatewayFactory<
     return [...client.rooms].filter(validate)
   }
 
-  public getRoomMembers(roomId: string) {
+  public getRoomMembers(roomId: Nullable<string>) {
+    if (!roomId) return []
+
     const adapter = this.server.sockets.adapter
 
     const members = adapter.rooms.get(roomId)
@@ -62,10 +65,10 @@ export abstract class WebsocketGatewayFactory<
   }
 
   public reply<T>({
-    payload,
+    client,
     method,
-    receiver,
-    client
+    payload,
+    receiver
   }: FactorySendParams<T, Methods>) {
     const wsMethod = this.methods[method]
 

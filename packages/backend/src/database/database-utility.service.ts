@@ -1,10 +1,11 @@
 import { Injectable } from '@nestjs/common'
 import { mongo }      from 'mongoose'
 import { Types }      from 'mongoose'
+import { Nullable }   from '@grnx-utils/types'
 
 @Injectable()
 export class DatabaseUtilityService {
-  public ensureObjectIdExists(existingId?: string) {
+  public ensureObjectIdExists(existingId?: Nullable<string>) {
     return existingId ?? this.generateObjectId()
   }
 

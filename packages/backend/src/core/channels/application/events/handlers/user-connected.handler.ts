@@ -11,11 +11,11 @@ export class UserConnectedHandler implements IEventHandler<UserConnectedEvent> {
   handle(event: UserConnectedEvent) {
     this.gateway.reply({
       method: ConnectUserResponse.topic,
-      receiver: event.roomId,
       payload: {
         peerId: event.client.id,
         shouldCreateOffer: false
-      }
+      },
+      receiver: event.roomId
     })
 
     this.gateway.reply({

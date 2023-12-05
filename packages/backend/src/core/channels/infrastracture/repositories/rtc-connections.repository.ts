@@ -5,6 +5,7 @@ import { NotFoundAfterTransactionException } from '@core/channels/shared/excepti
 import { TransactionFailedException }        from '@core/channels/shared/exceptions'
 import { Injectable }                        from '@nestjs/common'
 import { DatabaseUtilityService }            from '@/database'
+import { Nullable }                          from '@grnx-utils/types'
 
 @Injectable()
 export class RtcConnectionsRepository {
@@ -23,7 +24,7 @@ export class RtcConnectionsRepository {
 
   public async createConnectionOrAddPeerId(
     peerConnectionId: string,
-    rtcRoomId?: string
+    rtcRoomId: Nullable<string>
   ) {
     const session = await this.rtcConnections.startSession()
 

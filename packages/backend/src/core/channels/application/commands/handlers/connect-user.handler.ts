@@ -16,7 +16,7 @@ export class ConnectUserHandler implements ICommandHandler<ConnectUserCommand> {
   ) {}
 
   public async execute({ client, roomId }: ConnectUserCommand) {
-    if (client.rooms.has(roomId)) {
+    if (client.rooms.has(roomId!)) {
       throw new WsException(
         `User with ${client.id} already joined
         to websocket room (RTC connection) ${roomId}.`
