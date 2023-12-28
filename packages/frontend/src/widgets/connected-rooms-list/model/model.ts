@@ -3,21 +3,20 @@
 import { atom }              from '@/shared/factory/atom'
 import { connect }           from '@grnx/effector-socket.io'
 import { rtcGatewayMethods } from '@kurtex/contracts'
+import { createStore }       from 'effector'
 
 export const roomsListModel = atom(() => {
   const socket = connect({
-    uri: 'http://localhost:6868/api/websocket/rtc',
+    logger: true,
     methods: rtcGatewayMethods,
     prefix: 'payload',
-    logger: true
+    uri: 'http://localhost:6868/api/websocket/rtc'
   })
 
-  const $rooms = socket.restore<{ id: string }[]>('channelsReceived', {
-    default: []
-  })
+  const $rooms = createStore<{ id: string }[]>([])
 
   return {
-    socket,
-    $rooms
+    $rooms,
+    socket
   }
 })

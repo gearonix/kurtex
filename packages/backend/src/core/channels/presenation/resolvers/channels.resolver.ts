@@ -1,14 +1,16 @@
 import { Controller }               from '@nestjs/common'
 import { Get }                      from '@nestjs/common'
 import { RtcConnectionsRepository } from '@core/channels/infrastracture/repositories'
+import {Mutation, Query} from '@nestjs/graphql'
+import { Resolver }                 from '@nestjs/graphql'
 
-@Controller('channels')
-export class ChannelsController {
+@Resolver('RtcConnection')
+export class ChannelsResolver {
   constructor(
     private readonly rtcConnectionsRepository: RtcConnectionsRepository
   ) {}
 
-  @Get()
+  @Query('getAllChannels')
   getAllChannels() {
     return this.rtcConnectionsRepository.getLatestRtcConnections()
   }

@@ -1,4 +1,4 @@
 module.exports = {
   extends: ['../../.eslintrc.js'],
-  ignorePatterns: ['!**/*']
+  ignorePatterns: ['!**/*', 'src/graphql/gql.schema.ts']
 }

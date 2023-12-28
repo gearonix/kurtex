@@ -1,0 +1,10 @@
+type Query {
+  getAllChannels: [RtcChannel]
+}
+
+
+type RtcChannel {
+  test: String
+}
+
+

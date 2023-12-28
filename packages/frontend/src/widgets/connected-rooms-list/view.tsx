@@ -8,7 +8,12 @@ import Link               from 'next/link'
 export const ConnectedRoomsList = () => {
   useGate(roomsListModel.socket.Gate)
 
-  return <RoomsList />
+  return (
+    <div>
+      <button>join room</button>
+      <RoomsList />
+    </div>
+  )
 }
 
 const RoomsList = list({

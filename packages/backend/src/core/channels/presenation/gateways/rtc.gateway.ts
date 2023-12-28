@@ -20,33 +20,9 @@ import { InjectModel }             from '@nestjs/mongoose'
 export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
   constructor(
     protected readonly logger: LoggerService,
-    private readonly commandBus: CommandBus,
-    @InjectModel(RtcConnection.name)
-    private readonly rtcModel: Model<RtcConnection>
+    private readonly commandBus: CommandBus
   ) {
     super(logger, rtcGatewayMethods)
-  }
-
-  // TODO: remove this method
-  private async getValidWebsocketChannels() {
-    const validChannels = await this.server.fetchSockets()
-
-    return validChannels.map((socket) => ({
-      id: socket.id
-    }))
-  }
-
-  // TODO: remove this method
-  override async handleConnection(client: Socket) {
-    this.logger.info(`WssGateway: client connected: ${client.id}`)
-
-    const validChannels = await this.getValidWebsocketChannels()
-
-    this.reply({
-      client,
-      method: 'channelsReceived',
-      payload: validChannels
-    })
   }
 
   override async handleDisconnect(client: Socket) {
