@@ -66,5 +66,5 @@
       }
     }
   },
-  "tags": []
+  "tags": ["runtime:frontend"]
 }
