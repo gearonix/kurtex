@@ -4,4 +4,13 @@ declare module '*.svg' {
   export default content
 }
 
-declare module 'freeice';
+declare module '*.gql' {
+  const content: any
+  export default content
+}
+
+interface Window {
+  ENV: Record<keyof any, unknown>
+}
+
+declare module 'freeice'

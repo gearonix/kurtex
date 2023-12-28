@@ -7,14 +7,15 @@ import { ConnectedRoomsList } from 'src/widgets/connected-rooms-list'
 import { EffectorNext }       from '@effector/next'
 
 export const HubPage: NextPage = async () => {
-  // TODO: rewrite to fetch and enable this stuff
+  const scope = fork()
 
-  // const scope = fork()
-  // await allSettled(hubPage.open, { scope })
+  await allSettled(hubPage.open, { scope })
+
+  const values = serialize(scope)
 
   return (
-    // <EffectorNext values={serialize(scope)}>
-    <ConnectedRoomsList />
-    // </EffectorNext>
+    <EffectorNext values={values}>
+      <ConnectedRoomsList />
+    </EffectorNext>
   )
 }

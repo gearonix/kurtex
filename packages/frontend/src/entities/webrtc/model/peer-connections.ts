@@ -2,7 +2,7 @@ import { createEvent }    from 'effector'
 import { createStore }    from 'effector'
 import { PeerConnection } from 'src/entities/webrtc/model/core'
 import { wss }            from '@/entities/webrtc/model/wss'
-import { removeKey }      from '@/shared/lib/helpers'
+import { removeKey }      from 'src/shared/lib/shared'
 
 export const addPeerConnection = createEvent<PeerConnection>()
 

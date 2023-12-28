@@ -1,7 +1,7 @@
 'use client'
 
 import NextNProgress    from 'nextjs-progressbar'
-import { WithChildren } from '@/shared/lib/interfaces'
+import { WithChildren } from '@/shared/types'
 
 export const ProgressBar = ({ children }: WithChildren) => {
   return (

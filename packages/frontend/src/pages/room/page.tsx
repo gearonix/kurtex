@@ -1,4 +1,4 @@
-import { WithPageParams } from '@/shared/lib/interfaces'
+import { WithPageParams } from '@/shared/types'
 import { VideoPlayer }    from '@/widgets/video-player'
 
 export interface RoomPageParams {

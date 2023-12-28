@@ -3456,6 +3456,25 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@farfetched/core@npm:^0.11.2":
+  version: 0.11.2
+  resolution: "@farfetched/core@npm:0.11.2"
+  peerDependencies:
+    effector: ^23.0.0
+  checksum: 2a8a3090db44ddb8c9e88bf6be58cbb633e00fb6ddc3a25b42575b426322ba3a99dff78cbafd26aba7064b3b30a157ed829b65485d545e0ff58ecca80370dfed
+  languageName: node
+  linkType: hard
+
+"@farfetched/zod@npm:^0.11.2":
+  version: 0.11.2
+  resolution: "@farfetched/zod@npm:0.11.2"
+  peerDependencies:
+    "@farfetched/core": 0.11.2
+    zod: ^3.19
+  checksum: b5e5d86c9929cace87b80f104f604259725c5a294219ab125954b0bbe80f1489350a0c8f1c6420c71fa39ca6a6a9ac6df59f6a3460605ca44909efb463c70a64
+  languageName: node
+  linkType: hard
+
 "@fastify/accept-negotiator@npm:^1.0.0":
   version: 1.1.0
   resolution: "@fastify/accept-negotiator@npm:1.1.0"
@@ -12388,7 +12407,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-tag@npm:2.12.6":
+"graphql-tag@npm:2.12.6, graphql-tag@npm:^2.10.0, graphql-tag@npm:^2.12.6":
   version: 2.12.6
   resolution: "graphql-tag@npm:2.12.6"
   dependencies:
@@ -14435,6 +14454,8 @@ __metadata:
     "@compodoc/compodoc": ^1.1.23
     "@effector/next": ^0.7.0
     "@effector/reflect": ^9.0.0
+    "@farfetched/core": ^0.11.2
+    "@farfetched/zod": ^0.11.2
     "@fastify/helmet": ^11.1.1
     "@grnx-utils/eslint": 3.0.2
     "@grnx-utils/types": ^1.0.2
@@ -14494,6 +14515,7 @@ __metadata:
     fastify: ^4.25.2
     freeice: ^2.2.2
     graphql: ^16.8.1
+    graphql-tag: ^2.12.6
     jest: ^29.7.0
     jest-environment-jsdom: ^29.7.0
     jest-environment-node: ^29.7.0
@@ -14502,6 +14524,7 @@ __metadata:
     nestjs-zod: ^3.0.0
     next: 14.0.4
     next-compose-plugins: ^2.2.1
+    next-plugin-graphql: ^0.0.2
     next-pwa: ^5.6.0
     next-seo: ^6.4.0
     nextjs-progressbar: ^0.0.16
@@ -15712,6 +15735,15 @@ __metadata:
   version: 2.2.1
   resolution: "next-compose-plugins@npm:2.2.1"
   checksum: 771762fda2b12b81daf10431cbb494816cff96be02b44009692c6c0eefbacd62cbf51ddb93af8d3380ec00254c6a95d64d10f744d4b9ddadefc21efee7dc69fc
+  languageName: node
+  linkType: hard
+
+"next-plugin-graphql@npm:^0.0.2":
+  version: 0.0.2
+  resolution: "next-plugin-graphql@npm:0.0.2"
+  dependencies:
+    graphql-tag: ^2.10.0
+  checksum: 75f1e752eca129b2cf883e79d68a5ade41afcf56d2e676ce29056cdd3a5a2ceb279a32c4357e9eb36fcc9a2c128cb64afbdc10be270ffdfb058ac6a6052b60f3
   languageName: node
   linkType: hard
 

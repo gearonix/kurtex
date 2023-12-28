@@ -6,7 +6,7 @@ import { Nullable }              from '@grnx-utils/types'
 import { PeerConnectionCreated } from '@/entities/webrtc/model/lib/interfaces'
 import { ProvideMediaRef }       from '@/entities/webrtc/model/lib/interfaces'
 import { wss }                   from '@/entities/webrtc/model/wss'
-import { removeKey }             from '@/shared/lib/helpers'
+import { removeKey }             from '@/shared/lib'
 
 export const addRemoteStream = createEvent<PeerConnectionCreated>()
 export const provideMediaRef = createEvent<ProvideMediaRef>()

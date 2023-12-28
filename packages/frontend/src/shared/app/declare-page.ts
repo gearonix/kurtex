@@ -42,8 +42,8 @@ export const declarePage = <Ctx = void>(config: DeclarePageConfig<Ctx>) => {
     target: [
       $ctx,
       pageStarted.prepend((ctx: Ctx) => ({
-        page: config.page,
-        ctx
+        ctx,
+        page: config.page
       }))
     ]
   })
@@ -65,22 +65,22 @@ export const declarePage = <Ctx = void>(config: DeclarePageConfig<Ctx>) => {
 
   sample({
     clock: activated,
-    source: $ctx,
     fn: (ctx) => ctx as Ctx,
+    source: $ctx,
     target: opened
   })
 
   sample({
     clock: deactivated,
-    source: $ctx,
     fn: (ctx) => ctx as Ctx,
+    source: $ctx,
     target: closed
   })
 
   return {
-    open,
-    opened,
+    $active,
     closed,
-    $active
+    open,
+    opened
   }
 }

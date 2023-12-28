@@ -7,6 +7,9 @@ module.exports = grnx({
     enableImports: false,
     ext: {
         'effector/no-forward': 'off',
-        '@typescript-eslint/no-unnecessary-condition': 'off'
+        // disabled due to conflict with plugin-perfectionist
+        'effector/keep-options-order': 'off',
+        '@typescript-eslint/no-unnecessary-condition': 'off',
+        'prefer-arrow/prefer-arrow-functions': 'off'
     }
 })

@@ -1,22 +1,21 @@
-'use client'
-
-import { atom }              from '@/shared/factory/atom'
-import { connect }           from '@grnx/effector-socket.io'
-import { rtcGatewayMethods } from '@kurtex/contracts'
-import { createStore }       from 'effector'
+import { atom }           from '@/shared/factory/atom'
+import { createEvent }    from 'effector'
+import { createStore }    from 'effector'
+import { sample }         from 'effector'
+import { getAllChannels } from './requests'
 
 export const roomsListModel = atom(() => {
-  const socket = connect({
-    logger: true,
-    methods: rtcGatewayMethods,
-    prefix: 'payload',
-    uri: 'http://localhost:6868/api/websocket/rtc'
-  })
+  const moduleStarted = createEvent()
 
   const $rooms = createStore<{ id: string }[]>([])
 
+  sample({
+    clock: moduleStarted,
+    target: getAllChannels.refresh
+  })
+
   return {
     $rooms,
-    socket
+    moduleStarted
   }
 })

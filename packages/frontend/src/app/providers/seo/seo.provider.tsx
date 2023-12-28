@@ -1,6 +1,6 @@
 'use client'
 
-import { WithChildren } from '@/shared/lib/interfaces'
+import { WithChildren } from '@/shared/types'
 import { NextSeo }      from 'next-seo'
 import { seoConfig }    from '@/app/providers/seo/seo.config'
 
