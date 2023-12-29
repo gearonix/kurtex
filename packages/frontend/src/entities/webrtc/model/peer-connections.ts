@@ -4,7 +4,7 @@ import { createStore }            from 'effector'
 import { PeerConnection }         from 'src/entities/webrtc/model/core'
 import { wss }                    from '@/entities/webrtc/model/wss'
 import { removeKey }              from 'src/shared/lib/shared'
-import { addRTCPeerConnectionFx } from '@/entities/webrtc/model/effects'
+import { addRTCPeerConnectionFx } from '@/entities/webrtc/model/effects/add-peer-connection.fx'
 
 export const addPeerConnection = createEvent<PeerConnection>()
 

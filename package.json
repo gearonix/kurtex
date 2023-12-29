@@ -92,6 +92,7 @@
     "mongoose": "^8.0.3",
     "nestjs-zod": "^3.0.0",
     "next": "14.0.4",
+    "next-circular-dependency": "^1.0.1",
     "next-compose-plugins": "^2.2.1",
     "next-plugin-graphql": "^0.0.2",
     "patronum": "^2.1.1",

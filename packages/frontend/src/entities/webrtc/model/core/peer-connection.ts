@@ -1,3 +1,5 @@
+'use client'
+
 import freeice      from 'freeice'
 import { Nullable } from '@grnx-utils/types'
 import { Stream }   from '@/entities/webrtc/model/core/stream'
