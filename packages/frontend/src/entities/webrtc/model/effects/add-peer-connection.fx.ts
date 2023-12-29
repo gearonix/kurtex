@@ -8,19 +8,18 @@ import { addPeerConnection }    from '@/entities/webrtc/model/peer-connections'
 import { UserConnected }        from '@kurtex/contracts'
 
 export const addRTCPeerConnectionFx = attach({
-  source: $localStream,
   effect: async (localStream, { peerId, shouldCreateOffer }: UserConnected) => {
     const connection = createPeerConnection({
-      peerId,
-      localStream
+      localStream,
+      peerId
     })
 
     addPeerConnection(connection)
 
     connection.onIceCandidate((candidate) => {
       wss.relayIceCandidate({
-        peerId,
-        iceCandidate: candidate
+        iceCandidate: candidate,
+        peerId
       })
     })
 
@@ -33,9 +32,10 @@ export const addRTCPeerConnectionFx = attach({
       const metadata = await connection.createLocalMetadata()
 
       wss.relaySdpMetadata({
-        peerId,
-        iceCandidate: metadata
+        iceCandidate: metadata,
+        peerId
       })
     }
-  }
+  },
+  source: $localStream
 })

@@ -1,7 +1,4 @@
 import { createEffect } from 'effector'
-import { sample }       from 'effector'
-import { wss }          from '@/entities/webrtc/model/wss'
-import { $roomId }      from '@/entities/webrtc/model/entrypoint'
 import { Stream }       from '@/entities/webrtc/model/core/stream'
 
 export const getUserMediaFx = createEffect<void, Stream>(async () => {
@@ -11,11 +8,4 @@ export const getUserMediaFx = createEffect<void, Stream>(async () => {
   })
 
   return new Stream(localStream)
-})
-
-sample({
-  clock: getUserMediaFx.doneData,
-  fn: (roomId) => ({ roomId }),
-  source: $roomId,
-  target: wss.joinRoom
 })

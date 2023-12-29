@@ -5,7 +5,7 @@ import { statusDenied }    from './permissions'
 import { statusGranted }   from './permissions'
 import { createGate }      from 'effector-react'
 import { getUserMediaFx }  from './effects'
-import { navigationModel } from 'src/shared/model/navigation'
+import { navigationModel } from '@/shared/model/navigation'
 import { wss }             from './wss'
 import { Nullable }        from '@grnx-utils/types'
 

@@ -1,10 +1,13 @@
-import { createEvent }        from 'effector'
-import { createStore }        from 'effector'
-import { sample }             from 'effector'
-import { LOCAL_MEDIA_STREAM } from './lib/consts'
-import { statusDenied }       from './permissions'
-import { getUserMediaFx }     from './effects'
-import { wss }                from '@/entities/webrtc/model/wss'
+import { createEvent }             from 'effector'
+import { createStore }             from 'effector'
+import { sample }                  from 'effector'
+import { LOCAL_MEDIA_STREAM }      from './lib/consts'
+import { addIceCandidateFx }       from './effects'
+import { addSessionDescriptionFx } from './effects'
+import { getUserMediaFx }          from './effects/get-user-media-fx'
+import { wss }                     from './wss'
+import { $roomId }                 from './entrypoint'
+import { statusDenied }            from './permissions'
 
 export const $rtcClients = createStore<string[]>([])
 
@@ -21,15 +24,32 @@ $rtcClients.on([wss.userDisconnected, removeStream], (clients, { peerId }) => {
 })
 
 sample({
-  clock: statusDenied,
-  fn: () => ({
-    peerId: LOCAL_MEDIA_STREAM
-  }),
-  target: removeStream
+  clock: getUserMediaFx.doneData,
+  fn: (roomId) => ({ roomId }),
+  source: $roomId,
+  target: wss.joinRoom
 })
 
 sample({
   clock: getUserMediaFx.doneData,
   fn: () => LOCAL_MEDIA_STREAM,
   target: addRtcClient
+})
+
+sample({
+  clock: wss.sessionDescriptionReceived,
+  target: addSessionDescriptionFx
+})
+
+sample({
+  clock: wss.iceCandidateReceived,
+  target: addIceCandidateFx
+})
+
+sample({
+  clock: statusDenied,
+  fn: () => ({
+    peerId: LOCAL_MEDIA_STREAM
+  }),
+  target: removeStream
 })

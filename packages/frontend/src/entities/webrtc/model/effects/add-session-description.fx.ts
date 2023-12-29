@@ -1,11 +1,10 @@
 import { attach }           from 'effector/compat'
 import { $peerConnections } from '@/entities/webrtc/model/peer-connections'
 import { wss }              from '@/entities/webrtc/model/wss'
-import { RelaySdpMetadata } from '@kurtex/contracts'
+import { MetadataReceived } from '@kurtex/contracts'
 
 export const addSessionDescriptionFx = attach({
-  source: $peerConnections,
-  effect: async (peerConnections, { peerId, metadata }: RelaySdpMetadata) => {
+  effect: async (peerConnections, { metadata, peerId }: MetadataReceived) => {
     const connection = peerConnections[peerId]
 
     const answer = await connection.setRemoteMetadata(
@@ -15,8 +14,9 @@ export const addSessionDescriptionFx = attach({
     if (!answer) return
 
     wss.relaySdpMetadata({
-      peerId,
-      metadata: answer
+      metadata: answer,
+      peerId
     })
-  }
+  },
+  source: $peerConnections
 })

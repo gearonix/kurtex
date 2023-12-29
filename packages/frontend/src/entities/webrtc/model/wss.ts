@@ -1,13 +1,7 @@
-import { forward }                 from 'effector'
-import { sample }                  from 'effector'
-import { connect }                 from '@grnx/effector-socket.io'
-import { $peerConnections }        from './peer-connections'
-import { addIceCandidateFx }       from './effects'
-import { addRTCPeerConnectionFx }  from './effects'
-import { addSessionDescriptionFx } from './effects'
-import { atom }                    from '@/shared/factory/atom'
-import { rtcGatewayMethods }       from '@kurtex/contracts'
-import { webrtc as rtc }           from '@kurtex/contracts'
+import { connect }           from '@grnx/effector-socket.io'
+import { atom }              from '@/shared/factory/atom'
+import { rtcGatewayMethods } from '@kurtex/contracts'
+import { webrtc as rtc }     from '@kurtex/contracts'
 
 export const wss = atom(() => {
   const socket = connect({
@@ -40,24 +34,6 @@ export const wss = atom(() => {
 
   const userDisconnected = socket.event('userDisconnected', {
     schema: rtc.LeaveRoomResponse.schema
-  })
-
-  sample({
-    clock: wss.userConnected,
-    filter: (connections, { peerId }) => !(peerId in connections),
-    fn: (_, ctx) => ctx,
-    source: $peerConnections,
-    target: addRTCPeerConnectionFx
-  })
-
-  forward({
-    from: wss.sessionDescriptionReceived,
-    to: addSessionDescriptionFx
-  })
-
-  forward({
-    from: wss.iceCandidateReceived,
-    to: addIceCandidateFx
   })
 
   return {
