@@ -2,10 +2,12 @@ import { atom }             from '@/shared/factory/atom'
 import { createGate }       from 'effector-react'
 import { Nullable }         from '@grnx-utils/types'
 import { createStore }      from 'effector'
+import { StoreWritable }    from 'effector'
 import { NextParams }       from '@/shared/types'
-import { NextSearchParams } from '@/shared/types'
 import { NextRouter }       from '@/shared/types'
+import { NextSearchParams } from '@/shared/types'
 import { attach }           from 'effector/compat'
+import { spread }           from 'patronum'
 
 interface RouterGateOptions {
   router: NextRouter
@@ -16,20 +18,18 @@ interface RouterGateOptions {
 export const navigationModel = atom(() => {
   const RouterGate = createGate<RouterGateOptions>()
 
-  const $router = createStore<Nullable<NextRouter>>(null).on(
-    RouterGate.open,
-    (_, { router }) => router
-  )
+  const $router = createStore<Nullable<NextRouter>>(null)
+  const $params = createStore<Nullable<NextParams>>(null)
+  const $query = createStore<Nullable<URLSearchParams>>(null)
 
-  const $params = createStore<Nullable<NextParams>>(null).on(
-    RouterGate.open,
-    (_, { params }) => params
-  )
-
-  const $query = createStore<Nullable<URLSearchParams>>(null).on(
-    RouterGate.open,
-    (_, { query }) => query
-  )
+  spread({
+    source: RouterGate.open,
+    targets: {
+      params: $params,
+      query: $query,
+      router: $router as StoreWritable<NextRouter>
+    }
+  })
 
   const pushFx = attach({
     effect: (router, url: string) => {
