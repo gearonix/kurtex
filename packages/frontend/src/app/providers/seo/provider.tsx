@@ -2,7 +2,7 @@
 
 import { WithChildren } from '@/shared/types'
 import { NextSeo }      from 'next-seo'
-import { seoConfig }    from '@/app/providers/seo/seo.config'
+import { config }       from '@/app/providers/seo/config'
 
 export const SeoProvider = ({ children }: WithChildren) => {
   return (
@@ -10,17 +10,17 @@ export const SeoProvider = ({ children }: WithChildren) => {
       <NextSeo
         nofollow
         noindex
-        title={seoConfig.title}
-        description={seoConfig.description}
+        title={config.title}
+        description={config.description}
         openGraph={{
-          title: seoConfig.title,
-          description: seoConfig.description
+          description: config.description,
+          title: config.title
         }}
-        additionalMetaTags={seoConfig.meta}
+        additionalMetaTags={config.meta}
         additionalLinkTags={[
           {
-            rel: 'icon',
-            href: seoConfig.faviconPath
+            href: config.faviconPath,
+            rel: 'icon'
           }
         ]}
       />

@@ -4245,6 +4245,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@neodx/std@npm:^0.2.0":
+  version: 0.2.0
+  resolution: "@neodx/std@npm:0.2.0"
+  checksum: 482dd5aa7146b501d1477392ee2da0ab4e7a9f1afd078df6705f4a5153b6678a1ba10fe46150a32afaa98896e7bace6822025d31c922c7f1947af0e8aca1ec2c
+  languageName: node
+  linkType: hard
+
 "@nestjs/apollo@npm:^12.0.11":
   version: 12.0.11
   resolution: "@nestjs/apollo@npm:12.0.11"
@@ -12407,7 +12414,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"graphql-tag@npm:2.12.6, graphql-tag@npm:^2.10.0, graphql-tag@npm:^2.12.6":
+"graphql-tag@npm:2.12.6, graphql-tag@npm:^2.10.0":
   version: 2.12.6
   resolution: "graphql-tag@npm:2.12.6"
   dependencies:
@@ -14461,6 +14468,7 @@ __metadata:
     "@grnx-utils/types": ^1.0.2
     "@grnx/effector-socket.io": ^0.0.6-set-by-ci
     "@mercuriusjs/gateway": ^2.2.0
+    "@neodx/std": ^0.2.0
     "@nestjs/apollo": ^12.0.11
     "@nestjs/axios": ^3.0.1
     "@nestjs/cache-manager": ^2.1.1
@@ -14515,7 +14523,6 @@ __metadata:
     fastify: ^4.25.2
     freeice: ^2.2.2
     graphql: ^16.8.1
-    graphql-tag: ^2.12.6
     jest: ^29.7.0
     jest-environment-jsdom: ^29.7.0
     jest-environment-node: ^29.7.0

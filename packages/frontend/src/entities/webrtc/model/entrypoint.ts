@@ -1,17 +1,17 @@
-import { combine }        from 'effector'
-import { createEvent }    from 'effector'
-import { merge }          from 'effector'
-import { sample }         from 'effector'
-import { statusDenied }   from './permissions'
-import { statusGranted }  from './permissions'
-import { createGate }     from 'effector-react'
-import { getUserMediaFx } from './effects'
-import { paramsModel }    from '@/shared/model/params'
-import { wss }            from './wss'
+import { combine }          from 'effector'
+import { createEvent }      from 'effector'
+import { merge }            from 'effector'
+import { sample }           from 'effector'
+import { statusDenied }     from './permissions'
+import { statusGranted }    from './permissions'
+import { createGate }       from 'effector-react'
+import { getUserMediaFx }   from './effects'
+import { navigationModel } from 'src/shared/model/navigation'
+import { wss }              from './wss'
 
 export const $roomId = combine(
-  paramsModel.$params,
-  (params) => params?.id as string
+  navigationModel.$params,
+  (params) => (params?.id as string) ?? null
 )
 
 export const startConnection = createEvent()

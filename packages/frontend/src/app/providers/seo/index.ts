@@ -1,1 +1,1 @@
-export { SeoProvider } from './seo.provider'
+export { SeoProvider } from './provider'

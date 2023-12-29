@@ -2,7 +2,7 @@ import { DocumentNode }    from 'graphql/language'
 import { createJsonQuery } from '@farfetched/core'
 import { Json }            from '@farfetched/core'
 import { zodContract }     from '@farfetched/zod'
-import { $apiBase }        from '@/shared/api/config'
+import { $apiBaseUrl }        from '@/shared/api/config'
 import { AnyObject }       from '@grnx-utils/types'
 import { z }               from 'zod'
 
@@ -13,6 +13,9 @@ export interface CreateGraphqlQueryOptions<Response> {
   contract?: Response
 }
 
+/**
+ * @see https://farfetched.pages.dev/recipes/graphql_query
+ */
 export function createGraphqlQuery<Response extends z.Schema = z.ZodAny>({
   contract,
   name,
@@ -31,7 +34,7 @@ export function createGraphqlQuery<Response extends z.Schema = z.ZodAny>({
         variables: variables(params)
       }),
       method: 'POST',
-      url: $apiBase
+      url: $apiBaseUrl
     },
     response: {
       contract: zodContract(contract ?? z.any()),

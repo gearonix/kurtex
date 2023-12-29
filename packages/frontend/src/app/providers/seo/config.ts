@@ -1,5 +1,5 @@
 // TODO: add normal titles & descriptions
-export const seoConfig = {
+export const config = {
   title: 'Kurtex',
   description: 'Kurtex Description',
   meta: [
