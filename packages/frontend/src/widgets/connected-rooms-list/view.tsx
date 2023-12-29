@@ -9,7 +9,9 @@ import { useParams }      from 'next/navigation'
 export const ConnectedRoomsList = () => {
   return (
     <div>
-      <button>create room</button>
+      <Link href="/room/new">
+        <button>create room</button>
+      </Link>
       <RoomsList />
     </div>
   )

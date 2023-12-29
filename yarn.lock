@@ -10140,22 +10140,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"effector-react@npm:^23.1.0":
-  version: 23.1.0
-  resolution: "effector-react@npm:23.1.0"
+"effector-react@npm:22.5.4":
+  version: 22.5.4
+  resolution: "effector-react@npm:22.5.4"
   dependencies:
     use-sync-external-store: ^1.0.0
   peerDependencies:
-    effector: ^23.0.0
+    effector: ^22.0.2
     react: ">=16.8.0 <19.0.0"
-  checksum: 24535a7ece46b0278310274efbc1f4168e4b7f909193d05bea9450e481d90f04b669bc3f1b8fc235cae12e0238596f8544dc1824b75ed7431de9d7eceb72d135
+  checksum: e1e5b187daa7c86bf9ac476f1a04a5ab773be5f3462c6e20674c145ce1e0f1d9e936d7aff32b5df60ac269cf93ac1996904ee074db80581ca58b67858eee2b96
   languageName: node
   linkType: hard
 
-"effector@npm:^23.1.0":
-  version: 23.1.0
-  resolution: "effector@npm:23.1.0"
-  checksum: 42c477de669c10b6a563484322029303a3bd1d96deff927d32e85f5963f05b6a4e2006fd25c18197e432fbdc2432c4a63b642405173b2bf16aae18f6c2d73709
+"effector@npm:22.8.7":
+  version: 22.8.7
+  resolution: "effector@npm:22.8.7"
+  checksum: 8a6f07091efd4b50143c1c95cc8d1e55b41e035a3efc19c04b13ab80c0a7aef465733c37fea090778868a5d1193c4667aea48fdc0914429bcb62e21da4bc5e27
   languageName: node
   linkType: hard
 
@@ -14511,8 +14511,8 @@ __metadata:
     babel-jest: ^29.7.0
     cache-manager: ^5.3.2
     cache-manager-redis-store: ^3.0.1
-    effector: ^23.1.0
-    effector-react: ^23.1.0
+    effector: 22.8.7
+    effector-react: 22.5.4
     eslint: ^8.56.0
     eslint-config-next: 14.0.4
     eslint-kit: ^10.7.0

@@ -8,9 +8,17 @@ import { $rtcClients }     from '@/entities/webrtc'
 import { usePermissions }  from '@/entities/webrtc'
 import { provideMediaRef } from '@/entities/webrtc'
 import { VideoDisplay }    from '@/entities/video-display'
+import { navigationModel } from '@/shared/model/navigation'
+import { usePathname }     from 'next/navigation'
 
-export const VideoPlayer = () => {
-  useGate(rtcGate)
+export interface VideoPlayerProps {
+  createRoom?: boolean
+}
+
+export const VideoPlayer = ({ createRoom }: VideoPlayerProps) => {
+  useGate(rtcGate, {
+    createRoom
+  })
   useGate(wss.Gate)
 
   usePermissions()

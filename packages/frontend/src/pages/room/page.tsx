@@ -1,14 +1,17 @@
 import { WithPageParams } from '@/shared/types'
 import { VideoPlayer }    from '@/widgets/video-player'
 
-export interface RoomPageParams {
-  id: string
+/**
+ * @temporary
+ */
+export interface RoomPageProps {
+  createRoom?: boolean
 }
 
-export const RoomPage = ({ params }: WithPageParams<RoomPageParams>) => {
+export const RoomPage = ({ createRoom }: RoomPageProps) => {
   return (
     <div>
-      <VideoPlayer />
+      <VideoPlayer createRoom={createRoom} />
       room page
     </div>
   )
