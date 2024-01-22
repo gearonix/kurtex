@@ -2,7 +2,7 @@ import { DocumentNode }    from 'graphql/language'
 import { createJsonQuery } from '@farfetched/core'
 import { Json }            from '@farfetched/core'
 import { zodContract }     from '@farfetched/zod'
-import { $apiBaseUrl }        from '@/shared/api/config'
+import { $apiBaseUrl }     from '@/shared/api/config'
 import { AnyObject }       from '@grnx-utils/types'
 import { z }               from 'zod'
 

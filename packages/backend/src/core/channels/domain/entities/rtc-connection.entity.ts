@@ -20,5 +20,3 @@ export class RtcConnection {
 }
 
 export const RtcConnectionSchema = SchemaFactory.createForClass(RtcConnection)
-
-

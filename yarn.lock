@@ -6752,6 +6752,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/validator@npm:^13.11.8":
+  version: 13.11.8
+  resolution: "@types/validator@npm:13.11.8"
+  checksum: 9e8e8a0e95c3acac60e740d10729076e810350a5975523560c0232bb3c414f381fb7f246405fda3454db694fa5a1c0f00d7e9070023a078abee036b8d7b67770
+  languageName: node
+  linkType: hard
+
 "@types/webidl-conversions@npm:*":
   version: 7.0.3
   resolution: "@types/webidl-conversions@npm:7.0.3"
@@ -8850,6 +8857,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"class-transformer@npm:^0.5.1":
+  version: 0.5.1
+  resolution: "class-transformer@npm:0.5.1"
+  checksum: f191c8b4cc4239990f5efdd790cabdd852c243ed66248e39f6616a349c910c6eed2d9fd1fbf7ee6ea89f69b4f1d0b493b27347fe0cd0ae26b47c3745a805b6d3
+  languageName: node
+  linkType: hard
+
+"class-validator@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "class-validator@npm:0.14.1"
+  dependencies:
+    "@types/validator": ^13.11.8
+    libphonenumber-js: ^1.10.53
+    validator: ^13.9.0
+  checksum: bea808145c81ba3b185e1174d92f97a2d6ffef0558261217042552e9027222eadb9a9731a4418a07eaaa72ac334347df7a1079ff48eaadaa3ee6848a6a88995c
+  languageName: node
+  linkType: hard
+
 "clean-regexp@npm:^1.0.0":
   version: 1.0.0
   resolution: "clean-regexp@npm:1.0.0"
@@ -9943,6 +9968,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"detect-node@npm:2.0.4":
+  version: 2.0.4
+  resolution: "detect-node@npm:2.0.4"
+  checksum: c06ae40fefbad8cb8cbb6ca819c93568b2a809e747bfc9c71f3524b027f5e988163b0ac0517fd65288b375360b30bc4822172eb05d211f99003d73cf8ec22911
+  languageName: node
+  linkType: hard
+
 "detect-node@npm:^2.0.4":
   version: 2.1.0
   resolution: "detect-node@npm:2.1.0"
@@ -10149,22 +10181,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"effector-react@npm:22.5.4":
-  version: 22.5.4
-  resolution: "effector-react@npm:22.5.4"
+"effector-logger@npm:^0.15.0":
+  version: 0.15.0
+  resolution: "effector-logger@npm:0.15.0"
   dependencies:
-    use-sync-external-store: ^1.0.0
+    detect-node: 2.0.4
+    just-debounce-it: ^1.1.0
   peerDependencies:
-    effector: ^22.0.2
-    react: ">=16.8.0 <19.0.0"
-  checksum: e1e5b187daa7c86bf9ac476f1a04a5ab773be5f3462c6e20674c145ce1e0f1d9e936d7aff32b5df60ac269cf93ac1996904ee074db80581ca58b67858eee2b96
+    effector: ^22.8.8 || ^23.0.0
+  checksum: 9212e4284dacb4fc9bbca74eacbe823bc3dbe27a12187d0ad357b95960f5268f725cd5cb2c420258874a95309a7873166f1a250bba7c051ceaed89a5b796f53d
   languageName: node
   linkType: hard
 
-"effector@npm:22.8.7":
-  version: 22.8.7
-  resolution: "effector@npm:22.8.7"
-  checksum: 8a6f07091efd4b50143c1c95cc8d1e55b41e035a3efc19c04b13ab80c0a7aef465733c37fea090778868a5d1193c4667aea48fdc0914429bcb62e21da4bc5e27
+"effector-react@npm:23.1.0":
+  version: 23.1.0
+  resolution: "effector-react@npm:23.1.0"
+  dependencies:
+    use-sync-external-store: ^1.0.0
+  peerDependencies:
+    effector: ^23.0.0
+    react: ">=16.8.0 <19.0.0"
+  checksum: 24535a7ece46b0278310274efbc1f4168e4b7f909193d05bea9450e481d90f04b669bc3f1b8fc235cae12e0238596f8544dc1824b75ed7431de9d7eceb72d135
+  languageName: node
+  linkType: hard
+
+"effector@npm:^23.1.0":
+  version: 23.1.0
+  resolution: "effector@npm:23.1.0"
+  checksum: 42c477de669c10b6a563484322029303a3bd1d96deff927d32e85f5963f05b6a4e2006fd25c18197e432fbdc2432c4a63b642405173b2bf16aae18f6c2d73709
   languageName: node
   linkType: hard
 
@@ -14385,6 +14429,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"just-debounce-it@npm:^1.1.0":
+  version: 1.5.0
+  resolution: "just-debounce-it@npm:1.5.0"
+  checksum: bab4cf713e4aaee298b6d14e1c3b1651bca04883b3a13488c6b223d5623d8aec426d8a04655bd8e65b6530ece7f6a603affcff7eadedbf35dc4444050b90b159
+  languageName: node
+  linkType: hard
+
 "kareem@npm:2.5.1":
   version: 2.5.1
   resolution: "kareem@npm:2.5.1"
@@ -14520,8 +14571,11 @@ __metadata:
     babel-jest: ^29.7.0
     cache-manager: ^5.3.2
     cache-manager-redis-store: ^3.0.1
-    effector: 22.8.7
-    effector-react: 22.5.4
+    class-transformer: ^0.5.1
+    class-validator: ^0.14.1
+    effector: ^23.1.0
+    effector-logger: ^0.15.0
+    effector-react: 23.1.0
     eslint: ^8.56.0
     eslint-config-next: 14.0.4
     eslint-kit: ^10.7.0
@@ -14691,6 +14745,13 @@ __metadata:
     prelude-ls: ~1.1.2
     type-check: ~0.3.2
   checksum: 0d084a524231a8246bb10fec48cdbb35282099f6954838604f3c7fc66f2e16fa66fd9cc2f3f20a541a113c4dafdf181e822c887c8a319c9195444e6c64ac395e
+  languageName: node
+  linkType: hard
+
+"libphonenumber-js@npm:^1.10.53":
+  version: 1.10.54
+  resolution: "libphonenumber-js@npm:1.10.54"
+  checksum: 248483404b6972eb812fce92398c46723debd3e3121b3e5e906c0b2f693dc095c490c566e8b37f6e4d563cd6874ccd41dd5120ca9297b3d232f3a39646f6fce8
   languageName: node
   linkType: hard
 
@@ -20638,6 +20699,13 @@ __metadata:
   dependencies:
     builtins: ^5.0.0
   checksum: 5342a994986199b3c28e53a8452a14b2bb5085727691ea7aa0d284a6606b127c371e0925ae99b3f1ef7cc7d2c9de75f52eb61a3d1cc45e39bca1e3a9444cbb4e
+  languageName: node
+  linkType: hard
+
+"validator@npm:^13.9.0":
+  version: 13.11.0
+  resolution: "validator@npm:13.11.0"
+  checksum: d1e0c27022681420756da25bc03eb08d5f0c66fb008f8ff02ebc95812b77c6be6e03d3bd05cf80ca702e23eeb73dadd66b4b3683173ea2a0bc7cc72820bee131
   languageName: node
   linkType: hard
 

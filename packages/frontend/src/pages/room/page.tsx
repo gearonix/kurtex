@@ -1,5 +1,5 @@
-import { WithPageParams } from '@/shared/types'
-import { VideoPlayer }    from '@/widgets/video-player'
+import { VideoPlayer }  from '@/widgets/video-player'
+import { attachLogger } from 'effector-logger'
 
 /**
  * @temporary
@@ -9,6 +9,9 @@ export interface RoomPageProps {
 }
 
 export const RoomPage = ({ createRoom }: RoomPageProps) => {
+  // TODO: remove
+  attachLogger()
+
   return (
     <div>
       <VideoPlayer createRoom={createRoom} />

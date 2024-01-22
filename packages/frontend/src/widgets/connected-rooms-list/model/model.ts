@@ -14,6 +14,15 @@ export const roomsListModel = atom(() => {
     target: getAllChannels.refresh
   })
 
+  getAllChannels.$data.watch(console.log)
+
+  sample({
+    clock: getAllChannels.finished.success,
+    fn: (data) => {
+      console.log(data)
+    }
+  })
+
   return {
     $rooms,
     moduleStarted

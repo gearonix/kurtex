@@ -11,7 +11,7 @@ import { removeKey }             from '@/shared/lib'
 export const addRemoteStream = createEvent<PeerConnectionCreated>()
 export const provideMediaRef = createEvent<ProvideMediaRef>()
 
-const $clientMediaStreams = createStore<
+export const $clientMediaStreams = createStore<
   Record<string, Nullable<HTMLVideoElement>>
 >({
   [LOCAL_MEDIA_STREAM]: null
@@ -22,6 +22,9 @@ $clientMediaStreams.on(statusDenied, (streams) => ({
   [LOCAL_MEDIA_STREAM]: null
 }))
 
+
+
+
 $clientMediaStreams.on(addRemoteStream, (streams, { peerId, remoteStream }) => {
   if (streams[peerId]) {
     streams[peerId]!.srcObject = remoteStream
@@ -30,7 +33,7 @@ $clientMediaStreams.on(addRemoteStream, (streams, { peerId, remoteStream }) => {
   return streams
 })
 
-$clientMediaStreams.on(provideMediaRef, (streams, { ref, peerId }) => ({
+$clientMediaStreams.on(provideMediaRef, (streams, { peerId, ref }) => ({
   ...streams,
   [peerId]: ref
 }))

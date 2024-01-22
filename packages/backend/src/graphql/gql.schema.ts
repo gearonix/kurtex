@@ -9,11 +9,17 @@
 /* eslint-disable */
 
 export abstract class IQuery {
-    abstract getAllChannels(): Nullable<Nullable<RtcChannel>[]> | Promise<Nullable<Nullable<RtcChannel>[]>>;
+    abstract getAllChannels(): RtcChannel[] | Promise<RtcChannel[]>;
 }
 
 export class RtcChannel {
-    test?: Nullable<string>;
+    id?: Nullable<string>;
+    participants?: Nullable<Participant[]>;
+}
+
+export class Participant {
+    accountId?: Nullable<string>;
+    peerConnectionId: string;
 }
 
 type Nullable<T> = T | null;

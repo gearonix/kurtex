@@ -7,8 +7,8 @@ export interface VideoDisplayProps {
 }
 
 export const VideoDisplay = ({
-  provideMediaRef,
-  peerId
+  peerId,
+  provideMediaRef
 }: VideoDisplayProps) => {
   return (
     <video
