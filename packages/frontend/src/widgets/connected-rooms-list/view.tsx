@@ -1,8 +1,9 @@
 'use client'
 
-import { connectedRpcLists } from '@/widgets/connected-rooms-list/model'
-import { list }              from '@effector/reflect'
-import Link                  from 'next/link'
+import { connectedRpcLists }  from '@/widgets/connected-rooms-list/model'
+import { list }               from '@effector/reflect'
+import Link                   from 'next/link'
+import { ReceivedRtcChannel } from '@kurtex/contracts'
 
 export const ConnectedRoomsList = () => {
   return (
@@ -17,10 +18,11 @@ export const ConnectedRoomsList = () => {
 
 const RoomsList = list({
   source: connectedRpcLists.$rooms,
-  view: (item: any) => {
+  view: (channel: ReceivedRtcChannel) => {
+    console.log(channel)
     return (
       <div>
-        <Link href={`/room/${item.id}`}>{item.id}</Link>
+        <Link href={`/room/${channel.id}`}>{channel.id}</Link>
       </div>
     )
   }

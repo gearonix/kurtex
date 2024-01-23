@@ -1,5 +1,6 @@
 import { z }               from 'zod'
 import { GraphqlContract } from '../../shared'
+import { InferElement }    from '../../shared/types'
 
 export class GetRtcChannelsRequest implements GraphqlContract {
   public static readonly operation = 'getAllRpcChannels'
@@ -24,3 +25,7 @@ export class GetRtcChannelsResponse implements GraphqlContract {
   // TODO: remove this, implement pagination
   public static readonly schema = z.any()
 }
+
+export type ReceivedRtcChannel = InferElement<
+  z.infer<typeof GetRtcChannelsRequest.schema>
+>
