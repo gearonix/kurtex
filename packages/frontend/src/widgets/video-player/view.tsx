@@ -32,12 +32,6 @@ export const VideoPlayer = ({ createRoom }: VideoPlayerProps) => {
   const roomId = useUnit($roomId)
   const localStream = useUnit($localStream)
 
-  console.log({
-    localStream,
-    roomId,
-    rtcClients
-  })
-
   return (
     <div>
       Participants: {rtcClients.length}

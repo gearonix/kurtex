@@ -18,6 +18,7 @@ export class RtcChannel {
 }
 
 export class Participant {
+    id?: Nullable<string>;
     accountId?: Nullable<string>;
     peerConnectionId: string;
 }

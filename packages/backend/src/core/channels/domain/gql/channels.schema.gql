@@ -9,6 +9,7 @@ type RtcChannel {
 }
 
 type Participant {
+  id: String
   accountId: String
   peerConnectionId: String!
 }
