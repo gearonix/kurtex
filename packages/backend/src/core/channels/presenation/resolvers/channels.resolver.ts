@@ -8,7 +8,7 @@ export class ChannelsResolver {
     private readonly rtcConnectionsRepository: RtcConnectionsRepository
   ) {}
 
-  @Query('getAllChannels')
+  @Query('getAllRpcChannels')
   public async getAllChannels() {
     return this.rtcConnectionsRepository.getLatestRtcConnections()
   }

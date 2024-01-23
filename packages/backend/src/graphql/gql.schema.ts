@@ -9,7 +9,7 @@
 /* eslint-disable */
 
 export abstract class IQuery {
-    abstract getAllChannels(): RtcChannel[] | Promise<RtcChannel[]>;
+    abstract getAllRpcChannels(): RtcChannel[] | Promise<RtcChannel[]>;
 }
 
 export class RtcChannel {

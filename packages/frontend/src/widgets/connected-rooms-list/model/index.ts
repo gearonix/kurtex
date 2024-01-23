@@ -1,1 +1,1 @@
-export { roomsListModel } from './model'
+export { connectedRpcLists } from './model'

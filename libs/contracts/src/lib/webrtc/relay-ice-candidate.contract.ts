@@ -1,22 +1,22 @@
 import { z }                   from 'zod'
-import { Contract }            from '../../shared'
-import { ChannelsMethodsKeys } from './websocket.methods'
+import { WebsocketContract }   from '../../shared'
+import { ChannelsMethodsKeys } from './methods'
 
-export abstract class RelayIceCandidateRequest implements Contract {
+export class RelayIceCandidateRequest implements WebsocketContract {
   public static readonly topic: ChannelsMethodsKeys = 'relayIceCandidate'
 
   public static readonly schema = z.object({
-    peerId: z.string(),
-    iceCandidate: z.object({})
+    iceCandidate: z.object({}),
+    peerId: z.string()
   })
 }
 
-export abstract class RelayIceCandidateResponse implements Contract {
+export class RelayIceCandidateResponse implements WebsocketContract {
   public static readonly topic: ChannelsMethodsKeys = 'iceCandidateReceived'
 
   public static readonly schema = z.object({
-    peerId: z.string(),
-    iceCandidate: z.object({})
+    iceCandidate: z.object({}),
+    peerId: z.string()
   })
 }
 

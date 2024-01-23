@@ -1,5 +1,13 @@
+# @type schema
+# @location connected-room-list
+
 query {
-    getAllChannels {
-        test
+  getAllRpcChannels {
+    id
+    participants {
+      id
+      peerConnectionId
+      accountId
     }
+  }
 }

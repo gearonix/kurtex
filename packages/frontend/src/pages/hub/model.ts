@@ -1,6 +1,6 @@
 import { declarePage }    from '@/shared/app'
 import { sample }         from 'effector'
-import { roomsListModel } from '@/widgets/connected-rooms-list'
+import { connectedRpcLists } from '@/widgets/connected-rooms-list'
 
 export const hubPage = declarePage({
   page: 'hub'
@@ -8,5 +8,5 @@ export const hubPage = declarePage({
 
 sample({
   clock: hubPage.open,
-  target: roomsListModel.moduleStarted
+  target: connectedRpcLists.moduleStarted
 })

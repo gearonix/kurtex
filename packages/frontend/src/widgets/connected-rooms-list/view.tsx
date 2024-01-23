@@ -1,8 +1,8 @@
 'use client'
 
-import { roomsListModel } from '@/widgets/connected-rooms-list/model'
-import { list }           from '@effector/reflect'
-import Link               from 'next/link'
+import { connectedRpcLists } from '@/widgets/connected-rooms-list/model'
+import { list }              from '@effector/reflect'
+import Link                  from 'next/link'
 
 export const ConnectedRoomsList = () => {
   return (
@@ -16,7 +16,7 @@ export const ConnectedRoomsList = () => {
 }
 
 const RoomsList = list({
-  source: roomsListModel.$rooms,
+  source: connectedRpcLists.$rooms,
   view: (item: any) => {
     return (
       <div>

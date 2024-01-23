@@ -1,8 +1,12 @@
 import { createGraphqlQuery } from '@/shared/api'
-import data                   from './../graphql/schema.gql'
+import query                  from './../graphql/schema.gql'
+import { channels }           from '@kurtex/contracts'
 
-export const getAllChannels = createGraphqlQuery({
-  name: 'getAllChannels',
-  query: data,
+const contract = channels.GetRtcChannelsRequest
+
+export const getAllRpcChannels = createGraphqlQuery({
+  contract: channels.GetRtcChannelsRequest.schema,
+  name: contract.operation,
+  query,
   variables: () => ({})
 })

@@ -26,6 +26,14 @@ export function createGraphqlQuery<Response extends z.Schema = z.ZodAny>({
     return doc.loc && doc.loc.source.body
   }
 
+  function wrapIntoGqlOutput(contract: Response) {
+    return z.object({
+      data: z.object({
+        [name]: contract
+      })
+    })
+  }
+
   return createJsonQuery({
     name,
     request: {
@@ -37,7 +45,7 @@ export function createGraphqlQuery<Response extends z.Schema = z.ZodAny>({
       url: $apiBaseUrl
     },
     response: {
-      contract: zodContract(contract ?? z.any()),
+      contract: zodContract(contract ? wrapIntoGqlOutput(contract) : z.any()),
       mapData: ({ result }) => {
         return result.data[name] as z.infer<Response>
       }

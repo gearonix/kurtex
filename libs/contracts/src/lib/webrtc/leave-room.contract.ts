@@ -1,15 +1,15 @@
 import { z }                   from 'zod'
-import { Contract }            from '../../shared'
-import { ChannelsMethodsKeys } from './websocket.methods'
+import { WebsocketContract }   from '../../shared'
+import { ChannelsMethodsKeys } from './methods'
 
-export abstract class LeaveRoomRequest implements Contract {
+export class LeaveRoomRequest implements WebsocketContract {
   public static readonly topic: ChannelsMethodsKeys = 'leaveRoom'
   public static readonly schema = z.object({
     peerId: z.string().optional()
   })
 }
 
-export abstract class LeaveRoomResponse implements Contract {
+export class LeaveRoomResponse implements WebsocketContract {
   public static readonly topic: ChannelsMethodsKeys = 'userDisconnected'
 
   public static readonly schema = z.object({

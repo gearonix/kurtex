@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-export abstract class Contract {
+export abstract class WebsocketContract {
   public static readonly topic: string
 
   public static readonly schema: z.ZodSchema

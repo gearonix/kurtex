@@ -1,8 +1,8 @@
 import { z }                   from 'zod'
-import { Contract }            from '../../shared'
-import { ChannelsMethodsKeys } from './websocket.methods'
+import { WebsocketContract }   from '../../shared'
+import { ChannelsMethodsKeys } from './methods'
 
-export abstract class ConnectUserRequest implements Contract {
+export class ConnectUserRequest implements WebsocketContract {
   public static readonly topic: ChannelsMethodsKeys = 'joinRoom'
 
   public static readonly schema = z.object({
@@ -10,7 +10,7 @@ export abstract class ConnectUserRequest implements Contract {
   })
 }
 
-export abstract class ConnectUserResponse implements Contract {
+export class ConnectUserResponse implements WebsocketContract {
   public static readonly topic: ChannelsMethodsKeys = 'userConnected'
 
   public static readonly schema = z.object({
