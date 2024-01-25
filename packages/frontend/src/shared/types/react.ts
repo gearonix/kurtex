@@ -15,10 +15,10 @@ export type WithPageParams<P extends object, O = NonNullable<unknown>> = {
   params: P
 } & O
 
-export type NextParams =
-  | Record<string, string | string[]>
-  | null
-  | ReturnType<typeof useParams>
+export type NextParams = Exclude<
+  Record<string, string | string[]> | ReturnType<typeof useParams>,
+  null
+>
 
 export type NextRouter = ReturnType<typeof useRouter>
 

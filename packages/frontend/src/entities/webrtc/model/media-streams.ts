@@ -22,9 +22,6 @@ $clientMediaStreams.on(statusDenied, (streams) => ({
   [LOCAL_MEDIA_STREAM]: null
 }))
 
-
-
-
 $clientMediaStreams.on(addRemoteStream, (streams, { peerId, remoteStream }) => {
   if (streams[peerId]) {
     streams[peerId]!.srcObject = remoteStream

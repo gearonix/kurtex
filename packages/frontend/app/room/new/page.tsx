@@ -8,8 +8,4 @@ export const metadata: Metadata = {
   title: 'Room - Kurtex'
 }
 
-export const NewRoomPage = () => {
-  return <RoomPage createRoom={true} />
-}
-
-export default NewRoomPage
+export default RoomPage

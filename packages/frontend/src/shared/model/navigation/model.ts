@@ -19,7 +19,7 @@ export const navigationModel = atom(() => {
   const RouterGate = createGate<RouterGateOptions>()
 
   const $router = createStore<Nullable<NextRouter>>(null)
-  const $params = createStore<Nullable<NextParams>>(null)
+  const $params = createStore<NextParams>({})
   const $query = createStore<Nullable<URLSearchParams>>(null)
 
   spread({

@@ -1,4 +1,5 @@
 import { createEvent }     from 'effector'
+import { createStore }     from 'effector'
 import { merge }           from 'effector'
 import { sample }          from 'effector'
 import { statusDenied }    from './permissions'
@@ -7,8 +8,8 @@ import { createGate }      from 'effector-react'
 import { getUserMediaFx }  from './effects/get-user-media.fx'
 import { navigationModel } from '@/shared/model/navigation'
 import { wss }             from './wss'
+import { isString }        from '@grnx-utils/types'
 import { Nullable }        from '@grnx-utils/types'
-import { hasOwn }          from '@neodx/std'
 
 export const startConnection = createEvent()
 export const closeConnection = createEvent()
@@ -19,14 +20,21 @@ export const rtcGate = createGate<{
 
 export const moduleStarted = merge([statusGranted, rtcGate.open])
 export const moduleClosed = merge([statusDenied, rtcGate.close])
-export const $roomId = navigationModel.$params.map<string | null>(
-  (params) => params?.id as Nullable<string>
-)
+
+export const $roomId = createStore<Nullable<string>>(null)
 
 sample({
   clock: rtcGate.open,
-  filter: (ctx) => hasOwn(ctx, 'createRoom'),
-  fn: () => null,
+  fn: ({ params }) => {
+    if (!isString(params.roomId)) {
+      return null
+    }
+
+    return params.roomId
+  },
+  source: {
+    params: navigationModel.$params
+  },
   target: $roomId
 })
 

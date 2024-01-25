@@ -17,7 +17,7 @@ export const ConnectedRoomsList = () => {
 }
 
 const RoomsList = list({
-  source: connectedRpcLists.$rooms,
+  source: connectedRpcLists.$rtcChannels,
   view: (channel: ReceivedRtcChannel) => {
     console.log(channel)
     return (
