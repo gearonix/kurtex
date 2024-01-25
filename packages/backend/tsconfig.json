@@ -20,7 +20,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@core/*": ["src/core/*"],
-      "@kurtex/contracts": ["../../libs/contracts/src/index.ts"]
+      "@kurtex/contracts": ["../../libs/contracts/src/index.ts"],
+      "@kurtex/std": ["../../libs/std/src/index.ts"]
     }
   },
   "include": ["src/**/*.ts"]

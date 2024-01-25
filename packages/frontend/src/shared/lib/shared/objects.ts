@@ -1,4 +1,4 @@
-import { AnyObject } from '@grnx-utils/types'
+import { AnyObject } from '@kurtex/std'
 
 export const removeKey = <T extends AnyObject, K extends keyof T>(
   obj: T,

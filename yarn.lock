@@ -3779,28 +3779,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@grnx-utils/types@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "@grnx-utils/types@npm:1.0.2"
-  peerDependencies:
-    preact: ^10.15.1
-    preact-compat: ^3.19.0
-    react: ">=16"
-    react-dom: ">=16"
-    typescript: ~5.1.3
-  peerDependenciesMeta:
-    preact:
-      optional: true
-    preact-compat:
-      optional: true
-    react:
-      optional: true
-    react-dom:
-      optional: true
-  checksum: 8c6a7adb0b975ddb2640fa2ce9a8b6c1b2826d546d9407bc3aeaed68b242686975fe1ff34cfc900c3b4d3f12c0c47edf662a84269f450cf822f50e8dec2c3a21
-  languageName: node
-  linkType: hard
-
 "@grnx/effector-socket.io@npm:^0.0.6-set-by-ci":
   version: 0.0.6-set-by-ci
   resolution: "@grnx/effector-socket.io@npm:0.0.6-set-by-ci"
@@ -4242,13 +4220,6 @@ __metadata:
   dependencies:
     sparse-bitfield: ^3.0.3
   checksum: 0b263aef5e42a2b296c205a4afcc06c3e59817427dfdf4b5d6f49c4e5c000aa90f652006b95f726e0eac7e888031a82393a964e390d5689a2de61e945f8238d3
-  languageName: node
-  linkType: hard
-
-"@neodx/std@npm:^0.2.0":
-  version: 0.2.0
-  resolution: "@neodx/std@npm:0.2.0"
-  checksum: 482dd5aa7146b501d1477392ee2da0ab4e7a9f1afd078df6705f4a5153b6678a1ba10fe46150a32afaa98896e7bace6822025d31c922c7f1947af0e8aca1ec2c
   languageName: node
   linkType: hard
 
@@ -14525,10 +14496,8 @@ __metadata:
     "@farfetched/zod": ^0.11.2
     "@fastify/helmet": ^11.1.1
     "@grnx-utils/eslint": 3.0.2
-    "@grnx-utils/types": ^1.0.2
     "@grnx/effector-socket.io": ^0.0.6-set-by-ci
     "@mercuriusjs/gateway": ^2.2.0
-    "@neodx/std": ^0.2.0
     "@nestjs/apollo": ^12.0.11
     "@nestjs/axios": ^3.0.1
     "@nestjs/cache-manager": ^2.1.1

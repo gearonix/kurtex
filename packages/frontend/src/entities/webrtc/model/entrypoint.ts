@@ -8,8 +8,8 @@ import { createGate }      from 'effector-react'
 import { getUserMediaFx }  from './effects/get-user-media.fx'
 import { navigationModel } from '@/shared/model/navigation'
 import { wss }             from './wss'
-import { isString }        from '@grnx-utils/types'
-import { Nullable }        from '@grnx-utils/types'
+import { isString }        from '@kurtex/std'
+import { Nullable }        from '@kurtex/std'
 
 export const startConnection = createEvent()
 export const closeConnection = createEvent()

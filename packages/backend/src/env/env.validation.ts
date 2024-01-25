@@ -1,5 +1,5 @@
 import { z }         from 'zod'
-import { AnyObject } from '@grnx-utils/types'
+import { AnyObject } from '@kurtex/std'
 import { EnvSchema } from '@/env/env.schema'
 
 export const createEnvValues = () => {

@@ -7,8 +7,8 @@ import { Socket }              from 'socket.io'
 
 import { WsGateway }           from '@/decorators'
 import { LoggerService }       from '@/logger'
-import { AnyObject }           from '@grnx-utils/types'
-import { Nullable }            from '@grnx-utils/types'
+import { AnyObject }           from '@kurtex/std'
+import { Nullable }            from '@kurtex/std'
 import { FactorySendParams }   from '@/wss/wss.interfaces'
 import { validate }            from 'uuid'
 

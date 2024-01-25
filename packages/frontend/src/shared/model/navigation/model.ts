@@ -1,6 +1,6 @@
 import { atom }             from '@/shared/factory/atom'
 import { createGate }       from 'effector-react'
-import { Nullable }         from '@grnx-utils/types'
+import { Nullable }         from '@kurtex/std'
 import { createStore }      from 'effector'
 import { StoreWritable }    from 'effector'
 import { NextParams }       from '@/shared/types'

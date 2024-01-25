@@ -25,8 +25,7 @@
       "options": {
         "buildTarget": "frontend:build",
         "dev": true,
-        "port": 3000,
-        "turbo": true
+        "port": 3000
       },
       "configurations": {
         "development": {

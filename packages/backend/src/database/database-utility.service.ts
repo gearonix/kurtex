@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { mongo }      from 'mongoose'
 import { Types }      from 'mongoose'
-import { Nullable }   from '@grnx-utils/types'
+import { Nullable }   from '@kurtex/std'
 
 @Injectable()
 export class DatabaseUtilityService {

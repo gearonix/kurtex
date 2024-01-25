@@ -5,7 +5,7 @@ import { NotFoundAfterTransactionException } from '@core/channels/shared/excepti
 import { TransactionFailedException }        from '@core/channels/shared/exceptions'
 import { Injectable }                        from '@nestjs/common'
 import { DatabaseUtilityService }            from '@/database'
-import { Nullable }                          from '@grnx-utils/types'
+import { Nullable }                          from '@kurtex/std'
 
 @Injectable()
 export class RtcConnectionsRepository {

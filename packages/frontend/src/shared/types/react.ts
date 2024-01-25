@@ -2,7 +2,7 @@ import { ReactNode }       from 'react'
 import { useParams }       from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { useRouter }       from 'next/navigation'
-import { Nullable }        from '@grnx-utils/types'
+import { Nullable }        from '@kurtex/std'
 
 export type WithChildren<
   T = NonNullable<unknown>,

@@ -29,7 +29,8 @@
       "@/*": [
         "src/*"
       ],
-      "@kurtex/contracts": ["../../libs/contracts/src/index.ts"]
+      "@kurtex/contracts": ["../../libs/contracts/src/index.ts"],
+      "@kurtex/std": ["../../libs/std/src/index.ts"]
     }
   },
   "include": [

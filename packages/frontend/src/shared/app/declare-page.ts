@@ -1,7 +1,7 @@
 import { createEvent } from 'effector'
 import { createStore } from 'effector'
 import { sample }      from 'effector'
-import { Nullable }    from '@grnx-utils/types'
+import { Nullable }    from '@kurtex/std'
 import { Page }        from './config/pages'
 
 export const pageStarted = createEvent<{

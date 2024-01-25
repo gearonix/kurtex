@@ -1,5 +1,5 @@
 import { Socket }   from 'socket.io'
-import { Nullable } from '@grnx-utils/types'
+import { Nullable } from '@kurtex/std'
 
 export class ConnectUserCommand {
   constructor(

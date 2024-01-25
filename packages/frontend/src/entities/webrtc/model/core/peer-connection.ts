@@ -1,5 +1,5 @@
 import freeice      from 'freeice'
-import { Nullable } from '@grnx-utils/types'
+import { Nullable } from '@kurtex/std'
 import { Stream }   from '@/entities/webrtc/model/core/stream'
 
 export interface PeerConnectionProps {

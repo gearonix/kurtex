@@ -1,5 +1,5 @@
 import { ProvideMediaRef } from '@/entities/webrtc/model/lib/interfaces'
-import { AnyFunction }     from '@grnx-utils/types'
+import { AnyFunction }     from '@kurtex/std'
 
 export interface VideoDisplayProps {
   provideMediaRef: AnyFunction<ProvideMediaRef>
