@@ -1,15 +1,16 @@
-import { createEvent }     from 'effector'
-import { createStore }     from 'effector'
-import { merge }           from 'effector'
-import { sample }          from 'effector'
-import { statusDenied }    from './permissions'
-import { statusGranted }   from './permissions'
-import { createGate }      from 'effector-react'
-import { getUserMediaFx }  from './effects/get-user-media.fx'
-import { navigationModel } from '@/shared/model/navigation'
-import { wss }             from './wss'
-import { isString }        from '@kurtex/std'
-import { Nullable }        from '@kurtex/std'
+import { createEvent }           from 'effector'
+import { createStore }           from 'effector'
+import { merge }                 from 'effector'
+import { sample }                from 'effector'
+import { statusDenied }          from './permissions'
+import { statusGranted }         from './permissions'
+import { createGate }            from 'effector-react'
+import { getLocalMediaStreamFx } from './effects/get-local-media-stream.fx'
+import { navigationModel }       from '@/shared/model/navigation'
+import { wss }                   from './wss'
+import { isString }              from '@kurtex/std'
+import { Nullable }              from '@kurtex/std'
+import { $localStream }          from '@/entities/webrtc/model/local-stream'
 
 export const startConnection = createEvent()
 export const closeConnection = createEvent()
@@ -50,5 +51,11 @@ sample({
 
 sample({
   clock: startConnection,
-  target: getUserMediaFx
+  target: getLocalMediaStreamFx
 })
+
+sample({
+  clock: getLocalMediaStreamFx.doneData,
+  target: $localStream
+})
+

@@ -4,7 +4,7 @@ import { sample }                  from 'effector'
 import { LOCAL_MEDIA_STREAM }      from './lib/consts'
 import { addIceCandidateFx }       from './effects/add-ice-candidate.fx'
 import { addSessionDescriptionFx } from './effects/add-session-description.fx'
-import { getUserMediaFx }          from './effects/get-user-media.fx'
+import { getLocalMediaStreamFx }   from './effects/get-local-media-stream.fx'
 import { wss }                     from './wss'
 import { $roomId }                 from './entrypoint'
 import { statusDenied }            from './permissions'
@@ -24,14 +24,14 @@ $rtcClients.on([wss.userDisconnected, removeStream], (clients, { peerId }) => {
 })
 
 sample({
-  clock: getUserMediaFx.doneData,
+  clock: getLocalMediaStreamFx.doneData,
   fn: (roomId) => ({ roomId }),
   source: $roomId,
   target: wss.joinRoom
 })
 
 sample({
-  clock: getUserMediaFx.doneData,
+  clock: getLocalMediaStreamFx.doneData,
   fn: () => LOCAL_MEDIA_STREAM,
   target: addRtcClient
 })

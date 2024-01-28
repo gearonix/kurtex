@@ -1,3 +1,5 @@
+'use client'
+
 export class Stream {
   public readonly stream: MediaStream
 

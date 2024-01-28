@@ -1,3 +1,5 @@
+'use client'
+
 import freeice      from 'freeice'
 import { Nullable } from '@kurtex/std'
 import { Stream }   from '@/entities/webrtc/model/core/stream'

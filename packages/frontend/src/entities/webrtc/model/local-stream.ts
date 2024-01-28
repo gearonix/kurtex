@@ -1,9 +1,5 @@
-import { restore }        from 'effector'
-import { moduleClosed }   from './entrypoint'
-import { getUserMediaFx } from './effects/get-user-media.fx'
+import { createStore } from 'effector'
+import { Stream }      from '@/entities/webrtc/model/core/stream'
+import { Nullable }    from '@kurtex/std'
 
-export const $localStream = restore(getUserMediaFx.doneData, null)
-
-// TODO: rewrite .on to effector samples
-
-$localStream.on(moduleClosed, (stream) => stream?.close())
+export const $localStream = createStore<Nullable<Stream>>(null)
