@@ -8,6 +8,7 @@ import { sample }                from 'effector'
 import { createGate }            from 'effector-react'
 import { navigationModel }       from '@/shared/model/navigation'
 import { isString }              from '@kurtex/std'
+import { uniq }                  from '@kurtex/std'
 import { Nullable }              from '@kurtex/std'
 import { atom }                  from '@/shared/factory/atom'
 import { connect }               from '@grnx/effector-socket.io'
@@ -25,24 +26,6 @@ import { ProvideMediaRef }       from '@/entities/webrtc/model/lib/interfaces'
 import { attach }                from 'effector/compat'
 import { Stream }                from '@/entities/webrtc/model/core/stream'
 
-export const addSessionDescriptionFx = attach({
-  effect: async (peerConnections, { metadata, peerId }: MetadataReceived) => {
-    const connection = peerConnections[peerId]
-
-    const answer = await connection.setRemoteMetadata(
-      metadata as RTCSessionDescriptionInit
-    )
-
-    if (!answer) return
-
-    wss.relaySdpMetadata({
-      metadata: answer,
-      peerId
-    })
-  },
-  source: $peerConnections
-})
-
 export const getLocalMediaStreamFx = createEffect<void, Stream>(async () => {
   const localStream = await navigator.mediaDevices.getUserMedia({
     audio: true,
@@ -50,51 +33,6 @@ export const getLocalMediaStreamFx = createEffect<void, Stream>(async () => {
   })
 
   return new Stream(localStream)
-})
-
-export const addRTCPeerConnectionFx = attach({
-  effect: async (localStream, { peerId, shouldCreateOffer }: UserConnected) => {
-    const connection = createPeerConnection({
-      localStream,
-      peerId
-    })
-
-    addPeerConnection(connection)
-
-    connection.onIceCandidate((candidate) => {
-      wss.relayIceCandidate({
-        iceCandidate: candidate,
-        peerId
-      })
-    })
-
-    connection.onRemoteStream((stream) => {
-      addRtcClient(peerId)
-      addRemoteStream({ peerId, remoteStream: stream })
-    })
-
-    if (shouldCreateOffer) {
-      const metadata = await connection.createLocalMetadata()
-
-      wss.relaySdpMetadata({
-        iceCandidate: metadata,
-        peerId
-      })
-    }
-  },
-  source: $localStream
-})
-
-export const addIceCandidateFx = attach({
-  effect: async (
-    peerConnections,
-    { iceCandidate, peerId }: RelayIceCandidate
-  ) => {
-    const connection = peerConnections[peerId]
-
-    await connection.addCandidate(iceCandidate)
-  },
-  source: $peerConnections
 })
 
 // WSS
@@ -220,18 +158,18 @@ export const removeStream = createEvent<{
   peerId: string
 }>()
 
-$rtcClients.on(addRtcClient, (s, v) => [...s, v])
+$rtcClients.on(addRtcClient, (s, v) => uniq([...s, v]))
 
 $rtcClients.on([wss.userDisconnected, removeStream], (clients, { peerId }) => {
   return clients.filter((c) => c !== peerId)
 })
 
-sample({
-  clock: getLocalMediaStreamFx.doneData,
-  fn: (roomId) => ({ roomId }),
-  source: $roomId,
-  target: wss.joinRoom
-})
+// sample({
+//   clock: getLocalMediaStreamFx.doneData,
+//   fn: (roomId) => ({ roomId }),
+//   source: $roomId,
+//   target: wss.joinRoom
+// })
 
 sample({
   clock: getLocalMediaStreamFx.doneData,
@@ -239,14 +177,37 @@ sample({
   target: addRtcClient
 })
 
-sample({
-  clock: wss.sessionDescriptionReceived,
-  target: addSessionDescriptionFx
-})
+export const addRTCPeerConnectionFx = attach({
+  effect: async (localStream, { peerId, shouldCreateOffer }: UserConnected) => {
+    const connection = createPeerConnection({
+      localStream,
+      peerId
+    })
 
-sample({
-  clock: wss.iceCandidateReceived,
-  target: addIceCandidateFx
+    addPeerConnection(connection)
+
+    connection.onIceCandidate((candidate) => {
+      wss.relayIceCandidate({
+        iceCandidate: candidate,
+        peerId
+      })
+    })
+
+    connection.onRemoteStream((stream) => {
+      addRtcClient(peerId)
+      addRemoteStream({ peerId, remoteStream: stream })
+    })
+
+    if (shouldCreateOffer) {
+      const metadata = await connection.createLocalMetadata()
+
+      wss.relaySdpMetadata({
+        iceCandidate: metadata,
+        peerId
+      })
+    }
+  },
+  source: $localStream
 })
 
 sample({
@@ -262,6 +223,46 @@ sample({
 export const addPeerConnection = createEvent<PeerConnection>()
 
 export const $peerConnections = createStore<Record<string, PeerConnection>>({})
+
+export const addIceCandidateFx = attach({
+  effect: async (
+    peerConnections,
+    { iceCandidate, peerId }: RelayIceCandidate
+  ) => {
+    const connection = peerConnections[peerId]
+
+    await connection.addCandidate(iceCandidate)
+  },
+  source: $peerConnections
+})
+
+sample({
+  clock: wss.iceCandidateReceived,
+  target: addIceCandidateFx
+})
+
+export const addSessionDescriptionFx = attach({
+  effect: async (peerConnections, { metadata, peerId }: MetadataReceived) => {
+    const connection = peerConnections[peerId]
+
+    const answer = await connection.setRemoteMetadata(
+      metadata as RTCSessionDescriptionInit
+    )
+
+    if (!answer) return
+
+    wss.relaySdpMetadata({
+      metadata: answer,
+      peerId
+    })
+  },
+  source: $peerConnections
+})
+
+sample({
+  clock: wss.sessionDescriptionReceived,
+  target: addSessionDescriptionFx
+})
 
 $peerConnections.on(addPeerConnection, (state, connection) => ({
   ...state,
