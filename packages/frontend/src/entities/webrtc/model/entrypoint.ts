@@ -1,3 +1,4 @@
+import { combine }               from 'effector'
 import { createEffect }          from 'effector'
 import { createEvent }           from 'effector'
 import { restore }               from 'effector'
@@ -331,3 +332,15 @@ $clientMediaStreams.on($localStream, (streams, localStream) => {
   localRef.srcObject = localStream!.stream
   localRef.volume = 0
 })
+
+const $logger = combine($rtcClients, $peerConnections, $clientMediaStreams, (
+  rtcClients,
+  peerConnections,
+  clientMediaStreams
+) => ({
+  clientMediaStreams,
+  peerConnections,
+  rtcClients
+}))
+
+$logger.watch(console.log)
