@@ -84,7 +84,7 @@
     "cache-manager-redis-store": "^3.0.1",
     "class-transformer": "^0.5.1",
     "class-validator": "^0.14.1",
-    "effector": "^23.1.0",
+    "effector": "latest",
     "effector-react": "23.1.0",
     "eslint-kit": "^10.7.0",
     "freeice": "^2.2.2",

@@ -1,10 +1,10 @@
 import { attach }               from 'effector/compat'
-import { addRtcClient }         from '../rtc-clients'
-import { wss }                  from '../wss'
+import { addRtcClient }         from '..'
+import { addRemoteStream }      from '..'
+import { $localStream }         from '..'
+import { addPeerConnection }    from '..'
+import { wss }                  from '..'
 import { createPeerConnection } from '../core'
-import { addRemoteStream }      from '@/entities/webrtc/model/media-streams'
-import { $localStream }         from '@/entities/webrtc/model/local-stream'
-import { addPeerConnection }    from '@/entities/webrtc/model/peer-connections'
 import { UserConnected }        from '@kurtex/contracts'
 
 export const addRTCPeerConnectionFx = attach({

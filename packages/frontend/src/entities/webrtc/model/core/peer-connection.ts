@@ -2,7 +2,7 @@
 
 import freeice      from 'freeice'
 import { Nullable } from '@kurtex/std'
-import { Stream }   from '@/entities/webrtc/model/core/stream'
+import { Stream }   from './stream'
 
 export interface PeerConnectionProps {
   peerId: string

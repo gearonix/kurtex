@@ -9,9 +9,9 @@ import { usePermissions }      from '@/entities/webrtc'
 import { provideMediaRef }     from '@/entities/webrtc'
 import { VideoDisplay }        from '@/entities/video-display'
 import { $roomId }             from '@/entities/webrtc/model/entrypoint'
-import { $localStream }        from '@/entities/webrtc/model/local-stream'
-import { $clientMediaStreams } from '@/entities/webrtc/model/media-streams'
-import { $peerConnections }    from '@/entities/webrtc/model/peer-connections'
+import { $localStream }        from '@/entities/webrtc/model'
+import { $clientMediaStreams } from '@/entities/webrtc/model'
+import { $peerConnections }    from '@/entities/webrtc/model'
 
 export interface VideoPlayerProps {
   createRoom?: boolean

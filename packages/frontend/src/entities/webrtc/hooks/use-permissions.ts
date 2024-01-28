@@ -1,5 +1,5 @@
 import { useUnit }        from 'effector-react'
-import { statusProvided } from '@/entities/webrtc/model/permissions'
+import { statusProvided } from '@/entities/webrtc/model'
 import { useEffect }      from 'react'
 
 export const usePermissions = () => {

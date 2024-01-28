@@ -10176,7 +10176,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"effector@npm:^23.1.0":
+"effector@npm:latest":
   version: 23.1.0
   resolution: "effector@npm:23.1.0"
   checksum: 42c477de669c10b6a563484322029303a3bd1d96deff927d32e85f5963f05b6a4e2006fd25c18197e432fbdc2432c4a63b642405173b2bf16aae18f6c2d73709
@@ -14542,7 +14542,7 @@ __metadata:
     cache-manager-redis-store: ^3.0.1
     class-transformer: ^0.5.1
     class-validator: ^0.14.1
-    effector: ^23.1.0
+    effector: latest
     effector-logger: ^0.15.0
     effector-react: 23.1.0
     eslint: ^8.56.0

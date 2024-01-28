@@ -1,6 +1,6 @@
 import { attach }           from 'effector/compat'
-import { $peerConnections } from '@/entities/webrtc/model/peer-connections'
-import { wss }              from '@/entities/webrtc/model/wss'
+import { $peerConnections } from '..'
+import { wss }              from '..'
 import { MetadataReceived } from '@kurtex/contracts'
 
 export const addSessionDescriptionFx = attach({

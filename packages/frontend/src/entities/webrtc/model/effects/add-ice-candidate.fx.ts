@@ -1,5 +1,5 @@
 import { attach }            from 'effector/compat'
-import { $peerConnections }  from '@/entities/webrtc/model/peer-connections'
+import { $peerConnections }  from '../'
 import { RelayIceCandidate } from '@kurtex/contracts'
 
 export const addIceCandidateFx = attach({
