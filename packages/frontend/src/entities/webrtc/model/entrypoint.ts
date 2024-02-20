@@ -166,6 +166,9 @@ $rtcClients.on([wss.userDisconnected, removeStream], (clients, { peerId }) => {
   return clients.filter((c) => c !== peerId)
 })
 
+// TODO: actually, instead of this overhead
+// i should combine these two gates by default
+// in effector-socket.io
 sample({
   clock: [getLocalMediaStreamFx.doneData, wss.Gate.open],
   fn: (roomId) => ({ roomId }),
