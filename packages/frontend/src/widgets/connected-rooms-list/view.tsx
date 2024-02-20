@@ -19,7 +19,6 @@ export const ConnectedRoomsList = () => {
 const RoomsList = list({
   source: connectedRpcLists.$rtcChannels,
   view: (channel: ReceivedRtcChannel) => {
-    console.log(channel)
     return (
       <div>
         <Link href={`/room/${channel.id}`}>{channel.id}</Link>

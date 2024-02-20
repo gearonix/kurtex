@@ -26,6 +26,7 @@ import { PeerConnectionCreated } from '@/entities/webrtc/model/lib/interfaces'
 import { ProvideMediaRef }       from '@/entities/webrtc/model/lib/interfaces'
 import { attach }                from 'effector/compat'
 import { Stream }                from '@/entities/webrtc/model/core/stream'
+import { or }                    from 'patronum'
 
 export const getLocalMediaStreamFx = createEffect<void, Stream>(async () => {
   const localStream = await navigator.mediaDevices.getUserMedia({
@@ -165,12 +166,12 @@ $rtcClients.on([wss.userDisconnected, removeStream], (clients, { peerId }) => {
   return clients.filter((c) => c !== peerId)
 })
 
-// sample({
-//   clock: getLocalMediaStreamFx.doneData,
-//   fn: (roomId) => ({ roomId }),
-//   source: $roomId,
-//   target: wss.joinRoom
-// })
+sample({
+  clock: [getLocalMediaStreamFx.doneData, wss.Gate.open],
+  fn: (roomId) => ({ roomId }),
+  source: $roomId,
+  target: wss.joinRoom
+})
 
 sample({
   clock: getLocalMediaStreamFx.doneData,

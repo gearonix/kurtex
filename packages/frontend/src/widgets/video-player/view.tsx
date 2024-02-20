@@ -25,13 +25,13 @@ export const VideoPlayer = ({ createRoom }: VideoPlayerProps) => {
   const provideRef = useUnit(provideMediaRef)
 
   return (
-    <div>
-      Participants: {rtcClients.length}
-      {rtcClients.map((clientId) => (
-        <div key={clientId}>
-          <VideoDisplay peerId={clientId} provideMediaRef={provideRef} />
-        </div>
-      ))}
-    </div>
+      <div>
+        Participants: {rtcClients.length}
+        {rtcClients.map((clientId) => (
+            <div key={clientId}>
+              <VideoDisplay peerId={clientId} provideMediaRef={provideRef} />
+            </div>
+        ))}
+      </div>
   )
 }

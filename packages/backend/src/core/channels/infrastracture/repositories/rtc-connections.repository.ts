@@ -26,38 +26,36 @@ export class RtcConnectionsRepository {
     peerConnectionId: string,
     rtcRoomId: Nullable<string>
   ) {
-    const session = await this.rtcConnections.startSession()
+    // const session = await this.rtcConnections.startSession()
 
-    session.startTransaction()
+    // session.startTransaction()
 
     const generatedRtcRoomId =
       this.utilityService.ensureObjectIdExists(rtcRoomId)
 
     try {
-      await session.withTransaction(async () => {
-        await this.rtcConnections.findOneAndUpdate(
-          { _id: generatedRtcRoomId },
-          { $addToSet: { participants: { peerConnectionId } } },
-          { new: true, session, upsert: true }
-        )
+      await this.rtcConnections.findOneAndUpdate(
+        { _id: generatedRtcRoomId },
+        { $addToSet: { participants: { peerConnectionId } } },
+        { new: true, upsert: true }
+      )
 
-        /**
-         * In case of possible failures of the upsert flag
-         */
-        if (!rtcConnection) {
-          await this.rtcConnections.create(
-            { _id: generatedRtcRoomId },
-            { participants: [{ peerConnectionId }] },
-            { session }
-          )
-        }
-      })
+      /**
+       * In case of possible failures of the upsert flag
+       */
+      // if (!rtcConnection) {
+      //   await this.rtcConnections.create(
+      //     { _id: generatedRtcRoomId },
+      //     { participants: [{ peerConnectionId }] }
+      //   )
+      // }
     } catch (error) {
-      await session.abortTransaction()
+      console.log(error)
+      // await session.abortTransaction()
       throw new TransactionFailedException()
     }
 
-    await session.endSession()
+    // await session.endSession()
 
     const rtcConnection = await this.rtcConnections.findById(rtcRoomId)
 

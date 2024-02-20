@@ -7,11 +7,11 @@ export const WsGateway = (namespace?: WebsocketGateways) => {
 
   return applyDecorators(
     WebSocketGateway({
-      namespace: `${namespacePrefix}/${namespace}`,
       cors: true,
-      transports: ['websocket', 'polling'],
+      namespace: `${namespacePrefix}/${namespace}`,
       pingInterval: 3000,
-      pintTimeout: 10000
+      pintTimeout: 10000,
+      transports: ['websocket', 'polling']
     })
   )
 }

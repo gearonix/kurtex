@@ -4,7 +4,7 @@ export const rtcGatewayMethods = {
   joinRoom: 'channels.join-webrtc-room',
   leaveRoom: 'channels.leave-webrtc-room',
   metadataReceived: 'channels.metadata-received',
-  relayIceCandidate: 'channels.rela-ice-candidate',
+  relayIceCandidate: 'channels.relay-ice-candidate',
   relaySdp: 'channels.relay-sdp',
   userConnected: 'channels.user-connected',
   userDisconnected: 'channels.user-disconnected'

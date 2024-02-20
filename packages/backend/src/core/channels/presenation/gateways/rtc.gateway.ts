@@ -19,8 +19,8 @@ import { InjectModel }             from '@nestjs/mongoose'
 @WsGateway(WebsocketGateways.RTC)
 export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
   constructor(
-    protected readonly logger: LoggerService,
-    private readonly commandBus: CommandBus
+      protected readonly logger: LoggerService,
+      private readonly commandBus: CommandBus
   ) {
     super(logger, rtcGatewayMethods)
   }
@@ -36,39 +36,39 @@ export class RtcGateway extends WebsocketGatewayFactory<ChannelGatewayMethods> {
 
   @WebsocketTopic(contracts.ConnectUserRequest.topic)
   public async joinWebRTCRoom(
-    @MessageBody() handshake: contracts.JoinRoom,
-    @ConnectedSocket() client: Socket
+      @MessageBody() handshake: contracts.JoinRoom,
+      @ConnectedSocket() client: Socket
   ) {
     return this.commandBus.execute(
-      new commands.ConnectUserCommand(handshake.roomId, client)
+        new commands.ConnectUserCommand(handshake.roomId, client)
     )
   }
 
   @WebsocketTopic(contracts.RelaySdpMetadataRequest.topic)
   public async relaySdpMetadata(
-    @MessageBody() handshake: contracts.RelaySdp,
-    @ConnectedSocketId() socketId: string
+      @MessageBody() handshake: contracts.RelaySdp,
+      @ConnectedSocketId() socketId: string
   ) {
     return this.commandBus.execute(
-      new commands.RelaySdpMetadataCommand(
-        socketId,
-        handshake.peerId,
-        handshake.metadata
-      )
+        new commands.RelaySdpMetadataCommand(
+            socketId,
+            handshake.peerId,
+            handshake.metadata
+        )
     )
   }
 
   @WebsocketTopic(contracts.RelayIceCandidateRequest.topic)
   public async relayIceCandidate(
-    @MessageBody() handshake: contracts.RelayIceCandidate,
-    @ConnectedSocketId() socketId: string
+      @MessageBody() handshake: contracts.RelayIceCandidate,
+      @ConnectedSocketId() socketId: string
   ) {
     return this.commandBus.execute(
-      new commands.RelayIceCandidateCommand(
-        socketId,
-        handshake.peerId,
-        handshake.iceCandidate
-      )
+        new commands.RelayIceCandidateCommand(
+            socketId,
+            handshake.peerId,
+            handshake.iceCandidate
+        )
     )
   }
 }
