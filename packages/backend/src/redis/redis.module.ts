@@ -1,5 +1,5 @@
-import { Module }             from '@nestjs/common'
-import { CacheModule }        from '@nestjs/cache-manager'
+import { CacheModule } from '@nestjs/cache-manager'
+import { Module } from '@nestjs/common'
 import { RedisConfigService } from '@/redis/redis-config.service'
 
 @Module({

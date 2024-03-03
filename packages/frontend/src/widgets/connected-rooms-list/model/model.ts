@@ -1,6 +1,5 @@
-import { atom }              from '@/shared/factory/atom'
-import { createEvent }       from 'effector'
-import { sample }            from 'effector'
+import { createEvent, sample } from 'effector'
+import { atom } from '@/shared/factory/atom'
 import { getAllRpcChannels } from './requests'
 
 export const connectedRpcLists = atom(() => {

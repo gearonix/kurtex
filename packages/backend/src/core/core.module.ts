@@ -1,5 +1,5 @@
-import { Module }         from '@nestjs/common'
 import { ChannelsModule } from '@core/channels'
+import { Module } from '@nestjs/common'
 
 @Module({
   imports: [ChannelsModule]

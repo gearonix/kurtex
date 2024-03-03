@@ -1,5 +1,5 @@
-import { VideoPlayer }  from '@/widgets/video-player'
 import { attachLogger } from 'effector-logger'
+import { VideoPlayer } from '@/widgets/video-player'
 
 /**
  * @temporary

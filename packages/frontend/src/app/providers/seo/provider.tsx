@@ -1,8 +1,8 @@
 'use client'
 
+import { NextSeo } from 'next-seo'
+import { config } from '@/app/providers/seo/config'
 import { WithChildren } from '@/shared/types'
-import { NextSeo }      from 'next-seo'
-import { config }       from '@/app/providers/seo/config'
 
 export const SeoProvider = ({ children }: WithChildren) => {
   return (

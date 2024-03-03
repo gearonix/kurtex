@@ -62,6 +62,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
+        "fix": true,
         "lintFilePatterns": ["packages/frontend/**/*.{ts,tsx,js,jsx}"]
       }
     }

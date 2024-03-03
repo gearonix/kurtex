@@ -1,1 +1,1 @@
-export { PeerConnection, createPeerConnection } from './peer-connection'
+export { createPeerConnection, PeerConnection } from './peer-connection'

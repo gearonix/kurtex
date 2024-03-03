@@ -8,6 +8,12 @@
         "command": "nx run-many -t serve --parallel=3 --exclude='*,!tag:runtime:*'"
       }
     },
+    "lint": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx run-many -t lint --parallel=3 --exclude='*,!tag:runtime:*'"
+      }
+    },
     "dep-graph": {
       "executor": "nx:run-commands",
       "options": {

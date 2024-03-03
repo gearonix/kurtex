@@ -1,11 +1,12 @@
-import { NestFactory }            from '@nestjs/core'
-import { AppModule }              from './app.module'
-import { EnvService }             from './env'
-import { setupCors }              from './config'
-import { startApplication }       from './config'
-import { FastifyAdapter }         from '@nestjs/platform-fastify'
-import { NestFastifyApplication } from '@nestjs/platform-fastify'
-import { RedisIoAdapter }         from '@/wss/redis-io.adapter'
+import { NestFactory } from '@nestjs/core'
+import {
+  FastifyAdapter,
+  NestFastifyApplication
+} from '@nestjs/platform-fastify'
+import { RedisIoAdapter } from '@/wss/redis-io.adapter'
+import { AppModule } from './app.module'
+import { setupCors, startApplication } from './config'
+import { EnvService } from './env'
 
 const bootstrap = async () => {
   const app = await NestFactory.create<NestFastifyApplication>(

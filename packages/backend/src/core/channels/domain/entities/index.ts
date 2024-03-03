@@ -1,7 +1,5 @@
-import { ModelDefinition }     from '@nestjs/mongoose'
-
-import { RtcConnection }       from './rtc-connection.entity'
-import { RtcConnectionSchema } from './rtc-connection.entity'
+import { ModelDefinition } from '@nestjs/mongoose'
+import { RtcConnection, RtcConnectionSchema } from './rtc-connection.entity'
 
 export const ModuleEntities: ModelDefinition[] = [
   {

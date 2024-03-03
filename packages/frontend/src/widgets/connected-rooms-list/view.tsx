@@ -1,9 +1,9 @@
 'use client'
 
-import { connectedRpcLists }  from '@/widgets/connected-rooms-list/model'
-import { list }               from '@effector/reflect'
-import Link                   from 'next/link'
+import { list } from '@effector/reflect'
 import { ReceivedRtcChannel } from '@kurtex/contracts'
+import Link from 'next/link'
+import { connectedRpcLists } from '@/widgets/connected-rooms-list/model'
 
 export const ConnectedRoomsList = () => {
   return (

@@ -1,7 +1,6 @@
-import { attach }           from 'effector/compat'
-import { $peerConnections } from '..'
-import { wss }              from '..'
 import { MetadataReceived } from '@kurtex/contracts'
+import { attach } from 'effector/compat'
+import { $peerConnections, wss } from '..'
 
 export const addSessionDescriptionFx = attach({
   effect: async (peerConnections, { metadata, peerId }: MetadataReceived) => {

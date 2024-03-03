@@ -1,5 +1,5 @@
 import { createEffect } from 'effector'
-import { Stream }       from '@/entities/webrtc/model/core/stream'
+import { Stream } from '@/entities/webrtc/model/core/stream'
 
 export const getLocalMediaStreamFx = createEffect<void, Stream>(async () => {
   const localStream = await navigator.mediaDevices.getUserMedia({

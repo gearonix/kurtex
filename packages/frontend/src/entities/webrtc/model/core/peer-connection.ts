@@ -1,8 +1,8 @@
 'use client'
 
-import freeice      from 'freeice'
 import { Nullable } from '@kurtex/std'
-import { Stream }   from './stream'
+import freeice from 'freeice'
+import { Stream } from './stream'
 
 export interface PeerConnectionProps {
   peerId: string

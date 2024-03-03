@@ -1,8 +1,6 @@
-import { createEvent } from 'effector'
-import { createStore } from 'effector'
-import { sample }      from 'effector'
-import { Nullable }    from '@kurtex/std'
-import { Page }        from './config/pages'
+import { Nullable } from '@kurtex/std'
+import { createEvent, createStore, sample } from 'effector'
+import { Page } from './config/pages'
 
 export const pageStarted = createEvent<{
   page: Page

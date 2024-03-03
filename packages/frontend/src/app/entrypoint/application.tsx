@@ -1,8 +1,8 @@
-import { WithChildren }       from '@/shared/types'
-import { ProgressBar }        from '@/app/providers/progress-bar'
-import { SeoProvider }        from '@/app/providers/seo'
+import { EffectorNext } from '@effector/next'
 import { NavigationProvider } from '@/app/providers/navigation'
-import { EffectorNext }       from '@effector/next'
+import { ProgressBar } from '@/app/providers/progress-bar'
+import { SeoProvider } from '@/app/providers/seo'
+import { WithChildren } from '@/shared/types'
 
 export const Application = ({ children }: WithChildren) => {
   return (

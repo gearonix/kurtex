@@ -1,7 +1,6 @@
-import { Injectable }             from '@nestjs/common'
-import { MongooseModuleOptions }  from '@nestjs/mongoose'
-import { MongooseOptionsFactory } from '@nestjs/mongoose'
-import { EnvService }             from '@/env'
+import { Injectable } from '@nestjs/common'
+import { MongooseModuleOptions, MongooseOptionsFactory } from '@nestjs/mongoose'
+import { EnvService } from '@/env'
 
 @Injectable()
 export class MongooseConfigService implements MongooseOptionsFactory {

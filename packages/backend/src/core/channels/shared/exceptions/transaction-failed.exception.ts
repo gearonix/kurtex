@@ -1,5 +1,4 @@
-import { HttpStatus }                   from '@nestjs/common'
-import { InternalServerErrorException } from '@nestjs/common'
+import { HttpStatus, InternalServerErrorException } from '@nestjs/common'
 
 export class TransactionFailedException extends InternalServerErrorException {
   constructor() {

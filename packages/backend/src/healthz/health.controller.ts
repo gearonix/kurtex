@@ -1,12 +1,13 @@
-import { Controller }              from '@nestjs/common'
-import { Get }                     from '@nestjs/common'
-import { HealthCheckError }        from '@nestjs/terminus'
-import { HealthCheckResult }       from '@nestjs/terminus'
-import { HealthCheckService }      from '@nestjs/terminus'
-import { MongooseHealthIndicator } from '@nestjs/terminus'
-import { HttpHealthIndicator }     from '@nestjs/terminus'
-import { HealthCheck }             from '@nestjs/terminus'
-import { EnvService }              from '@/env'
+import { Controller, Get } from '@nestjs/common'
+import {
+  HealthCheck,
+  HealthCheckError,
+  HealthCheckResult,
+  HealthCheckService,
+  HttpHealthIndicator,
+  MongooseHealthIndicator
+} from '@nestjs/terminus'
+import { EnvService } from '@/env'
 
 @Controller('health')
 export class HealthController {

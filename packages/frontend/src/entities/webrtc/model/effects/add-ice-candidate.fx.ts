@@ -1,6 +1,6 @@
-import { attach }            from 'effector/compat'
-import { $peerConnections }  from '../'
 import { RelayIceCandidate } from '@kurtex/contracts'
+import { attach } from 'effector/compat'
+import { $peerConnections } from '..'
 
 export const addIceCandidateFx = attach({
   effect: async (

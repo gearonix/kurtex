@@ -1,7 +1,6 @@
 import { RtcConnectionsRepository } from '@core/channels/infrastracture/repositories'
-import { Query }                    from '@nestjs/graphql'
-import { Resolver }                 from '@nestjs/graphql'
-import { channels }                 from '@kurtex/contracts'
+import { channels } from '@kurtex/contracts'
+import { Query, Resolver } from '@nestjs/graphql'
 
 @Resolver('RtcConnection')
 export class ChannelsResolver {

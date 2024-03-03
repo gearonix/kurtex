@@ -55,6 +55,7 @@
       "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
+        "fix": true,
         "lintFilePatterns": ["packages/backend/**/*.ts"]
       }
     },

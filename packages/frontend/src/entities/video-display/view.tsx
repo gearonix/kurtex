@@ -1,7 +1,6 @@
+import { useUnit } from 'effector-react'
+import { $rtcClients, helloworldRef } from '@/entities/webrtc'
 import { ProvideMediaRef } from '@/entities/webrtc/model/lib/interfaces'
-import { useUnit }         from 'effector-react'
-import { $rtcClients }     from '@/entities/webrtc'
-import { helloworldRef }   from '@/entities/webrtc'
 
 export interface VideoDisplayProps {
   provideMediaRef: (ref: ProvideMediaRef) => void

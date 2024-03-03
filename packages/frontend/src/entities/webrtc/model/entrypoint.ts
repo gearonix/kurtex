@@ -1,32 +1,38 @@
-import { combine }               from 'effector'
-import { createEffect }          from 'effector'
-import { createEvent }           from 'effector'
-import { restore }               from 'effector'
-import { split }                 from 'effector'
-import { createStore }           from 'effector'
-import { merge }                 from 'effector'
-import { sample }                from 'effector'
-import { createGate }            from 'effector-react'
-import { navigationModel }       from '@/shared/model/navigation'
-import { isString }              from '@kurtex/std'
-import { uniq }                  from '@kurtex/std'
-import { Nullable }              from '@kurtex/std'
-import { atom }                  from '@/shared/factory/atom'
-import { connect }               from '@grnx/effector-socket.io'
-import { MetadataReceived }      from '@kurtex/contracts'
-import { RelayIceCandidate }     from '@kurtex/contracts'
-import { UserConnected }         from '@kurtex/contracts'
-import { rtcGatewayMethods }     from '@kurtex/contracts'
-import { webrtc as rtc }         from '@kurtex/contracts'
-import { LOCAL_MEDIA_STREAM }    from '@/entities/webrtc/model/lib/consts'
-import { createPeerConnection }  from '@/entities/webrtc/model/core'
-import { PeerConnection }        from '@/entities/webrtc/model/core'
-import { removeKey }             from '@/shared/lib'
-import { PeerConnectionCreated } from '@/entities/webrtc/model/lib/interfaces'
-import { ProvideMediaRef }       from '@/entities/webrtc/model/lib/interfaces'
-import { attach }                from 'effector/compat'
-import { Stream }                from '@/entities/webrtc/model/core/stream'
-import { or }                    from 'patronum'
+import { connect } from '@grnx/effector-socket.io'
+import {
+  MetadataReceived,
+  RelayIceCandidate,
+  rtcGatewayMethods,
+  UserConnected,
+  webrtc as rtc
+} from '@kurtex/contracts'
+import { isString, Nullable, uniq } from '@kurtex/std'
+import {
+  combine,
+  createEffect,
+  createEvent,
+  createStore,
+  merge,
+  restore,
+  sample,
+  split
+} from 'effector'
+import { attach } from 'effector/compat'
+import { createGate } from 'effector-react'
+import { or } from 'patronum'
+import {
+  createPeerConnection,
+  PeerConnection
+} from '@/entities/webrtc/model/core'
+import { Stream } from '@/entities/webrtc/model/core/stream'
+import { LOCAL_MEDIA_STREAM } from '@/entities/webrtc/model/lib/consts'
+import {
+  PeerConnectionCreated,
+  ProvideMediaRef
+} from '@/entities/webrtc/model/lib/interfaces'
+import { atom } from '@/shared/factory/atom'
+import { removeKey } from '@/shared/lib'
+import { navigationModel } from '@/shared/model/navigation'
 
 export const getLocalMediaStreamFx = createEffect<void, Stream>(async () => {
   const localStream = await navigator.mediaDevices.getUserMedia({
@@ -337,14 +343,15 @@ $clientMediaStreams.on($localStream, (streams, localStream) => {
   localRef.volume = 0
 })
 
-const $logger = combine($rtcClients, $peerConnections, $clientMediaStreams, (
-  rtcClients,
-  peerConnections,
-  clientMediaStreams
-) => ({
-  clientMediaStreams,
-  peerConnections,
-  rtcClients
-}))
+const $logger = combine(
+  $rtcClients,
+  $peerConnections,
+  $clientMediaStreams,
+  (rtcClients, peerConnections, clientMediaStreams) => ({
+    clientMediaStreams,
+    peerConnections,
+    rtcClients
+  })
+)
 
 $logger.watch(console.log)

@@ -1,11 +1,9 @@
-import { createParamDecorator } from '@nestjs/common'
-import { ExecutionContext }     from '@nestjs/common'
+import { createParamDecorator, ExecutionContext } from '@nestjs/common'
 
-export const ConnectedSocketId = createParamDecorator((
-  data: unknown,
-  context: ExecutionContext
-) => {
-  const socket = context.switchToWs().getClient()
+export const ConnectedSocketId = createParamDecorator(
+  (data: unknown, context: ExecutionContext) => {
+    const socket = context.switchToWs().getClient()
 
-  return socket.id ?? null
-})
+    return socket.id ?? null
+  }
+)

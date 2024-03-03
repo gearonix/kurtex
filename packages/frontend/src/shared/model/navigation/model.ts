@@ -1,13 +1,10 @@
-import { atom }             from '@/shared/factory/atom'
-import { createGate }       from 'effector-react'
-import { Nullable }         from '@kurtex/std'
-import { createStore }      from 'effector'
-import { StoreWritable }    from 'effector'
-import { NextParams }       from '@/shared/types'
-import { NextRouter }       from '@/shared/types'
-import { NextSearchParams } from '@/shared/types'
-import { attach }           from 'effector/compat'
-import { spread }           from 'patronum'
+import { Nullable } from '@kurtex/std'
+import { createStore, StoreWritable } from 'effector'
+import { attach } from 'effector/compat'
+import { createGate } from 'effector-react'
+import { spread } from 'patronum'
+import { atom } from '@/shared/factory/atom'
+import { NextParams, NextRouter, NextSearchParams } from '@/shared/types'
 
 interface RouterGateOptions {
   router: NextRouter

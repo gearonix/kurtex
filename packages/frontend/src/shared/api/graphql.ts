@@ -1,10 +1,9 @@
-import { DocumentNode }    from 'graphql/language'
-import { createJsonQuery } from '@farfetched/core'
-import { Json }            from '@farfetched/core'
-import { zodContract }     from '@farfetched/zod'
-import { $apiBaseUrl }     from '@/shared/api/config'
-import { AnyObject }       from '@kurtex/std'
-import { z }               from 'zod'
+import { createJsonQuery, Json } from '@farfetched/core'
+import { zodContract } from '@farfetched/zod'
+import { AnyObject } from '@kurtex/std'
+import { DocumentNode } from 'graphql/language'
+import { z } from 'zod'
+import { $apiBaseUrl } from '@/shared/api/config'
 
 export interface CreateGraphqlQueryOptions<Response> {
   name: string

@@ -1,9 +1,7 @@
 'use client'
 
-import { useParams }       from 'next/navigation'
-import { useRouter }       from 'next/navigation'
-import { useSearchParams } from 'next/navigation'
-import { useGate }         from 'effector-react'
+import { useGate } from 'effector-react'
+import { useParams, useRouter, useSearchParams } from 'next/navigation'
 import { navigationModel } from '@/shared/model/navigation'
 
 export const NavigationProvider = () => {

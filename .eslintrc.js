@@ -1,15 +1,25 @@
-const grnx = require('@grnx-utils/eslint')
+const { presets, configure } = require('eslint-kit')
 
-module.exports = grnx({
-    root: __dirname,
-    tsconfig: 'tsconfig.base.json',
-    monorepo: true,
-    enableImports: false,
-    ext: {
-        'effector/no-forward': 'off',
-        // disabled due to conflict with plugin-perfectionist
-        'effector/keep-options-order': 'off',
-        '@typescript-eslint/no-unnecessary-condition': 'off',
-        'prefer-arrow/prefer-arrow-functions': 'off'
+module.exports = configure({
+  root: __dirname,
+  presets: [
+    presets.imports(),
+    presets.typescript({ tsconfig: 'tsconfig.base.json', root: __dirname }),
+    presets.prettier({
+      singleQuote: true,
+      trailingComma: 'none',
+      endOfLine: 'auto',
+      semi: false
+    }),
+    presets.effector(),
+    presets.node()
+  ],
+  extend: {
+    ignorePatterns: ['*.yaml', '*.json', '.eslintrc.cjs', 'dist',
+      '*.md', 'playground', 'vite.config.ts', 'build.config.ts'],
+    rules: {
+      'import/extensions': 'warn',
+      'import/no-unresolved': 'warn'
     }
+  }
 })

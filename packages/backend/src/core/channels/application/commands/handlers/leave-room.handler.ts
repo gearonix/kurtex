@@ -1,8 +1,7 @@
-import { CommandHandler }    from '@nestjs/cqrs'
-import { ICommandHandler }   from '@nestjs/cqrs'
-import { RtcGateway }        from '@core/channels/presenation/gateways'
+import { LeaveRoomCommand } from '@core/channels/application/commands/impl'
+import { RtcGateway } from '@core/channels/presenation/gateways'
 import { LeaveRoomResponse } from '@kurtex/contracts'
-import { LeaveRoomCommand }  from '@core/channels/application/commands/impl'
+import { CommandHandler, ICommandHandler } from '@nestjs/cqrs'
 
 @CommandHandler(LeaveRoomCommand)
 export class LeaveRoomHandler implements ICommandHandler<LeaveRoomCommand> {

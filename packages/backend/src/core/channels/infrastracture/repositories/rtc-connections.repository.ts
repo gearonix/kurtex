@@ -1,11 +1,13 @@
-import { Model }                             from 'mongoose'
-import { RtcConnection }                     from '@core/channels/domain/entities'
-import { InjectModel }                       from '@nestjs/mongoose'
-import { NotFoundAfterTransactionException } from '@core/channels/shared/exceptions'
-import { TransactionFailedException }        from '@core/channels/shared/exceptions'
-import { Injectable }                        from '@nestjs/common'
-import { DatabaseUtilityService }            from '@/database'
-import { Nullable }                          from '@kurtex/std'
+import { RtcConnection } from '@core/channels/domain/entities'
+import {
+  NotFoundAfterTransactionException,
+  TransactionFailedException
+} from '@core/channels/shared/exceptions'
+import { Nullable } from '@kurtex/std'
+import { Injectable } from '@nestjs/common'
+import { InjectModel } from '@nestjs/mongoose'
+import { Model } from 'mongoose'
+import { DatabaseUtilityService } from '@/database'
 
 @Injectable()
 export class RtcConnectionsRepository {

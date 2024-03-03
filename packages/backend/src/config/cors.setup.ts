@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common'
-import { EnvService }       from '../env'
 // eslint-disable-next-line max-len
-import { CorsOptions }      from '@nestjs/common/interfaces/external/cors-options.interface'
+import { CorsOptions } from '@nestjs/common/interfaces/external/cors-options.interface'
+import { EnvService } from '../env'
 
 export const setupCors = (app: INestApplication) => {
   const env = app.get(EnvService)

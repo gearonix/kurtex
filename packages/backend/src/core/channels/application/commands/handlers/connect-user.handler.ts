@@ -1,11 +1,9 @@
-import { CommandHandler }           from '@nestjs/cqrs'
-import { EventBus }                 from '@nestjs/cqrs'
-import { ICommandHandler }          from '@nestjs/cqrs'
-import { RtcGateway }               from '@core/channels/presenation/gateways'
-import { WsException }              from '@nestjs/websockets'
-import { UserConnectedEvent }       from '@core/channels/application/events/impl'
-import { ConnectUserCommand }       from '@core/channels/application/commands/impl'
+import { ConnectUserCommand } from '@core/channels/application/commands/impl'
+import { UserConnectedEvent } from '@core/channels/application/events/impl'
 import { RtcConnectionsRepository } from '@core/channels/infrastracture/repositories'
+import { RtcGateway } from '@core/channels/presenation/gateways'
+import { CommandHandler, EventBus, ICommandHandler } from '@nestjs/cqrs'
+import { WsException } from '@nestjs/websockets'
 
 @CommandHandler(ConnectUserCommand)
 export class ConnectUserHandler implements ICommandHandler<ConnectUserCommand> {

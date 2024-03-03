@@ -1,7 +1,6 @@
-import { Global }                 from '@nestjs/common'
-import { Module }                 from '@nestjs/common'
-import { MongooseModule }         from '@nestjs/mongoose'
-import { MongooseConfigService }  from './database-config.service'
+import { Global, Module } from '@nestjs/common'
+import { MongooseModule } from '@nestjs/mongoose'
+import { MongooseConfigService } from './database-config.service'
 import { DatabaseUtilityService } from './database-utility.service'
 
 @Global()

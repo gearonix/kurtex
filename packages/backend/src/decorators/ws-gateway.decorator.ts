@@ -1,5 +1,5 @@
-import { applyDecorators }   from '@nestjs/common'
-import { WebSocketGateway }  from '@nestjs/websockets'
+import { applyDecorators } from '@nestjs/common'
+import { WebSocketGateway } from '@nestjs/websockets'
 import { WebsocketGateways } from '@/config'
 
 export const WsGateway = (namespace?: WebsocketGateways) => {

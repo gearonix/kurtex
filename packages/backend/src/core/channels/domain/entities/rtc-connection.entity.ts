@@ -1,7 +1,5 @@
-import { Prop }          from '@nestjs/mongoose'
-import { SchemaFactory } from '@nestjs/mongoose'
-import { Schema }        from '@nestjs/mongoose'
-import mongoose          from 'mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import mongoose from 'mongoose'
 
 @Schema({ collection: 'rtc_connections' })
 export class RtcConnection {

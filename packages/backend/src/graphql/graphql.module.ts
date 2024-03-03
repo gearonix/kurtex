@@ -1,10 +1,7 @@
-import { MiddlewareConsumer }                   from '@nestjs/common'
-import { Module }                               from '@nestjs/common'
-import { NestModule }                           from '@nestjs/common'
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo'
+import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common'
 import { GraphQLModule as GraphqlConfigModule } from '@nestjs/graphql'
-import { GqlConfigService }                     from '@/graphql/gql-config.service'
-import { ApolloDriver }                         from '@nestjs/apollo'
-import { ApolloDriverConfig }                   from '@nestjs/apollo'
+import { GqlConfigService } from '@/graphql/gql-config.service'
 
 @Module({
   imports: [

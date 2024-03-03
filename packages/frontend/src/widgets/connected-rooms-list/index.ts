@@ -1,2 +1,2 @@
-export { ConnectedRoomsList } from './view'
 export { connectedRpcLists } from './model'
+export { ConnectedRoomsList } from './view'

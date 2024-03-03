@@ -1,9 +1,9 @@
-import { Injectable }         from '@nestjs/common'
-import { LoggerService }      from '@/logger'
-import { GqlOptionsFactory }  from '@nestjs/graphql'
-import { join }               from 'node:path'
 import { ApolloDriverConfig } from '@nestjs/apollo'
-import { EnvService }         from '@/env'
+import { Injectable } from '@nestjs/common'
+import { GqlOptionsFactory } from '@nestjs/graphql'
+import { join } from 'node:path'
+import { EnvService } from '@/env'
+import { LoggerService } from '@/logger'
 
 @Injectable()
 export class GqlConfigService implements GqlOptionsFactory {

@@ -1,16 +1,14 @@
-import { OnGatewayConnection } from '@nestjs/websockets'
-import { OnGatewayDisconnect } from '@nestjs/websockets'
-import { WebSocketServer }     from '@nestjs/websockets'
-
-import { Server }              from 'socket.io'
-import { Socket }              from 'socket.io'
-
-import { WsGateway }           from '@/decorators'
-import { LoggerService }       from '@/logger'
-import { AnyObject }           from '@kurtex/std'
-import { Nullable }            from '@kurtex/std'
-import { FactorySendParams }   from '@/wss/wss.interfaces'
-import { validate }            from 'uuid'
+import { AnyObject, Nullable } from '@kurtex/std'
+import {
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+  WebSocketServer
+} from '@nestjs/websockets'
+import { Server, Socket } from 'socket.io'
+import { validate } from 'uuid'
+import { WsGateway } from '@/decorators'
+import { LoggerService } from '@/logger'
+import { FactorySendParams } from '@/wss/wss.interfaces'
 
 @WsGateway()
 export abstract class WebsocketGatewayFactory<

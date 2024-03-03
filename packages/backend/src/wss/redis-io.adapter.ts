@@ -1,10 +1,10 @@
-import { IoAdapter }              from '@nestjs/platform-socket.io'
-import { ServerOptions }          from 'socket.io'
-import { createAdapter }          from '@socket.io/redis-adapter'
-import { createClient }           from 'redis'
-import { EnvService }             from '@/env'
-import { Injectable }             from '@nestjs/common'
+import { Injectable } from '@nestjs/common'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
+import { IoAdapter } from '@nestjs/platform-socket.io'
+import { createAdapter } from '@socket.io/redis-adapter'
+import { createClient } from 'redis'
+import { ServerOptions } from 'socket.io'
+import { EnvService } from '@/env'
 
 @Injectable()
 export class RedisIoAdapter extends IoAdapter {

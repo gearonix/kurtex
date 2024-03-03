@@ -1,11 +1,13 @@
-import { attach }               from 'effector/compat'
-import { addRtcClient }         from '..'
-import { addRemoteStream }      from '..'
-import { $localStream }         from '..'
-import { addPeerConnection }    from '..'
-import { wss }                  from '..'
+import { UserConnected } from '@kurtex/contracts'
+import { attach } from 'effector/compat'
+import {
+  $localStream,
+  addPeerConnection,
+  addRemoteStream,
+  addRtcClient,
+  wss
+} from '..'
 import { createPeerConnection } from '../core'
-import { UserConnected }        from '@kurtex/contracts'
 
 export const addRTCPeerConnectionFx = attach({
   effect: async (localStream, { peerId, shouldCreateOffer }: UserConnected) => {
