@@ -2,9 +2,6 @@
   "name": "kurtex",
   "license": "MIT",
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "packageManager": "yarn@3.6.3",
   "devDependencies": {
     "@compodoc/compodoc": "^1.1.23",
