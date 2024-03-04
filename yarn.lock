@@ -3714,6 +3714,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@effector/swc-plugin@npm:^0.0.10":
+  version: 0.0.10
+  resolution: "@effector/swc-plugin@npm:0.0.10"
+  checksum: 7585c8dfe5e8fa6f71a8e0a6210027be4ba7a0295f80d0b5d9193aa718a35f4ee95adfc4c9f507e9674bd448fc53d3cfa17044a702df5a0d4dccf6fbfe0d7ec8
+  languageName: node
+  linkType: hard
+
 "@eslint-community/eslint-utils@npm:^4.2.0, @eslint-community/eslint-utils@npm:^4.4.0":
   version: 4.4.0
   resolution: "@eslint-community/eslint-utils@npm:4.4.0"
@@ -15024,6 +15031,7 @@ __metadata:
     "@compodoc/compodoc": ^1.1.23
     "@effector/next": ^0.7.0
     "@effector/reflect": ^9.1.1
+    "@effector/swc-plugin": ^0.0.10
     "@farfetched/core": ^0.11.4
     "@farfetched/zod": ^0.11.4
     "@fastify/helmet": ^11.1.1
